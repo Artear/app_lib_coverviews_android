@@ -17,16 +17,16 @@ apply plugin: 'kotlin-android-extensions'
 
 ext {
     bintrayRepo = 'Android'
-    bintrayName = 'coverviews'
+    bintrayName = 'coveritem'
 
-    publishedGroupId = 'com.artear.coverviews'
-    libraryName = 'coverviews'
-    artifact = 'coverviews'
+    publishedGroupId = 'com.artear.coveritem'
+    libraryName = 'coveritem'
+    artifact = 'coveritem'
 
-    libraryDescription = 'coverviews sample library'
+    libraryDescription = 'coveritem sample library'
 
-    siteUrl = 'https://github.com/Artear/app_lib_coverviews_android'
-    gitUrl = 'https://github.com/Artear/app_lib_coverviews_android.git'
+    siteUrl = 'https://github.com/Artear/app_lib_coveritem_android'
+    gitUrl = 'https://github.com/Artear/app_lib_coveritem_android.git'
 
     developerId = 'artear'
     developerName = 'Artear Moviles'
@@ -72,8 +72,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    implementation project(':coveritem')
-
     //Test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:core:1.1.0'
@@ -94,8 +92,6 @@ dependencies {
     //Support
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-
 
 }
 

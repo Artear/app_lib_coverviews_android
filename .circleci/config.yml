@@ -118,9 +118,9 @@ workflows:
           requires:
            - release
            - tests
-      - bintray:
-          filters:
-            branches:
-              only: master
-          requires:
-            - stable
+#      - bintray:
+#          filters:
+#            branches:
+#              only: master
+#          requires:
+#            - stable

@@ -1,1 +1,1 @@
-include ':app', ':coverviews'
+include ':app', ':coverviews', ':coveritem'
