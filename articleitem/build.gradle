@@ -20,16 +20,16 @@ plugins{
 
 ext {
     bintrayRepo = 'Android'
-    bintrayName = 'coverviews'
+    bintrayName = 'articleitem'
 
-    publishedGroupId = 'com.artear.coverviews'
-    libraryName = 'coverviews'
-    artifact = 'coverviews'
+    publishedGroupId = 'com.artear.articleitem'
+    libraryName = 'articleitem'
+    artifact = 'articleitem'
 
-    libraryDescription = 'coverviews sample library'
+    libraryDescription = 'articleitem sample library'
 
-    siteUrl = 'https://github.com/Artear/app_lib_coverviews_android'
-    gitUrl = 'https://github.com/Artear/app_lib_coverviews_android.git'
+    siteUrl = 'https://github.com/Artear/app_lib_articleitem_android'
+    gitUrl = 'https://github.com/Artear/app_lib_articleitem_android.git'
 
     developerId = 'artear'
     developerName = 'Artear Moviles'
@@ -88,6 +88,7 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //Artear
+
     implementation "com.artear.tools:tools:0.0.18"
     implementation "com.artear.networking:networking:0.0.3"
     implementation "com.artear.domain:domain:0.0.5"
@@ -96,8 +97,6 @@ dependencies {
     //Support
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-
-
 
 }
 

@@ -10,7 +10,12 @@ class GetCover(private val coverRepository: CoverRepository) : UseCase<Void, Lis
     private val shaper = CoverDataShaper()
 
     override suspend fun execute(param: Void?): List<ArtearItem> {
+        //Deserializers
         val cover = coverRepository.cover()
+
+        ////////////////////////////
+
+        //Shaper
         return shaper.transform(cover)
     }
 

@@ -4,6 +4,7 @@ import com.artear.coveritem.deserializer.DeserializerUtil.Companion.getStyleFrom
 import com.artear.coveritem.deserializer.DeserializerUtil.Companion.getTypeFromJson
 import com.artear.coveritem.model.BlockContent
 import com.artear.coveritem.model.BlockType
+import com.artear.coverviews.Manager
 import com.artear.coverviews.repository.model.block.Block
 import com.artear.coverviews.repository.model.block.BlockStyle
 import com.google.gson.JsonDeserializationContext
@@ -12,7 +13,7 @@ import com.google.gson.JsonElement
 import java.lang.reflect.Type
 
 
-class BlockDeserializer : JsonDeserializer<Block> {
+class BlockDeserializer(manager: Manager) : JsonDeserializer<Block> {
 
     override fun deserialize(json: JsonElement, typeOfT: Type?, context: JsonDeserializationContext): Block {
 
