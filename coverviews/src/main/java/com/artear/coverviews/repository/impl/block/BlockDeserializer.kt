@@ -16,9 +16,12 @@ class BlockDeserializer : JsonDeserializer<Block> {
 
     override fun deserialize(json: JsonElement, typeOfT: Type?, context: JsonDeserializationContext): Block {
 
-        val type = getTypeFromJson<BlockType>(context, json)
         val style = getStyleFromJson<BlockStyle>(context, json)
 
+
+        val type = getTypeFromJson<BlockType>(context, json) // TODO types from registered list
+
+        val data = getDataFromJson(context, json)
 //        val data = when (type) { // TODO MAGIC
 //            BlockType.ARTICLE -> getDataFromJson<BlockContentArticle>(context, json)
 //            BlockType.CATEGORY -> getDataFromJson<BlockContentCategory>(context, json)
@@ -26,7 +29,12 @@ class BlockDeserializer : JsonDeserializer<Block> {
 //            BlockType.DFP -> getDataFromJson<BlockContentDfp>(context, json)
 //        }
 
-        return Block(type, style, BlockContent())
+
+        return Block(type, style, data)
+    }
+
+    private fun getDataFromJson(context: JsonDeserializationContext, json: JsonElement): BlockContent {
+        return BlockContent()
     }
 
 }
