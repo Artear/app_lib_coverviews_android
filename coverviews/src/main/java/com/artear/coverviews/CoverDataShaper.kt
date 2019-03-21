@@ -6,5 +6,5 @@ import com.artear.domain.coroutine.DataShaper
 
 class CoverDataShaper : DataShaper<Stevedore, List<ArtearItem>> {
 
-    override suspend fun transform(input: Stevedore): List<ArtearItem> = ArrayList<ArtearItem>() // TODO IMPLEMENTAR
+    override suspend fun transform(input: Stevedore): List<ArtearItem> = DataShapeHelper.containerItemShaper(input)
 }
