@@ -1,7 +1,7 @@
-# app_base_library_android
-app_base_library_android Lib 
+# app_lib_coverviews_android
+app_lib_coverviews_android Lib
 
-Library for clone and have ready a library framework for start to work
+Cover Library Does Manage Recycler Awesomely
 
 License
 =======
