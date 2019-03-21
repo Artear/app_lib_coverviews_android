@@ -1,5 +1,7 @@
 package com.artear.coverviewsexample
 
+import com.artear.articleitem.BlockContentArticle
+import com.artear.coveritem.model.BlockType
 import com.artear.coverviews.GetCover
 import com.artear.coverviews.Manager
 import com.artear.coverviews.repository.impl.block.BlockDeserializer
@@ -15,19 +17,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Main {
 
 
-    fun getApiCover(manager : Manager) : ApiCover {
+    fun getApiCover(manager: Manager): ApiCover {
         val gson = GsonBuilder()
-                .registerTypeAdapter(Block::class.javaObjectType, BlockDeserializer(manager))
+                .registerTypeAdapter(Block::class.java, BlockDeserializer(manager))
                 .create()
-       return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create(gson))
+        return Retrofit.Builder()
+                .addConverterFactory(GsonConverterFactory.create(gson))
                 .build().create(ApiCover::class.java)
     }
 
-    fun onCreate(){
+    fun onCreate() {
 
 
         val manager = Manager()
-//        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticleDeserializer())
+        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticle::class.java)
 //        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticleDeserializer())
 //        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticleDeserializer())
 
@@ -43,8 +46,6 @@ class Main {
         GetCover(coverRepository)
 
     }
-
-
 
 
 }
