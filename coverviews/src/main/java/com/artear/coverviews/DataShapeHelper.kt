@@ -1,7 +1,9 @@
 package com.artear.coverviews
 
+import com.artear.coverviews.presentation.model.EmptyItem
 import com.artear.coverviews.repository.model.ArtearItem
 import com.artear.coverviews.repository.model.ArtearObject
+import com.artear.coverviews.repository.model.block.Block
 import com.artear.coverviews.repository.model.block.BlockStyle
 import com.artear.coverviews.repository.model.container.ContainerHeader
 import com.artear.coverviews.repository.model.container.ContainerStyle
@@ -9,6 +11,7 @@ import com.artear.coverviews.repository.model.container.Stevedore
 
 object DataShapeHelper {
 
+    const val headerIndex = 0
 
     fun getHeader(header: ContainerHeader?, style: ContainerStyle?): ArtearItem? {
 
@@ -24,9 +27,8 @@ object DataShapeHelper {
             result = ArtearItem(
                     ArtearObject(), // TODO: TitleSectionData(it),
                     blockStyle,
-                    getArtearSection(style)
+                    getArtearSection(headerIndex, style)
             )
-
         }
         return result
     }
@@ -34,59 +36,89 @@ object DataShapeHelper {
 
     fun containerItemShaper(stevedore: Stevedore): MutableList<ArtearItem> {
         val list: MutableList<ArtearItem> = ArrayList()
-        stevedore.containers.map { container ->
+        var isDoubleLeft = true
 
-            var itemsCount = container.items.size
+        stevedore.containers.mapIndexed { index, container ->
 
             getHeader(container.header, container.style)?.let {
                 list.add(it)
             }
-            var itemPosition = 0
-            val sectionStyle = getArtearSection(container.style)
-//            while (itemPosition < container.items.size) {
-//
-//                var artearItem: ArtearItem?
-//                val item = container.items[itemPosition]
-//
-//
-//                if (item.style.weight != 1f) {
-//                    if ((itemPosition + 1) < container.items.size) {
-//                        val item2 = container.items[itemPosition + 1]
-//                        if (item2.style.weight != 1f) {
-//                            artearItem =
-//                                    makeArtearDoubleItem(item, item2, sectionStyle)
-//                            itemPosition++
-//                        } else {
-//                            artearItem =
-//                                    makeArtearDoubleItem(item, null, sectionStyle)
-//                        }
-//                    } else {
-//                        artearItem =
-//                                makeArtearDoubleItem(item, null, sectionStyle)
-//                    }
-//                } else {
-//                    artearItem = makeArtearItem(
-//                            item,
-//                            sectionStyle
-//                    )
-//                }
-//                artearItem?.let {
-//                    list.add(it)
-//                }
-//                itemPosition++
-//            }
 
+            var itemPosition = 0
+            val sectionStyle = getArtearSection(index + 1, container.style)
+            var nullFiller: ArtearItem? = null
+            while (itemPosition < container.items.size) {
+
+                var artearItem: ArtearItem?
+                val item = container.items[itemPosition]
+
+                artearItem = makeArtearItem(
+                        item,
+                        sectionStyle
+                )
+
+
+                if (item.style.weight == 0.5f) {
+                    item.style.position = when {
+                        isDoubleLeft -> 1
+                        else -> 2
+                    }
+
+                    if (isDoubleLeft) {
+                        if ((itemPosition + 1) >= container.items.size) {
+                            nullFiller = makeArtearItem(null, sectionStyle)
+                        } else {
+                            if (container.items[itemPosition + 1].style.weight == 1f) {
+                                nullFiller = makeArtearItem(null, sectionStyle)
+                                isDoubleLeft = true
+                            }
+                        }
+                    }
+                    isDoubleLeft = !isDoubleLeft
+                }
+
+                artearItem?.let {
+                    list.add(it)
+                }
+                nullFiller?.let {
+                    list.add(it)
+                }
+                nullFiller = null
+                itemPosition++
+            }
         }
         return list
     }
 
+    private fun makeArtearItem(item: Block?, sectionStyle: ArtearSection): ArtearItem? {
+        var result: ArtearItem? = null
+        if (item == null) {
+            result = makeEmptyItem(sectionStyle)
+        } else {
+            // TODO: result = MAGICItemCreator() ("ContentDataManager ? MANAGE THINGS")
+        }
+        return result
+
+
+    }
+
+    private fun makeEmptyItem(sectionStyle: ArtearSection): ArtearItem? {
+        return ArtearItem(
+                EmptyItem(),
+                BlockStyle(weight = 0.5f),
+                sectionStyle
+        )
+    }
+
     private fun getArtearSection(
+            index: Int,
             style: ContainerStyle?
     ) = when {
         style != null -> ArtearSection(
                 style.backgroundColor,
                 style.textColor,
-                style.margin
+                style.margin,
+                index
         )
         else -> ArtearSection()
     }
