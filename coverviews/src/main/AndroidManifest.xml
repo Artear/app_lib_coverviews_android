@@ -1,2 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.artear.coverviews" />
+<manifest package="com.artear.cover.coverviews" />

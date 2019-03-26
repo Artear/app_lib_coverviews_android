@@ -1,18 +1,16 @@
 package com.artear.coverviewsexample
 
-import com.artear.articleitem.BlockContentArticle
-import com.artear.coveritem.model.BlockType
-import com.artear.coverviews.GetCover
-import com.artear.coverviews.Manager
-import com.artear.coverviews.repository.impl.block.BlockDeserializer
-import com.artear.coverviews.repository.model.block.Block
-import com.artear.coverviews.retrofit.ApiCover
-import com.artear.coverviews.retrofit.CoverRepositoryImpl
+import com.artear.cover.articleitem.ArticleBlockType
+import com.artear.cover.coverviews.GetCover
+import com.artear.cover.coverviews.Manager
+import com.artear.cover.coverviews.repository.impl.block.BlockDeserializer
+import com.artear.cover.coverviews.repository.model.block.Block
+import com.artear.cover.coverviews.retrofit.ApiCover
+import com.artear.cover.coverviews.retrofit.CoverRepositoryImpl
 import com.artear.networking.contract.Networking
 import com.google.gson.GsonBuilder
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 class Main {
 
@@ -30,9 +28,8 @@ class Main {
 
 
         val manager = Manager()
-        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticle::class.java)
-//        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticleDeserializer())
-//        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticleDeserializer())
+
+        manager.registerTypeDeserializer(ArticleBlockType())
 
         val coverApi = getApiCover(manager)
 
