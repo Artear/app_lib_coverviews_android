@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews.retrofit
+package com.artear.cover.coverviews.repository.retrofit
 
 import com.artear.networking.contract.Networking
 import com.artear.networking.model.retrofit.executeWith

@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews.retrofit
+package com.artear.cover.coverviews.repository.retrofit
 
 
 import com.artear.cover.coverviews.repository.model.container.Stevedore
