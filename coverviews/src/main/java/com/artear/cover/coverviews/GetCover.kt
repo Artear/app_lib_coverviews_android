@@ -1,7 +1,7 @@
 package com.artear.cover.coverviews
 
+import com.artear.cover.coverviews.repository.contract.CoverRepository
 import com.artear.cover.coverviews.repository.model.ArtearItem
-import com.artear.cover.coverviews.repository.retrofit.CoverRepository
 import com.artear.domain.coroutine.UseCase
 
 // TODO: REGISTRAR TIPOS DE DATA ( CONTENT / DFP / CATEGORY ) ....
