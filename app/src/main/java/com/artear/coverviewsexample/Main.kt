@@ -31,8 +31,7 @@ class Main {
 
         val manager = Manager()
         manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticle::class.java)
-//        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticleDeserializer())
-//        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticleDeserializer())
+
 
         val coverApi = getApiCover(manager)
 

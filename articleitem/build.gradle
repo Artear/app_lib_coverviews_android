@@ -26,7 +26,7 @@ ext {
     libraryName = 'articleitem'
     artifact = 'articleitem'
 
-    libraryDescription = 'articleitem sample library'
+    libraryDescription = 'articleitem library'
 
     siteUrl = 'https://github.com/Artear/app_lib_articleitem_android'
     gitUrl = 'https://github.com/Artear/app_lib_articleitem_android.git'
