@@ -1,8 +1,8 @@
-package com.artear.cover.coverviews
+package com.artear.cover.coverviews.presentation
 
-import com.artear.cover.coverviews.model.EmptyItem
-import com.artear.cover.coverviews.repository.model.ArtearItem
-import com.artear.cover.coverviews.repository.model.ArtearObject
+import com.artear.cover.coverviews.presentation.model.ArtearItem
+import com.artear.cover.coverviews.presentation.model.ArtearObject
+import com.artear.cover.coverviews.presentation.model.ArtearSection
 import com.artear.cover.coverviews.repository.model.block.Block
 import com.artear.cover.coverviews.repository.model.block.BlockStyle
 import com.artear.cover.coverviews.repository.model.container.ContainerHeader
@@ -39,6 +39,7 @@ object DataShapeHelper {
         var isDoubleLeft = true
 
         stevedore.containers.mapIndexed { index, container ->
+
 
             getHeader(container.header, container.style)?.let {
                 list.add(it)

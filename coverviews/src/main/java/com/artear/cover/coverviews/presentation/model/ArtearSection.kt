@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews
+package com.artear.cover.coverviews.presentation.model
 
 class ArtearSection(
         val backgroundColor: String? = "#FFFFFFFF",
