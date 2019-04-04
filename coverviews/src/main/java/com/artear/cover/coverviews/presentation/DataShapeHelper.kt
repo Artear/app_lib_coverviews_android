@@ -1,8 +1,8 @@
 package com.artear.cover.coverviews.presentation
 
-import com.artear.cover.coverviews.presentation.model.ArtearItem
-import com.artear.cover.coverviews.presentation.model.ArtearObject
-import com.artear.cover.coverviews.presentation.model.ArtearSection
+import com.artear.cover.coveritem.presentation.model.ArtearItem
+import com.artear.cover.coveritem.presentation.model.ArtearObject
+import com.artear.cover.coveritem.presentation.model.ArtearSection
 import com.artear.cover.coverviews.repository.model.block.Block
 import com.artear.cover.coverviews.repository.model.block.BlockStyle
 import com.artear.cover.coverviews.repository.model.container.ContainerHeader

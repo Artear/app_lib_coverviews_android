@@ -1,6 +1,6 @@
-package com.artear.cover.coveritem.deserializer.media
+package com.artear.cover.coveritem.repository.deserializer.media
 
-import com.artear.cover.coveritem.model.media.MediaStyle
+import com.artear.cover.coveritem.repository.model.media.MediaStyle
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement

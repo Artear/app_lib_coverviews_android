@@ -1,4 +1,4 @@
-package com.artear.cover.coveritem
+package com.artear.cover.coveritem.repository
 
 import com.artear.tools.exception.checkSize
 import com.google.gson.JsonArray

@@ -1,9 +1,9 @@
-package com.artear.cover.coveritem.deserializer.media
+package com.artear.cover.coveritem.repository.deserializer.media
 
-import com.artear.cover.coveritem.DeserializerUtil.Companion.getDataFromJson
-import com.artear.cover.coveritem.DeserializerUtil.Companion.getStyleFromJson
-import com.artear.cover.coveritem.DeserializerUtil.Companion.getTypeFromJson
-import com.artear.cover.coveritem.model.media.*
+import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getDataFromJson
+import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getStyleFromJson
+import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getTypeFromJson
+import com.artear.cover.coveritem.repository.model.media.*
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement

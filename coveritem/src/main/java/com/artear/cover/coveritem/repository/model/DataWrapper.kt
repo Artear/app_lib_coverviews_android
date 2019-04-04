@@ -1,4 +1,4 @@
-package com.artear.cover.coveritem.model
+package com.artear.cover.coveritem.repository.model
 
 abstract class DataWrapper<Type : Enum<Type>, Data, Style>(
         open val type: Type,

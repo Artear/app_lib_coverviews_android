@@ -1,8 +1,8 @@
-package com.artear.cover.coveritem.model.link
+package com.artear.cover.coveritem.repository.model.link
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.artear.cover.coveritem.deserializer.link.LinkDeserializer
+import com.artear.cover.coveritem.repository.deserializer.link.LinkDeserializer
 
 import com.google.gson.annotations.JsonAdapter
 

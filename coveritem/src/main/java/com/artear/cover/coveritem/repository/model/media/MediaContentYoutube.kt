@@ -1,6 +1,6 @@
-package com.artear.cover.coveritem.model.media
+package com.artear.cover.coveritem.repository.model.media
 
-import com.artear.cover.coveritem.deserializer.media.MCYoutubeDeserializer
+import com.artear.cover.coveritem.repository.deserializer.media.MCYoutubeDeserializer
 import com.google.gson.annotations.JsonAdapter
 
 @JsonAdapter(MCYoutubeDeserializer::class)

@@ -1,4 +1,4 @@
-package com.artear.cover.coveritem.model.media
+package com.artear.cover.coveritem.repository.model.media
 
 import com.google.gson.annotations.SerializedName
 

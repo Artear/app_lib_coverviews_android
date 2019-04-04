@@ -2,11 +2,11 @@ package com.artear.cover.coverviews.presentation.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.artear.cover.coverviews.presentation.model.ArtearItem
+import com.artear.cover.coveritem.presentation.model.ArtearItem
 
 abstract class ContentAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    val itemAdapterManager: ItemAdapterManager = ItemAdapterManager()
+    protected val itemAdapterManager: ItemAdapterManager = ItemAdapterManager()
     val list: MutableList<ArtearItem> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

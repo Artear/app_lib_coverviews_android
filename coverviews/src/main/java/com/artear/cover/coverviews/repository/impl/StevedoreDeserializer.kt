@@ -1,6 +1,6 @@
 package com.artear.cover.coverviews.repository.impl
 
-import com.artear.cover.coveritem.getModelList
+import com.artear.cover.coveritem.repository.getModelList
 import com.artear.cover.coverviews.repository.model.container.Container
 import com.artear.cover.coverviews.repository.model.container.Stevedore
 import com.google.gson.JsonDeserializationContext

@@ -1,10 +1,10 @@
 package com.artear.cover.coverviews.repository.impl.block
 
 import com.artear.cover.articleitem.BlockContentArticle
-import com.artear.cover.coveritem.DeserializerUtil.Companion.getDataFromJson
-import com.artear.cover.coveritem.DeserializerUtil.Companion.getStyleFromJson
-import com.artear.cover.coveritem.DeserializerUtil.Companion.getTypeFromJson
-import com.artear.cover.coveritem.model.BlockContent
+import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getDataFromJson
+import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getStyleFromJson
+import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getTypeFromJson
+import com.artear.cover.coveritem.repository.model.BlockContent
 import com.artear.cover.coverviews.repository.model.block.Block
 import com.artear.cover.coverviews.repository.model.block.BlockStyle
 import com.artear.cover.coverviews.repository.model.block.BlockType

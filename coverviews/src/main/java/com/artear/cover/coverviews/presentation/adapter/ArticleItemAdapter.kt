@@ -3,26 +3,27 @@ package com.artear.cover.coverviews.presentation.adapter
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.artear.cover.articleitem.ContentData
+import com.artear.cover.articleitem.ContentViewHolder
+import com.artear.cover.articleitem.R
 import com.artear.cover.coveritem.presentation.model.ArtearItem
-import com.artear.cover.coveritem.presentation.model.ArtearObject
 import com.artear.cover.coveritem.presentation.model.ArtearSection
-import com.artear.cover.coverviews.R
 import com.artear.cover.coverviews.repository.model.block.BlockStyle
 
 
-class DefaultItemAdapter : ItemAdapter<ArtearObject<*>> {
+class ArticleItemAdapter(val listener: ArtearOnClickListener?) : ItemAdapter<ContentData> {
 
     override fun isForViewType(item: ArtearItem): Boolean {
-        return false
+        return item.model is ContentData
     }
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val view = inflater.inflate(R.layout.empty_item_layout, parent, false)
-        return DefaultViewHolder(view)
+        val view = inflater.inflate(R.layout.article_view_holder, parent, false)
+        return ContentViewHolder(view, listener)
     }
 
-    override fun onBindViewHolderBase(holder: ArtearViewHolder<ArtearObject<*>>, model: ArtearObject<*>,
+    override fun onBindViewHolderBase(holder: ArtearViewHolder<ContentData>, model: ContentData,
                                       blockStyle: BlockStyle, artearSection: ArtearSection) {
         holder.bind(model, blockStyle, artearSection)
     }

@@ -1,6 +1,6 @@
 package com.artear.cover.coverviews.presentation.adapter
 
-import com.artear.cover.coveritem.model.link.Link
+import com.artear.cover.coveritem.repository.model.link.Link
 
 
 interface ArtearOnClickListener {

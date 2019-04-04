@@ -1,6 +1,6 @@
-package com.artear.cover.coveritem.deserializer.link
+package com.artear.cover.coveritem.repository.deserializer.link
 
-import com.artear.cover.coveritem.model.link.Link
+import com.artear.cover.coveritem.repository.model.link.Link
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement

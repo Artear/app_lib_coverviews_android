@@ -1,8 +1,8 @@
-package com.artear.cover.coveritem.deserializer.media
+package com.artear.cover.coveritem.repository.deserializer.media
 
-import com.artear.cover.coveritem.getModelObject
-import com.artear.cover.coveritem.model.media.MediaContentPicture
-import com.artear.cover.coveritem.model.media.MediaContentYoutube
+import com.artear.cover.coveritem.repository.getModelObject
+import com.artear.cover.coveritem.repository.model.media.MediaContentPicture
+import com.artear.cover.coveritem.repository.model.media.MediaContentYoutube
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement

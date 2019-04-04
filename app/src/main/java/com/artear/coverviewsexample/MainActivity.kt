@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.artear.cover.coverviews.GetCover
 import com.artear.cover.coverviews.Manager
-import com.artear.cover.coverviews.presentation.model.ArticleData
+import com.artear.cover.coveritem.presentation.model.ArticleData
 import com.artear.cover.coverviews.repository.retrofit.CoverRepositoryImpl
 import com.artear.networking.contract.Networking
 import com.artear.networking.url.BaseUrl

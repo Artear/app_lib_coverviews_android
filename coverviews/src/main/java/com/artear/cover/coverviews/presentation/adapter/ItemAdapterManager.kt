@@ -2,7 +2,7 @@ package com.artear.cover.coverviews.presentation.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.artear.cover.coverviews.presentation.model.ArtearItem
+import com.artear.cover.coveritem.presentation.model.ArtearItem
 
 
 class ItemAdapterManager {
