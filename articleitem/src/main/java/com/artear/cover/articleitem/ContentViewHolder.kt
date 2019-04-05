@@ -16,10 +16,8 @@ class ContentViewHolder(itemView: View, override var listener: ArtearOnClickList
         model.style
 
         itemView.apply {
-           contentTitle.text = ""
+           contentTitle.text = model.title
         }
-
-        itemView.contentTitle
 
         itemView.setOnClickListener {
             listener?.run {

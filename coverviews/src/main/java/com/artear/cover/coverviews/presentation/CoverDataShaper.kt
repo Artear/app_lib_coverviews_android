@@ -2,6 +2,7 @@ package com.artear.cover.coverviews.presentation
 
 import com.artear.cover.coveritem.presentation.model.ArtearItem
 import com.artear.cover.coveritem.presentation.model.ArtearObject
+import com.artear.cover.coverviews.repository.model.block.BlockType
 import com.artear.cover.coverviews.repository.model.container.Stevedore
 import com.artear.domain.coroutine.DataShaper
 
@@ -11,7 +12,16 @@ class CoverDataShaper(listDataAccepted: List<ArtearObject<*>>) : DataShaper<Stev
 
         val list: MutableList<ArtearItem> = ArrayList()
 
-        input.containers.mapIndexed { index, container ->
+        input.containers.forEachIndexed { index, container ->
+
+            container.items.forEach {
+
+                if(it.type == BlockType.ARTICLE){
+
+                }
+
+            }
+
 
 
 

@@ -1,13 +1,12 @@
 package com.artear.cover.coverviews.presentation.adapter
 
-import com.artear.cover.coveritem.presentation.adapter.ArtearOnClickListener
 import com.artear.cover.coveritem.presentation.adapter.ContentAdapter
 import com.artear.cover.coveritem.presentation.adapter.DefaultItemAdapter
 import com.artear.cover.coveritem.presentation.adapter.ItemAdapter
 import com.artear.cover.coveritem.presentation.model.ArtearItem
 
 
-class CoverAdapter(adapters: List<ItemAdapter<*>>, onItemClickHandler: ArtearOnClickListener?)
+class CoverAdapter(adapters: List<ItemAdapter<*>>)
     : ContentAdapter()  {
 
     init {
