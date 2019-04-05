@@ -7,12 +7,15 @@ import com.artear.cover.coveritem.presentation.adapter.ItemAdapter
 import com.artear.cover.coveritem.presentation.model.ArtearItem
 
 
-class CoverAdapter(adapters: List<ItemAdapter<*>>, onItemClickHandler: ArtearOnClickListener?) : ContentAdapter() {
+class CoverAdapter(adapters: List<ItemAdapter<*>>, onItemClickHandler: ArtearOnClickListener?)
+    : ContentAdapter()  {
 
     init {
         //Agrego solo los que se dibujar
+
         itemAdapterManager.setDefaultAdapter(DefaultItemAdapter())
         adapters.forEach { itemAdapterManager.addAdapter(it) }
+
 //        itemAdapterManager.addAdapter(TitleSectionItemAdapter())
 //        itemAdapterManager.addAdapter(ContentItemAdapter(onItemClickHandler))
 //        itemAdapterManager.addAdapter(MediaItemAdapter())

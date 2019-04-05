@@ -1,7 +1,6 @@
 package com.artear.cover.coverviews.presentation
 
 import com.artear.cover.coveritem.presentation.model.ArtearItem
-import com.artear.cover.coveritem.presentation.model.ArtearObject
 import com.artear.cover.coveritem.presentation.model.ArtearSection
 import com.artear.cover.coverviews.repository.model.block.Block
 import com.artear.cover.coverviews.repository.model.block.BlockStyle
@@ -24,11 +23,11 @@ object DataShapeHelper {
                         titleTextColor = header.style.textColor
                 )
             }
-            result = ArtearItem(
-                    ArtearObject(), // TODO: TitleSectionData(it),
-                    blockStyle,
-                    getArtearSection(headerIndex, style)
-            )
+//            result = ArtearItem(
+//                    ArtearObject(), // TODO: TitleSectionData(it),
+//                    blockStyle,
+//                    getArtearSection(headerIndex, style)
+//            )
         }
         return result
     }
@@ -39,7 +38,6 @@ object DataShapeHelper {
         var isDoubleLeft = true
 
         stevedore.containers.mapIndexed { index, container ->
-
 
             getHeader(container.header, container.style)?.let {
                 list.add(it)
@@ -104,11 +102,12 @@ object DataShapeHelper {
     }
 
     private fun makeEmptyItem(sectionStyle: ArtearSection): ArtearItem? {
-        return ArtearItem(
-                EmptyItem(),
-                BlockStyle(weight = 0.5f),
-                sectionStyle
-        )
+//        return ArtearItem(
+//                EmptyItem(),
+//                BlockStyle(weight = 0.5f),
+//                sectionStyle
+//        )
+        return null
     }
 
     private fun getArtearSection(

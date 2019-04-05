@@ -1,14 +1,21 @@
 package com.artear.coverviewsexample
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.artear.cover.coveritem.presentation.adapter.ArtearOnClickListener
+import com.artear.cover.coveritem.presentation.adapter.ItemAdapter
+import com.artear.cover.coveritem.presentation.model.ArtearObject
+import com.artear.cover.coveritem.repository.model.link.Link
 import com.artear.cover.coverviews.GetCover
 import com.artear.cover.coverviews.Manager
-import com.artear.cover.coveritem.presentation.model.ArticleData
+import com.artear.cover.coverviews.presentation.adapter.CoverAdapter
 import com.artear.cover.coverviews.repository.retrofit.CoverRepositoryImpl
+import com.artear.domain.coroutine.SimpleReceiver
 import com.artear.networking.contract.Networking
 import com.artear.networking.url.BaseUrl
 import com.artear.networking.url.BaseUrlBuilder
+import kotlinx.android.synthetic.main.main_activity.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -33,12 +40,32 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val list = listOf(ArticleData())
+        val list = listOf<ArtearObject<*>>()
+
+        val adapters = listOf<ItemAdapter<*>>()
+
+        val onItemClickHandler = object : ArtearOnClickListener {
+            override fun onArticleClick(link: Link) {
+            }
+
+            override fun onCategoryClick(link: Link) {
+            }
+
+            override fun onTagClick(link: Link) {
+            }
+        }
 
 
+        recyclerTest.adapter = CoverAdapter(adapters, onItemClickHandler)
 
-        GetCover(list, coverRepository)
+        val getCover = GetCover(list, coverRepository)
 
+        getCover(SimpleReceiver({
+            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+            (recyclerTest.adapter as CoverAdapter).setData(it)
+        }, {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+        }))
     }
 
     private fun getBaseUrl(): BaseUrl {

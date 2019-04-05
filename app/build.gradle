@@ -69,9 +69,10 @@ dependencies {
     implementation ("com.artear.networking:networking:0.0.3"){
         exclude group: 'com.artear.tools'
     }
-//    implementation "com.artear.domain:domain:0.0.5"
+    implementation "com.artear.domain:domain:0.0.5"
 
     //Support
     implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 }
