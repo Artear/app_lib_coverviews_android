@@ -9,9 +9,9 @@ import kotlinx.android.synthetic.main.article_view_holder.view.*
 
 
 class ContentViewHolder(itemView: View, override var listener: ArtearOnClickListener? = null) :
-        RecyclerView.ViewHolder(itemView), ArtearViewHolder<ContentData<*>> {
+        RecyclerView.ViewHolder(itemView), ArtearViewHolder<ArticleData<*>> {
 
-    override fun bind(model: ContentData<*>, artearSection: ArtearSection) {
+    override fun bind(model: ArticleData<*>, artearSection: ArtearSection) {
 
         model.style
 

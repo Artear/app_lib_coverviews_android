@@ -10,10 +10,10 @@ import com.artear.cover.coveritem.presentation.model.ArtearItem
 import com.artear.cover.coveritem.presentation.model.ArtearSection
 
 
-class ArticleItemAdapter(private val listener: ArtearOnClickListener?) : ItemAdapter<ContentData<*>> {
+class ArticleItemAdapter(private val listener: ArtearOnClickListener?) : ItemAdapter<ArticleData<*>> {
 
     override fun isForViewType(item: ArtearItem): Boolean {
-        return item.model is ContentData
+        return item.model is ArticleData
     }
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
@@ -22,8 +22,8 @@ class ArticleItemAdapter(private val listener: ArtearOnClickListener?) : ItemAda
         return ContentViewHolder(view, listener)
     }
 
-    override fun onBindViewHolderBase(holder: ArtearViewHolder<ContentData<*>>,
-                                      model: ContentData<*>, artearSection: ArtearSection) {
+    override fun onBindViewHolderBase(holder: ArtearViewHolder<ArticleData<*>>,
+                                      model: ArticleData<*>, artearSection: ArtearSection) {
         holder.bind(model, artearSection)
     }
 }
