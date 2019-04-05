@@ -3,22 +3,21 @@ package com.artear.coverviewsexample
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.artear.cover.articleitem.ArticleItemAdapter
 import com.artear.cover.coveritem.presentation.adapter.ArtearOnClickListener
-import com.artear.cover.coveritem.presentation.adapter.ItemAdapter
 import com.artear.cover.coveritem.presentation.model.ArtearObject
 import com.artear.cover.coveritem.repository.model.link.Link
 import com.artear.cover.coverviews.GetCover
 import com.artear.cover.coverviews.Manager
+import com.artear.cover.coverviews.presentation.CoverRegister
 import com.artear.cover.coverviews.presentation.adapter.CoverAdapter
 import com.artear.cover.coverviews.repository.retrofit.CoverRepositoryImpl
+import com.artear.cover.coverviews.repository.retrofit.RetrofitProvider
 import com.artear.domain.coroutine.SimpleReceiver
 import com.artear.networking.contract.Networking
 import com.artear.networking.url.BaseUrl
 import com.artear.networking.url.BaseUrlBuilder
 import kotlinx.android.synthetic.main.main_activity.*
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class MainActivity : AppCompatActivity() {
 
@@ -52,15 +51,15 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
+        val coverRegister = CoverRegister.Builder().coverRegister
 
-        val adapters = listOf<ItemAdapter<*>>(ArticleItemAdapter(onItemClickHandler))
 
-
-        recyclerTest.adapter = CoverAdapter(adapters)
+        recyclerTest.adapter = CoverAdapter(coverRegister.adapters)
 
         val list = listOf<ArtearObject<*>>()
 
-        val getCover = GetCover(list, coverRepository)
+
+        val getCover = GetCover(coverRegister, coverRepository)
 
         getCover(SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
@@ -79,10 +78,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getRetrofit(baseUrl: BaseUrl): Retrofit {
-        return Retrofit.Builder()
-                .baseUrl(baseUrl.toString())
-                .addConverterFactory(GsonConverterFactory.create())
-                .build()
+        return RetrofitProvider(baseUrl).invoke()
     }
 
 }

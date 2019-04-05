@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews.repository.model.block
+package com.artear.cover.coveritem.repository.model.block
 
 import com.google.gson.annotations.SerializedName
 

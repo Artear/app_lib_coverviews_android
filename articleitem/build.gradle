@@ -91,6 +91,8 @@ dependencies {
     implementation "com.google.code.gson:gson:2.8.5"
 
     implementation "com.artear.tools:tools:0.0.18"
+    implementation "com.artear.domain:domain:0.0.5"
+
 
     //Support
     implementation 'androidx.appcompat:appcompat:1.0.2'

@@ -5,9 +5,9 @@ import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getDataF
 import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getStyleFromJson
 import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getTypeFromJson
 import com.artear.cover.coveritem.repository.model.BlockContent
-import com.artear.cover.coverviews.repository.model.block.Block
-import com.artear.cover.coverviews.repository.model.block.BlockStyle
-import com.artear.cover.coverviews.repository.model.block.BlockType
+import com.artear.cover.coveritem.repository.model.block.Block
+import com.artear.cover.coveritem.repository.model.block.BlockStyle
+import com.artear.cover.coveritem.repository.model.block.BlockType
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
