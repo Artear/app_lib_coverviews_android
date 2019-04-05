@@ -3,8 +3,10 @@ package com.artear.coverviewsexample
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.artear.cover.articleitem.ArticleItemAdapter
+import com.artear.cover.articleitem.ArticleShaper
 import com.artear.cover.coveritem.presentation.adapter.ArtearOnClickListener
-import com.artear.cover.coveritem.presentation.model.ArtearObject
+import com.artear.cover.coveritem.repository.model.block.BlockType
 import com.artear.cover.coveritem.repository.model.link.Link
 import com.artear.cover.coverviews.GetCover
 import com.artear.cover.coverviews.Manager
@@ -51,13 +53,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val coverRegister = CoverRegister.Builder().coverRegister
-
+        val coverRegister = CoverRegister.Builder()
+                .add(BlockType.ARTICLE, ArticleShaper(), ArticleItemAdapter(onItemClickHandler))
+                .build()
 
         recyclerTest.adapter = CoverAdapter(coverRegister.adapters)
-
-        val list = listOf<ArtearObject<*>>()
-
 
         val getCover = GetCover(coverRegister, coverRepository)
 

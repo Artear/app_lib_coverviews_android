@@ -9,22 +9,23 @@ import com.artear.domain.coroutine.DataShaper
 
 class CoverRegister private constructor() {
 
-    val adapters = listOf<ItemAdapter<*>>()
-    val shaperMap = mapOf<BlockType, DataShaper<Block, ArtearItem>>()
+    val adapters = mutableListOf<ItemAdapter<*>>()
+    val shaperMap = mutableMapOf<BlockType, DataShaper<Block, ArtearItem>>()
 
     class Builder {
 
-        val list = mutableListOf<Triple<BlockType, DataShaper<Block, ArtearItem>, ItemAdapter<*>>>()
-        val coverRegister = CoverRegister()
+        private val coverRegister = CoverRegister()
 
-        fun add(blockType: BlockType, shaper: DataShaper<Block, ArtearItem>, adapter: ItemAdapter<*>) {
-            list.add(Triple(blockType, shaper, adapter))
+        fun add(blockType: BlockType, shaper: DataShaper<Block, ArtearItem>, adapter: ItemAdapter<*>) = apply {
+            coverRegister.shaperMap[blockType] = shaper
+            coverRegister.adapters.add(adapter)
         }
 
-        fun build() {
-            if (list.isEmpty())
+        fun build(): CoverRegister {
+            if (coverRegister.shaperMap.isEmpty() || coverRegister.adapters.isEmpty())
                 throw IllegalStateException("The register must have almost one element")
 
+            return coverRegister
         }
 
     }
