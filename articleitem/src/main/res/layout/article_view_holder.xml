@@ -17,7 +17,7 @@
         android:adjustViewBounds="true"
         android:scaleType="centerCrop" />
 
-    <androidx.appcompat.widget.AppCompatTextViewiew
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/contentTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,19 +26,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contentImage"
 
-        tools:background="@color/content_title_red_bg"
         tools:layout_height="105dp"
         tools:paddingLeft="14dp"
         tools:paddingRight="14dp"
-
         tools:paddingTop="21dp"
-        tools:text="@sample/titles"
-
-        tools:textColor="@color/white"
-
         />
 
-    <androidx.appcompat.widget.AppCompatTextViewiew
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/itemDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,14 +41,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/contentTitle"
 
-        tools:background="@color/content_title_red_bg"
         tools:layout_height="105dp"
         tools:paddingLeft="14dp"
         tools:paddingRight="14dp"
 
         tools:paddingTop="21dp"
-        tools:text="@sample/titles"
-        tools:textColor="@color/white"
 
         />
 

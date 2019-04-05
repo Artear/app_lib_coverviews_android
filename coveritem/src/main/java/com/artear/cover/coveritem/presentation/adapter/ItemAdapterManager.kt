@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews.presentation.adapter
+package com.artear.cover.coveritem.presentation.adapter
 
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView

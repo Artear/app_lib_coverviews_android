@@ -90,8 +90,11 @@ dependencies {
 
     implementation "com.google.code.gson:gson:2.8.5"
 
+    implementation "com.artear.tools:tools:0.0.18"
+
     //Support
     implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.recyclerview:recyclerview:1.0.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
 }

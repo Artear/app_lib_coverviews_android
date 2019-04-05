@@ -1,13 +1,12 @@
-package com.artear.cover.coverviews.presentation.adapter
+package com.artear.cover.coveritem.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.artear.cover.coveritem.R
 import com.artear.cover.coveritem.presentation.model.ArtearItem
 import com.artear.cover.coveritem.presentation.model.ArtearObject
 import com.artear.cover.coveritem.presentation.model.ArtearSection
-import com.artear.cover.coverviews.R
-import com.artear.cover.coverviews.repository.model.block.BlockStyle
 
 
 class DefaultItemAdapter : ItemAdapter<ArtearObject<*>> {
@@ -22,8 +21,8 @@ class DefaultItemAdapter : ItemAdapter<ArtearObject<*>> {
         return DefaultViewHolder(view)
     }
 
-    override fun onBindViewHolderBase(holder: ArtearViewHolder<ArtearObject<*>>, model: ArtearObject<*>,
-                                      blockStyle: BlockStyle, artearSection: ArtearSection) {
-        holder.bind(model, blockStyle, artearSection)
+    override fun onBindViewHolderBase(holder: ArtearViewHolder<ArtearObject<*>>,
+                                      model: ArtearObject<*>, artearSection: ArtearSection) {
+        holder.bind(model, artearSection)
     }
 }

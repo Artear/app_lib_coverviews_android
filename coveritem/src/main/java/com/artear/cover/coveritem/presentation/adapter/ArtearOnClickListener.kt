@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews.presentation.adapter
+package com.artear.cover.coveritem.presentation.adapter
 
 import com.artear.cover.coveritem.repository.model.link.Link
 
