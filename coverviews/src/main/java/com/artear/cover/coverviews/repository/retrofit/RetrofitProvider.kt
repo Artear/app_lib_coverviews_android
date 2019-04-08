@@ -12,8 +12,8 @@ class RetrofitProvider(private val baseUrl: BaseUrl, private val builder: GsonBu
     operator fun invoke(): Retrofit {
         val gsonBuilder = builder ?: GsonBuilder()
         val gson = gsonBuilder
-                .registerTypeAdapter(Block::class.java, BlockDeserializer::class)
-                .create()//TODO crashhhh hereee!!
+                .registerTypeAdapter(Block::class.java, BlockDeserializer())
+                .create()
 
         return Retrofit.Builder()
                 .baseUrl(baseUrl.toString())

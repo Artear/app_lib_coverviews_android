@@ -3,6 +3,8 @@ package com.artear.coverviewsexample
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.artear.cover.articleitem.ArticleItemAdapter
 import com.artear.cover.articleitem.ArticleShaper
 import com.artear.cover.coveritem.presentation.adapter.ArtearOnClickListener
@@ -58,6 +60,7 @@ class MainActivity : AppCompatActivity() {
                 .build()
 
         recyclerTest.adapter = CoverAdapter(coverRegister.adapters)
+        recyclerTest.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
 
         val getCover = GetCover(coverRegister, coverRepository)
 
