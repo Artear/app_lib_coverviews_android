@@ -49,8 +49,6 @@ android {
 
 dependencies {
     implementation project(':coverviews')
-    implementation project(':coveritem')
-    implementation project(':articleitem')
 
     implementation fileTree(include: ['*.aar'], dir: 'libs')
 
@@ -64,11 +62,8 @@ dependencies {
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-//    //Artear
-//    implementation "com.artear.tools:tools:0.0.18"
-    implementation ("com.artear.networking:networking:0.0.3"){
-        exclude group: 'com.artear.tools'
-    }
+    //Artear
+    implementation "com.artear.networking:networking:0.0.3"
     implementation "com.artear.domain:domain:0.0.5"
 
     //Support

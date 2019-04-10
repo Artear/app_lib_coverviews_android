@@ -75,10 +75,6 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
-    //include tools
-    implementation project(':coveritem')
-    implementation project(':articleitem')
-
     //Test
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:core:1.1.0'
@@ -90,11 +86,14 @@ dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
     //Artear
-    implementation "com.artear.tools:tools:0.0.18"
     implementation "com.artear.networking:networking:0.0.3"
 
     //Warning! include tools
     implementation "com.artear.domain:domain:0.0.5"
+
+    //Cover
+    implementation "com.artear.cover:coveritem:0.0.4"
+    implementation "com.artear.cover:articleitem:0.0.2"
 
     //Support
     implementation 'androidx.appcompat:appcompat:1.0.2'
