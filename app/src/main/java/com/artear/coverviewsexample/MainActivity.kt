@@ -3,9 +3,10 @@ package com.artear.coverviewsexample
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.artear.cover.articleitem.ArticleItemAdapter
+import com.artear.cover.articleitem.ArticleOnClickListener
 import com.artear.cover.articleitem.ArticleShaper
-import com.artear.cover.coveritem.presentation.adapter.ArtearOnClickListener
 import com.artear.cover.coveritem.repository.model.block.BlockType
 import com.artear.cover.coveritem.repository.model.link.Link
 import com.artear.cover.coverviews.GetCover
@@ -42,15 +43,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        val onItemClickHandler = object : ArtearOnClickListener {
+        val onItemClickHandler = object : ArticleOnClickListener {
             override fun onArticleClick(link: Link) {
             }
 
-            override fun onCategoryClick(link: Link) {
-            }
-
-            override fun onTagClick(link: Link) {
-            }
         }
 
         val coverRegister = CoverRegister.Builder()
@@ -58,6 +54,7 @@ class MainActivity : AppCompatActivity() {
                 .build()
 
         recyclerTest.adapter = CoverAdapter(coverRegister.adapters)
+        recyclerTest.layoutManager = LinearLayoutManager(this)
 
         val getCover = GetCover(coverRegister, coverRepository)
 
