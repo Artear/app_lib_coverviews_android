@@ -20,10 +20,10 @@ plugins {
 
 ext {
     bintrayRepo = 'Android'
-    bintrayName = 'Cover Views'
+    bintrayName = 'Cover-Views'
 
     publishedGroupId = 'com.artear.cover'
-    libraryName = 'CoverViews'
+    libraryName = 'Cover-Views'
     artifact = 'coverviews'
 
     libraryDescription = 'coverviews library'
