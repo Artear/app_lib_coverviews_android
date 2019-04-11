@@ -1,50 +1,7 @@
 package com.artear.coverviewsexample
 
-import com.artear.articleitem.BlockContentArticle
-import com.artear.coveritem.model.BlockType
-import com.artear.coverviews.GetCover
-import com.artear.coverviews.Manager
-import com.artear.coverviews.repository.impl.block.BlockDeserializer
-import com.artear.coverviews.repository.model.block.Block
-import com.artear.coverviews.retrofit.ApiCover
-import com.artear.coverviews.retrofit.CoverRepositoryImpl
-import com.artear.networking.contract.Networking
-import com.google.gson.GsonBuilder
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-
-
 class Main {
 
-
-    fun getApiCover(manager: Manager): ApiCover {
-        val gson = GsonBuilder()
-                .registerTypeAdapter(Block::class.java, BlockDeserializer(manager))
-                .create()
-        return Retrofit.Builder()
-                .addConverterFactory(GsonConverterFactory.create(gson))
-                .build().create(ApiCover::class.java)
-    }
-
-    fun onCreate() {
-
-
-        val manager = Manager()
-        manager.registerTypeDeserializer(BlockType.ARTICLE, BlockContentArticle::class.java)
-
-
-        val coverApi = getApiCover(manager)
-
-        val coverRepository = CoverRepositoryImpl(coverApi, object : Networking {
-            override fun isNetworkConnected(): Boolean {
-                return true
-            }
-        })
-
-
-        GetCover(coverRepository)
-
-    }
 
 
 }
