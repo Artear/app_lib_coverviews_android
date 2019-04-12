@@ -10,9 +10,9 @@ import com.artear.cover.articleitem.ArticleShaper
 import com.artear.cover.coveritem.repository.model.block.BlockType
 import com.artear.cover.coveritem.repository.model.link.Link
 import com.artear.cover.coverviews.GetCover
-import com.artear.cover.coverviews.Manager
 import com.artear.cover.coverviews.presentation.CoverRegister
 import com.artear.cover.coverviews.presentation.adapter.CoverAdapter
+import com.artear.cover.coverviews.repository.retrofit.ApiCover
 import com.artear.cover.coverviews.repository.retrofit.CoverRepositoryImpl
 import com.artear.cover.coverviews.repository.retrofit.RetrofitProvider
 import com.artear.domain.coroutine.SimpleReceiver
@@ -20,7 +20,6 @@ import com.artear.networking.contract.Networking
 import com.artear.networking.url.BaseUrl
 import com.artear.networking.url.BaseUrlBuilder
 import kotlinx.android.synthetic.main.main_activity.*
-import retrofit2.Retrofit
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,12 +31,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
 
-        val manager = Manager()
-        manager.registerTypeDeserializer()
-
         val urlBase = getBaseUrl()
-        val retrofit = getRetrofit(urlBase)
-        val coverRepository = CoverRepositoryImpl(retrofit, "cover", object : Networking {
+        val api = getApi(urlBase)
+        val coverEndpoint = urlBase.toString() + "cover"
+
+        val coverRepository = CoverRepositoryImpl(api, coverEndpoint, object : Networking {
             override fun isNetworkConnected(): Boolean {
                 return true
             }
@@ -46,7 +44,6 @@ class MainActivity : AppCompatActivity() {
         val onItemClickHandler = object : ArticleOnClickListener {
             override fun onArticleClick(link: Link) {
             }
-
         }
 
         val coverRegister = CoverRegister.Builder()
@@ -74,8 +71,9 @@ class MainActivity : AppCompatActivity() {
                 .build()
     }
 
-    private fun getRetrofit(baseUrl: BaseUrl): Retrofit {
+    private fun getApi(baseUrl: BaseUrl): ApiCover {
         return RetrofitProvider(baseUrl).invoke()
+                .create(ApiCover::class.java)
     }
 
 }

@@ -4,9 +4,9 @@ import com.artear.cover.coveritem.presentation.model.ArtearItem
 import com.artear.cover.coveritem.presentation.model.ArtearSection
 import com.artear.cover.coveritem.repository.model.block.Block
 import com.artear.cover.coveritem.repository.model.block.BlockStyle
-import com.artear.cover.coverviews.repository.model.container.ContainerHeader
-import com.artear.cover.coverviews.repository.model.container.ContainerStyle
-import com.artear.cover.coverviews.repository.model.container.Stevedore
+import com.artear.cover.coverviews.repository.model.ContainerHeader
+import com.artear.cover.coverviews.repository.model.ContainerStyle
+import com.artear.cover.coverviews.repository.model.Stevedore
 
 object DataShapeHelper {
 

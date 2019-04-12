@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews.repository.model.container
+package com.artear.cover.coverviews.repository.model
 
 import com.artear.cover.coverviews.repository.impl.StevedoreDeserializer
 import com.google.gson.annotations.JsonAdapter

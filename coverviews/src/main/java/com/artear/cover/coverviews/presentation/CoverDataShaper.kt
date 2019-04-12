@@ -3,7 +3,7 @@ package com.artear.cover.coverviews.presentation
 import com.artear.cover.coveritem.presentation.model.ArtearItem
 import com.artear.cover.coveritem.repository.model.block.Block
 import com.artear.cover.coveritem.repository.model.block.BlockType
-import com.artear.cover.coverviews.repository.model.container.Stevedore
+import com.artear.cover.coverviews.repository.model.Stevedore
 import com.artear.domain.coroutine.DataShaper
 
 class CoverDataShaper(private val shaperMap: Map<BlockType, DataShaper<Block, ArtearItem>>)
