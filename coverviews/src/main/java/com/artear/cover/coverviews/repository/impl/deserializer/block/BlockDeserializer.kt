@@ -1,6 +1,7 @@
-package com.artear.cover.coverviews.repository.impl.block
+package com.artear.cover.coverviews.repository.impl.deserializer.block
 
 import com.artear.cover.articleitem.BlockContentArticle
+import com.artear.cover.banneritem.BlockContentDfp
 import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getDataFromJson
 import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getStyleFromJson
 import com.artear.cover.coveritem.repository.DeserializerUtil.Companion.getTypeFromJson
@@ -24,9 +25,9 @@ class BlockDeserializer : JsonDeserializer<Block> {
 
         val data = when (type) {
             BlockType.ARTICLE -> getDataFromJson<BlockContentArticle>(context, json)
+            BlockType.DFP -> getDataFromJson<BlockContentDfp>(context, json)
 //            BlockType.CATEGORY -> getDataFromJson<BlockContentCategory>(context, json)
 //            BlockType.MEDIA -> getDataFromJson<BlockContentMedia>(context, json)
-//            BlockType.DFP -> getDataFromJson<BlockContentDfp>(context, json)
             else -> BlockContent()
         }
         return Block(type, style, data)

@@ -7,21 +7,26 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.artear.cover.articleitem.ArticleItemAdapter
 import com.artear.cover.articleitem.ArticleOnClickListener
 import com.artear.cover.articleitem.ArticleShaper
+import com.artear.cover.banneritem.DfpItemAdapter
+import com.artear.cover.banneritem.DfpShaper
 import com.artear.cover.coveritem.repository.model.block.BlockType
 import com.artear.cover.coveritem.repository.model.link.Link
 import com.artear.cover.coverviews.GetCover
 import com.artear.cover.coverviews.presentation.CoverRegister
 import com.artear.cover.coverviews.presentation.adapter.CoverAdapter
-import com.artear.cover.coverviews.repository.retrofit.ApiCover
-import com.artear.cover.coverviews.repository.retrofit.CoverRepositoryImpl
-import com.artear.cover.coverviews.repository.retrofit.RetrofitProvider
+import com.artear.cover.coverviews.repository.contract.api.ApiCover
+import com.artear.cover.coverviews.repository.impl.domain.CoverRepositoryImpl
+import com.artear.cover.coverviews.repository.impl.provider.ApiCoverHelper.getDefaultGsonMaker
+import com.artear.cover.coverviews.repository.impl.provider.ApiCoverProvider
 import com.artear.domain.coroutine.SimpleReceiver
-import com.artear.networking.contract.Networking
+import com.artear.networking.model.AndroidNetworking
 import com.artear.networking.url.BaseUrl
 import com.artear.networking.url.BaseUrlBuilder
 import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val androidNetworking by lazy { AndroidNetworking(this) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,11 +40,7 @@ class MainActivity : AppCompatActivity() {
         val api = getApi(urlBase)
         val coverEndpoint = urlBase.toString() + "cover"
 
-        val coverRepository = CoverRepositoryImpl(api, coverEndpoint, object : Networking {
-            override fun isNetworkConnected(): Boolean {
-                return true
-            }
-        })
+        val coverRepository = CoverRepositoryImpl(api, coverEndpoint, androidNetworking)
 
         val onItemClickHandler = object : ArticleOnClickListener {
             override fun onArticleClick(link: Link) {
@@ -48,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
         val coverRegister = CoverRegister.Builder()
                 .add(BlockType.ARTICLE, ArticleShaper(), ArticleItemAdapter(onItemClickHandler))
+                .add(BlockType.DFP, DfpShaper(), DfpItemAdapter())
                 .build()
 
         recyclerTest.adapter = CoverAdapter(coverRegister.adapters)
@@ -72,8 +74,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getApi(baseUrl: BaseUrl): ApiCover {
-        return RetrofitProvider(baseUrl).invoke()
-                .create(ApiCover::class.java)
+        return ApiCoverProvider(baseUrl, getDefaultGsonMaker()).invoke()
+
     }
 
 }

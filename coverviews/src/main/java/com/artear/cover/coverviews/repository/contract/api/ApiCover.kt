@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews.repository.retrofit
+package com.artear.cover.coverviews.repository.contract.api
 
 import com.artear.cover.coverviews.repository.model.Stevedore
 import retrofit2.Call

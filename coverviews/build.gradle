@@ -96,8 +96,9 @@ dependencies {
     implementation "com.artear.domain:domain:0.0.5"
 
     //Cover
-    implementation "com.artear.cover:coveritem:0.0.5"
+    implementation "com.artear.cover:coveritem:0.0.6"
     implementation "com.artear.cover:articleitem:0.0.2"
+    implementation "com.artear.cover:banneritem:0.0.4"
 
     //Support
     implementation 'androidx.appcompat:appcompat:1.0.2'
