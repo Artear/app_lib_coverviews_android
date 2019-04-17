@@ -3,10 +3,10 @@ package com.artear.cover.coverviews.retrofit
 import androidx.test.core.app.ApplicationProvider
 import com.artear.cover.coverviews.TestUtils.Companion.loadJSONFromAsset
 import com.artear.cover.coverviews.TestUtils.Companion.log
-import com.artear.cover.coverviews.repository.contract.CoverRepository
+import com.artear.cover.coverviews.repository.contract.api.ApiCover
+import com.artear.cover.coverviews.repository.contract.domain.CoverRepository
+import com.artear.cover.coverviews.repository.impl.domain.CoverRepositoryImpl
 import com.artear.cover.coverviews.repository.model.Stevedore
-import com.artear.cover.coverviews.repository.retrofit.ApiCover
-import com.artear.cover.coverviews.repository.retrofit.CoverRepositoryImpl
 import com.artear.networking.model.AndroidNetworking
 import com.artear.tools.exception.BadResponseException
 import com.artear.tools.exception.NoInternetConnectionException

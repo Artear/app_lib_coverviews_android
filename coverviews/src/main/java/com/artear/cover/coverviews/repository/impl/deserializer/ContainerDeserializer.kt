@@ -1,4 +1,4 @@
-package com.artear.cover.coverviews.repository.impl
+package com.artear.cover.coverviews.repository.impl.deserializer
 
 import com.artear.cover.coveritem.repository.getModelList
 import com.artear.cover.coveritem.repository.getModelObject

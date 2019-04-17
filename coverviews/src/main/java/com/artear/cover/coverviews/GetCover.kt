@@ -3,7 +3,7 @@ package com.artear.cover.coverviews
 import com.artear.cover.coveritem.presentation.model.ArtearItem
 import com.artear.cover.coverviews.presentation.CoverDataShaper
 import com.artear.cover.coverviews.presentation.CoverRegister
-import com.artear.cover.coverviews.repository.contract.CoverRepository
+import com.artear.cover.coverviews.repository.contract.domain.CoverRepository
 import com.artear.domain.coroutine.UseCase
 
 class GetCover(coverRegister: CoverRegister,

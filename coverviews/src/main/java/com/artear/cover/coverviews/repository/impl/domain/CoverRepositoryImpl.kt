@@ -1,6 +1,7 @@
-package com.artear.cover.coverviews.repository.retrofit
+package com.artear.cover.coverviews.repository.impl.domain
 
-import com.artear.cover.coverviews.repository.contract.CoverRepository
+import com.artear.cover.coverviews.repository.contract.api.ApiCover
+import com.artear.cover.coverviews.repository.contract.domain.CoverRepository
 import com.artear.networking.contract.Networking
 import com.artear.networking.model.retrofit.executeWith
 
