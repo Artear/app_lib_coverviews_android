@@ -4,9 +4,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.8.4'
-        classpath 'com.github.dcendents:android-maven-gradle-plugin:2.1'
-        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:0.9.18"
+        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintrayVersion"
+        classpath "com.github.dcendents:android-maven-gradle-plugin:$dcendentsVersion"
+        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion"
     }
 }
 
@@ -76,15 +76,15 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Test
-    testImplementation 'junit:junit:4.12'
-    testImplementation 'androidx.test:core:1.1.0'
-    testImplementation 'org.mockito:mockito-core:2.24.5'
-    testImplementation "org.robolectric:robolectric:4.2"
+    testImplementation "junit:junit:$junitVersion"
+    testImplementation "androidx.test:core:$testCoreVersion"
+    testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
+    testImplementation "org.robolectric:robolectric:$roboelectricVersion"
 
-    androidTestImplementation 'androidx.test:core:1.1.0'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation "androidx.test.ext:junit:$testExtJUnitVersion"
+    androidTestImplementation "androidx.test:core:$testCoreVersion"
+    androidTestImplementation "androidx.test:runner:$testRunnerVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
 
     //Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
