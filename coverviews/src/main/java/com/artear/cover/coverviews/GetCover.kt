@@ -6,8 +6,8 @@ import com.artear.cover.coverviews.presentation.CoverRegister
 import com.artear.cover.coverviews.repository.contract.domain.CoverRepository
 import com.artear.domain.coroutine.UseCase
 
-class GetCover(coverRegister: CoverRegister,
-               private val coverRepository: CoverRepository) : UseCase<Void, List<ArtearItem>>() {
+class GetCover(coverRegister: CoverRegister, private val coverRepository: CoverRepository) :
+        UseCase<Void, List<ArtearItem>>() {
 
     private val shaper = CoverDataShaper(coverRegister.shaperMap)
 
