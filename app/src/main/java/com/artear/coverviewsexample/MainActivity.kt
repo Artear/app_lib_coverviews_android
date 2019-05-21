@@ -1,6 +1,7 @@
 package com.artear.coverviewsexample
 
 import android.os.Bundle
+import android.view.View.GONE
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -47,19 +48,22 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val coverRegister = CoverRegister.Builder()
-                .add(BlockType.ARTICLE, ArticleShaper(), ArticleItemAdapter(onItemClickHandler))
-                .add(BlockType.DFP, DfpShaper(), DfpItemAdapter())
-                .build()
+        val adapters = listOf(ArticleItemAdapter(onItemClickHandler), DfpItemAdapter())
 
-        recyclerTest.adapter = CoverAdapter(coverRegister.adapters)
+        recyclerTest.adapter = CoverAdapter(adapters)
         recyclerTest.layoutManager = LinearLayoutManager(this)
+
+        val coverRegister = CoverRegister.Builder()
+                .add(BlockType.ARTICLE, ArticleShaper())
+                .add(BlockType.DFP, DfpShaper())
+                .build()
 
         val getCover = GetCover(coverRegister, coverRepository)
 
         getCover(SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             (recyclerTest.adapter as CoverAdapter).setData(it)
+            messageHello.visibility = GONE
         }, {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
         }))
