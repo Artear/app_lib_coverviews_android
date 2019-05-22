@@ -44,7 +44,7 @@ buildscript {
         // Artear
         networkingVersion = '0.0.4'
         domainVersion = '0.0.6'
-        coverItemVersion = '0.0.9'
+        coverItemVersion = '0.0.10'
         articleItemVersion = '0.0.5'
         bannerItemVersion = '0.0.9'
 
