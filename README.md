@@ -3,6 +3,27 @@ app_lib_coverviews_android Lib
 
 Cover Library Does Manage Recycler Awesomely
 
+
+
+
+
+
+Download
+--------
+via Maven:
+```xml
+<dependency>
+  <groupId>com.artear.cover</groupId>
+  <artifactId>coverviews</artifactId>
+  <version>0.0.7</version>
+</dependency>
+```
+or Gradle:
+```groovy
+implementation "com.artear.cover:coverviews:0.0.7"
+```
+UI view Lib requires at minimum Java 7 or Android 4.1.
+
 License
 =======
 

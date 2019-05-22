@@ -50,7 +50,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.aar'], dir: 'libs')
     implementation project(':coverviews')
-
     implementation "androidx.multidex:multidex:$multidexVersion"
 
     //Test
