@@ -18,9 +18,10 @@ class ContainerDeserializer : JsonDeserializer<Container> {
 
         val header = json.getModelObject("header", context, ContainerHeader::class.java)
         val style = json.getModelObject("style", context, ContainerStyle::class.java)
-        val items = json.getModelList("items", context, Block::class)
+        val items = json.getModelList("items", context, Block::class, toleranceError = true)
 
         return Container(header, style, items)
+
     }
 
 
