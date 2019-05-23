@@ -15,12 +15,12 @@ via Maven:
 <dependency>
   <groupId>com.artear.cover</groupId>
   <artifactId>coverviews</artifactId>
-  <version>0.0.7</version>
+  <version>0.0.8</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-implementation "com.artear.cover:coverviews:0.0.7"
+implementation "com.artear.cover:coverviews:0.0.8"
 ```
 UI view Lib requires at minimum Java 7 or Android 4.1.
 

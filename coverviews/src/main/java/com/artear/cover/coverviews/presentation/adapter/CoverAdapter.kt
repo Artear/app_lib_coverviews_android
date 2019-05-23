@@ -1,12 +1,12 @@
 package com.artear.cover.coverviews.presentation.adapter
 
-import com.artear.cover.coveritem.presentation.adapter.ContentAdapter
 import com.artear.cover.coveritem.presentation.adapter.DefaultItemAdapter
+import com.artear.cover.coveritem.presentation.adapter.SpanContentAdapter
 import com.artear.cover.coveritem.presentation.contract.ItemAdapter
 import com.artear.cover.coveritem.presentation.model.ArtearItem
 
 
-class CoverAdapter(adapters: List<ItemAdapter<*>>) : ContentAdapter() {
+class CoverAdapter(adapters: List<ItemAdapter<*>>) : SpanContentAdapter() {
 
     init {
         itemAdapterManager.setDefaultAdapter(DefaultItemAdapter())
