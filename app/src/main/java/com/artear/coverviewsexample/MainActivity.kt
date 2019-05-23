@@ -1,29 +1,13 @@
 package com.artear.coverviewsexample
 
 import android.os.Bundle
-import android.view.View.GONE
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.artear.cover.articleitem.ArticleItemAdapter
-import com.artear.cover.articleitem.ArticleOnClickListener
-import com.artear.cover.articleitem.ArticleShaper
-import com.artear.cover.banneritem.DfpItemAdapter
-import com.artear.cover.banneritem.DfpShaper
-import com.artear.cover.coveritem.repository.model.block.BlockType
-import com.artear.cover.coveritem.repository.model.link.Link
-import com.artear.cover.coverviews.GetCover
-import com.artear.cover.coverviews.presentation.CoverRegister
-import com.artear.cover.coverviews.presentation.adapter.CoverAdapter
 import com.artear.cover.coverviews.repository.contract.api.ApiCover
-import com.artear.cover.coverviews.repository.impl.domain.CoverRepositoryImpl
 import com.artear.cover.coverviews.repository.impl.provider.ApiCoverHelper.getDefaultGsonMaker
 import com.artear.cover.coverviews.repository.impl.provider.ApiCoverProvider
-import com.artear.domain.coroutine.SimpleReceiver
 import com.artear.networking.model.AndroidNetworking
 import com.artear.networking.url.BaseUrl
 import com.artear.networking.url.BaseUrlBuilder
-import kotlinx.android.synthetic.main.main_activity.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -36,37 +20,40 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun init() {
-
-        val urlBase = getBaseUrl()
-        val api = getApi(urlBase)
-        val coverEndpoint = urlBase.toString() + "cover"
-
-        val coverRepository = CoverRepositoryImpl(api, coverEndpoint, androidNetworking)
-
-        val onItemClickHandler = object : ArticleOnClickListener {
-            override fun onArticleClick(link: Link) {
-            }
-        }
-
-        val adapters = listOf(ArticleItemAdapter(onItemClickHandler), DfpItemAdapter())
-
-        recyclerTest.adapter = CoverAdapter(adapters)
-        recyclerTest.layoutManager = LinearLayoutManager(this)
-
-        val coverRegister = CoverRegister.Builder()
-                .add(BlockType.ARTICLE, ArticleShaper())
-                .add(BlockType.DFP, DfpShaper())
-                .build()
-
-        val getCover = GetCover(coverRegister, coverRepository)
-
-        getCover(SimpleReceiver({
-            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-            (recyclerTest.adapter as CoverAdapter).setData(it)
-            messageHello.visibility = GONE
-        }, {
-            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
-        }))
+//
+//        val urlBase = getBaseUrl()
+//        val api = getApi(urlBase)
+//        val coverEndpoint = urlBase.toString() + "cover"
+//
+//        val coverRepository = CoverRepositoryImpl(api, coverEndpoint, androidNetworking)
+//
+//        val onItemClickHandler = object : ArticleOnClickListener {
+//            override fun onArticleClick(link: Link) {
+//            }
+//        }
+//
+//        val adapters = listOf(ArticleItemAdapter(onItemClickHandler)
+//
+//                //        ,DfpItemAdapter()
+//        )
+//
+//        recyclerTest.adapter = CoverAdapter(adapters)
+//        recyclerTest.layoutManager = LinearLayoutManager(this)
+//
+//        val coverRegister = CoverRegister.Builder()
+//                .add(BlockType.ARTICLE, ArticleShaper())
+////                .add(BlockType.DFP, DfpShaper())
+//                .build()
+//
+//        val getCover = GetCover(coverRegister, coverRepository)
+//
+//        getCover(SimpleReceiver({
+//            Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
+//            (recyclerTest.adapter as CoverAdapter).setData(it)
+//            messageHello.visibility = GONE
+//        }, {
+//            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+//        }))
     }
 
     private fun getBaseUrl(): BaseUrl {
