@@ -8,13 +8,13 @@ import com.artear.domain.coroutine.DataShaper
 
 class CoverRegister private constructor() {
 
-    val shaperMap = mutableMapOf<BlockType, DataShaper<Block, ArtearItem>>()
+    val shaperMap = mutableMapOf<BlockType, DataShaper<Block, ArtearItem?>>()
 
     class Builder {
 
         private val coverRegister = CoverRegister()
 
-        fun add(blockType: BlockType, shaper: DataShaper<Block, ArtearItem>) = apply {
+        fun add(blockType: BlockType, shaper: DataShaper<Block, ArtearItem?>) = apply {
             coverRegister.shaperMap[blockType] = shaper
         }
 
