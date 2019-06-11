@@ -1,28 +1,23 @@
-# app_lib_coverviews_android
-app_lib_coverviews_android Lib
+# Stevedore Views
+Stevedore Views Android Library
 
-Cover Library Does Manage Recycler Awesomely
-
-
-
-
-
+Stevedore Library Does Manage Recycler Awesomely
 
 Download
 --------
 via Maven:
 ```xml
 <dependency>
-  <groupId>com.artear.cover</groupId>
-  <artifactId>coverviews</artifactId>
-  <version>0.0.8</version>
+  <groupId>com.artear.stevedore</groupId>
+  <artifactId>stevedoreviews</artifactId>
+  <version>0.0.9</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-implementation "com.artear.cover:coverviews:0.0.8"
+implementation "com.artear.stevedore:stevedoreviews:0.0.9"
 ```
-UI view Lib requires at minimum Java 7 or Android 4.1.
+Stevedore views Lib requires at minimum Java 7 or Android 4.1.
 
 License
 =======

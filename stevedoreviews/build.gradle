@@ -4,9 +4,9 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath "com.jfrog.bintray.gradle:gradle-bintray-plugin:$bintrayVersion"
-        classpath "com.github.dcendents:android-maven-gradle-plugin:$dcendentsVersion"
-        classpath "org.jetbrains.dokka:dokka-android-gradle-plugin:$dokkaVersion"
+        classpath lib.plugin.bintray
+        classpath lib.plugin.dcendents
+        classpath lib.plugin.dokka
     }
 }
 
@@ -20,16 +20,16 @@ plugins {
 
 ext {
     bintrayRepo = 'Android'
-    bintrayName = 'Cover-Views'
+    bintrayName = 'Stevedore-Views'
 
-    publishedGroupId = 'com.artear.cover'
-    libraryName = 'Cover-Views'
-    artifact = 'coverviews'
+    publishedGroupId = 'com.artear.stevedore'
+    libraryName = 'Stevedore-Views'
+    artifact = 'stevedoreviews'
 
-    libraryDescription = 'coverviews library'
+    libraryDescription = 'Stevedore Views library'
 
-    siteUrl = 'https://github.com/Artear/app_lib_coverviews_android'
-    gitUrl = 'https://github.com/Artear/app_lib_coverviews_android.git'
+    siteUrl = 'https://github.com/Artear/app_lib_stevedoreviews_android'
+    gitUrl = 'https://github.com/Artear/app_lib_stevedoreviews_android.git'
 
     developerId = 'artear'
     developerName = 'Artear Moviles'
@@ -82,34 +82,35 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //Test
-    testImplementation "junit:junit:$junitVersion"
-    testImplementation "androidx.test:core:$testCoreVersion"
-    testImplementation "org.mockito:mockito-core:$mockitoCoreVersion"
-    testImplementation "org.robolectric:robolectric:$roboelectricVersion"
+    testImplementation lib.junit.library
+    testImplementation lib.androidx.testCore
+    testImplementation lib.mockito.library
+    testImplementation lib.roboelectric.library
 
-    androidTestImplementation "androidx.test.ext:junit:$testExtJUnitVersion"
-    androidTestImplementation "androidx.test:core:$testCoreVersion"
-    androidTestImplementation "androidx.test:runner:$testRunnerVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+    androidTestImplementation lib.androidx.testCore
+    androidTestImplementation lib.androidx.extJunit
+    androidTestImplementation lib.androidx.testRunner
+    androidTestImplementation lib.espresso.core
 
     //Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation lib.kotlin.standardLib
 
     //Artear
-    implementation "com.artear.networking:networking:$networkingVersion"
+    implementation lib.artear.networking
 
     //Warning! include tools
-    implementation "com.artear.domain:domain:$domainVersion"
+    implementation lib.artear.domain
 
-    //Cover
-    implementation "com.artear.cover:coveritem:$coverItemVersion"
-    implementation "com.artear.cover:articleitem:$articleItemVersion"
-    implementation "com.artear.cover:banneritem:$bannerItemVersion"
+    //Stevedore
+    implementation lib.artear.stevedoreItems
+    implementation lib.artear.articleItem
+    implementation lib.artear.headerItem
+//    implementation lib.artear.bannerItem
 
     //Support
-    implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation lib.androidx.appcompat
+    implementation lib.androidx.recyclerview
+    implementation lib.androidx.constraintLayout
 
 }
 

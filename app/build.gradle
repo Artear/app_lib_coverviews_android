@@ -7,12 +7,11 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath "com.vanniktech:gradle-dependency-graph-generator-plugin:0.5.0"
+        classpath lib.plugin.graphgenerator
     }
 }
 
 apply plugin: "com.vanniktech.dependency.graph.generator"
-
 
 static int getVersionCode(branch) {
     def versionCodeCommand = "git rev-list --count " + branch
@@ -31,7 +30,7 @@ android {
     def vCode = 0 + getVersionCode(branch)
 
     defaultConfig {
-        applicationId "com.artear.coverviewsexample"
+        applicationId "com.artear.stevedoreviewsexample"
         minSdkVersion 17
         targetSdkVersion 28
         versionCode vCode
@@ -49,31 +48,30 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.aar'], dir: 'libs')
-    implementation project(':coverviews')
-    implementation "androidx.multidex:multidex:$multidexVersion"
+    implementation project(':stevedoreviews')
+    implementation lib.androidx.multidex
 
     //Test
-    testImplementation "junit:junit:$junitVersion"
-
-    androidTestImplementation "androidx.test.ext:junit:$testExtJUnitVersion"
-    androidTestImplementation "androidx.test:core:$testCoreVersion"
-    androidTestImplementation "androidx.test:runner:$testRunnerVersion"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoCoreVersion"
+    testImplementation lib.junit.library
+    androidTestImplementation lib.androidx.testCore
+    androidTestImplementation lib.androidx.extJunit
+    androidTestImplementation lib.androidx.testRunner
+    androidTestImplementation lib.espresso.core
 
     //Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation lib.kotlin.standardLib
 
     //Artear
-    implementation "com.artear.networking:networking:$networkingVersion"
-    implementation "com.artear.domain:domain:$domainVersion"
-
-    //Cover
-    implementation "com.artear.cover:coveritem:$coverItemVersion"
-    implementation "com.artear.cover:articleitem:$articleItemVersion"
-    implementation "com.artear.cover:banneritem:$bannerItemVersion"
+    implementation lib.artear.networking
+    implementation lib.artear.domain
+    implementation lib.artear.stevedoreItems
+    implementation lib.artear.articleItem
+    implementation lib.artear.headerItem
+//    implementation lib.artear.banneritem
 
     //Support
-    implementation "androidx.appcompat:appcompat:$appCompatVersion"
-    implementation "androidx.recyclerview:recyclerview:$recyclerViewVersion"
-    implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
+    implementation lib.androidx.appcompat
+    implementation lib.androidx.recyclerview
+    implementation lib.androidx.constraintLayout
+
 }

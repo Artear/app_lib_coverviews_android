@@ -1,4 +1,4 @@
-package com.artear.coverviewsexample
+package com.artear.stevedoreviewsexample
 
 import org.junit.Test
 
