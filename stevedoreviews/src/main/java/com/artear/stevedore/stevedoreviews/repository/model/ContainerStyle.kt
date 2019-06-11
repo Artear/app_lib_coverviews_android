@@ -1,14 +1,8 @@
 package com.artear.stevedore.stevedoreviews.repository.model
 
-import com.google.gson.annotations.SerializedName
+import com.artear.stevedore.stevedoreitems.repository.model.style.StyleBackground
+import com.artear.stevedore.stevedoreitems.repository.model.style.StyleMargin
 
-data class ContainerStyle(
-        val type: String?,
-        @SerializedName("background_color")
-        val backgroundColor: String?,
-        @SerializedName("text_color")
-        val textColor: String?,
-        @SerializedName("title_text_color")
-        val titleTextColor: String?,
-        val margin: Boolean?
-)
+
+data class ContainerStyle(val type: ContainerType, val background: StyleBackground?,
+                          val margin: StyleMargin, val items: StyleBoxItems)

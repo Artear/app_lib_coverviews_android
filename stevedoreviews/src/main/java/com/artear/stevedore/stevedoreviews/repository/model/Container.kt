@@ -1,6 +1,7 @@
 package com.artear.stevedore.stevedoreviews.repository.model
 
 
+import com.artear.stevedore.headeritem.repository.ContainerHeader
 import com.artear.stevedore.stevedoreitems.repository.model.box.Box
 import com.artear.stevedore.stevedoreviews.repository.impl.deserializer.ContainerDeserializer
 import com.google.gson.annotations.JsonAdapter
