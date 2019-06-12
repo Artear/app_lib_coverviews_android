@@ -17,7 +17,10 @@ package com.artear.stevedore.stevedoreviews.repository.model
 
 import com.artear.stevedore.stevedoreitems.repository.model.style.StyleBackground
 import com.artear.stevedore.stevedoreitems.repository.model.style.StyleMargin
+import com.artear.stevedore.stevedoreviews.repository.impl.deserializer.ContainerStyleDeserializer
+import com.google.gson.annotations.JsonAdapter
 
 
+@JsonAdapter(ContainerStyleDeserializer::class)
 data class ContainerStyle(val type: ContainerType, val background: StyleBackground?,
                           val margin: StyleMargin, val items: StyleBoxItems)

@@ -16,5 +16,8 @@
 package com.artear.stevedore.stevedoreviews.repository.model
 
 import com.artear.stevedore.stevedoreitems.repository.model.style.StyleMargin
+import com.artear.stevedore.stevedoreviews.repository.impl.deserializer.StyleBoxItemsDeserializer
+import com.google.gson.annotations.JsonAdapter
 
+@JsonAdapter(StyleBoxItemsDeserializer::class)
 data class StyleBoxItems(val margin: StyleMargin, val gap: Float)

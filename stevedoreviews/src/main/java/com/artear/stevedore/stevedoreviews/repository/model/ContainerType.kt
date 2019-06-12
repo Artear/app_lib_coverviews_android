@@ -15,7 +15,12 @@
  */
 package com.artear.stevedore.stevedoreviews.repository.model
 
+import com.google.gson.annotations.SerializedName
+
 
 enum class ContainerType {
-    CONVEYOR, COLLECTION
+    @SerializedName("conveyor")
+    CONVEYOR,
+    @SerializedName("collection")
+    COLLECTION
 }
