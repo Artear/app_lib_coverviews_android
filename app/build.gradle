@@ -67,7 +67,7 @@ dependencies {
     implementation lib.artear.stevedoreItems
     implementation lib.artear.articleItem
     implementation lib.artear.headerItem
-//    implementation lib.artear.banneritem
+    implementation lib.artear.bannerItem
 
     //Support
     implementation lib.androidx.appcompat

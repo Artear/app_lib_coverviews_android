@@ -12,7 +12,8 @@ import com.artear.networking.url.BaseUrlBuilder
 import com.artear.stevedore.articleitem.ArticleItemAdapter
 import com.artear.stevedore.articleitem.ArticleOnClickListener
 import com.artear.stevedore.articleitem.ArticleShaper
-import com.artear.stevedore.stevedoreitems.presentation.contract.ItemAdapter
+import com.artear.stevedore.banneritem.DfpItemAdapter
+import com.artear.stevedore.banneritem.DfpShaper
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
 import com.artear.stevedore.stevedoreitems.repository.model.link.Link
 import com.artear.stevedore.stevedoreviews.GetStevedore
@@ -47,18 +48,14 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val adapters = listOf<ItemAdapter<*>>(
-                ArticleItemAdapter(onItemClickHandler)
-
-                //        ,DfpItemAdapter()
-        )
+        val adapters = listOf(ArticleItemAdapter(onItemClickHandler), DfpItemAdapter())
 
         recyclerTest.adapter = StevedoreAdapter(adapters)
         recyclerTest.layoutManager = LinearLayoutManager(this)
 
         val coverRegister = StevedoreRegister.Builder()
                 .add(BoxType.ARTICLE, ArticleShaper())
-//                .add(BlockType.DFP, DfpShaper())
+                .add(BoxType.DFP, DfpShaper())
                 .build()
 
         val getStevedore = GetStevedore(coverRegister, coverRepository)
