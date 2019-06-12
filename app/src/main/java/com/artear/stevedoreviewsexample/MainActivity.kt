@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         val api = getApi(urlBase)
         val coverEndpoint = urlBase.toString() + "cover"
 
-        val coverRepository = StevedoreRepositoryImpl(api, coverEndpoint, androidNetworking)
+        val stevedoreRepository = StevedoreRepositoryImpl(api, coverEndpoint, androidNetworking)
 
         val onItemClickHandler = object : ArticleOnClickListener {
             override fun onArticleClick(link: Link) {
@@ -53,12 +53,12 @@ class MainActivity : AppCompatActivity() {
         recyclerTest.adapter = StevedoreAdapter(adapters)
         recyclerTest.layoutManager = LinearLayoutManager(this)
 
-        val coverRegister = StevedoreRegister.Builder()
+        val stevedoreRegister = StevedoreRegister.Builder()
                 .add(BoxType.ARTICLE, ArticleShaper())
                 .add(BoxType.DFP, DfpShaper())
                 .build()
 
-        val getStevedore = GetStevedore(coverRegister, coverRepository)
+        val getStevedore = GetStevedore(stevedoreRegister, stevedoreRepository)
 
         getStevedore(SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()

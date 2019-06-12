@@ -94,7 +94,7 @@ publishing {
 
 def getDependencies(config, dependenciesNode) {
     config.allDependencies.each {
-        //Not add anything from com.artear.cover group
+        //Not add anything from com.artear.stevedore group
         if (it.group != null && it.group != 'com.artear.stevedore' &&
                 it.name != null && it.name.contains("")) {
             def dependencyNode = dependenciesNode.appendNode('dependency')
