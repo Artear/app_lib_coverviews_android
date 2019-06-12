@@ -24,6 +24,6 @@ import com.google.gson.annotations.JsonAdapter
 @JsonAdapter(ContainerDeserializer::class)
 data class Container(
         val header: ContainerHeader?,
-        val style: ContainerStyle?,
+        val style: ContainerStyle,
         val items: List<Box>
 )

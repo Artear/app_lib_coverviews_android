@@ -1,0 +1,1224 @@
+{
+  "containers": [
+    {
+      "style": {
+        "type": "collection",
+        "margin": {
+          "rect": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        },
+        "items": {
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          },
+          "gap": 8
+        }
+      },
+      "items": [
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 1,
+            "background": {
+              "color": {
+                "light": "#20C3EB",
+                "dark": "#FFFFFF"
+              }
+            },
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#FFFFFF",
+                "dark": "#FFFFFF"
+              }
+            },
+            "description": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#FFFFFF",
+                "dark": "#FFFFFF"
+              }
+            }
+          },
+          "data": {
+            "id": 4413,
+            "title": "Papillote de pejerrey en hojas de plátano",
+            "description": "Animate a un pescado muy rico con esta receta imperdible de Bernarda Iúdica.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/papillote-de-pejerrey-en-hojas-de-platano/",
+              "internal": "cucinaretv://article?id=4413&section=recipe&category=cucinaretv&category_title=Cucinare+TV&category_id=86&title=Papillote+de+pejerrey+en+hojas+de+pl%C3%A1tano"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "yTXDdrnJ0ew",
+                "url": "https://youtu.be/yTXDdrnJ0ew",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Bernarda-Papillote-de-pejerrey-300x170.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 170
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "header": {
+        "title": "POSTRES",
+        "style": {
+          "background": {
+            "color": {
+              "light": "#FFFFFF",
+              "dark": "#FFFFFF"
+            }
+          },
+          "title": {
+            "hidden": false,
+            "color": {
+              "light": "#FF002B",
+              "dark": "#FFFFFF"
+            }
+          },
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          }
+        },
+        "link": {
+          "url": "http://dev.cucinare.tv/receta-categoria/postres/",
+          "internal": "cucinaretv://recipe?category=postres&title=Postres&id=91"
+        }
+      },
+      "style": {
+        "type": "collection",
+        "background": {
+          "color": {
+            "light": "#F6F6F6",
+            "dark": "#FFFFFF"
+          }
+        },
+        "margin": {
+          "rect": {
+            "top": 16,
+            "left": 16,
+            "right": 16,
+            "bottom": 16
+          }
+        },
+        "items": {
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          },
+          "gap": 0
+        }
+      },
+      "items": [
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 1,
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4348,
+            "title": "Cheesecake de cerezas",
+            "description": "Dale una vuelta de tuerca a la tradicional torta de frutillas y queso con esta versión más gourmet a base de cerezas.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/cheesecake-de-cerezas/",
+              "internal": "cucinaretv://article?id=4348&section=recipe&category=pasteleria&category_title=Pasteler%C3%ADa&category_id=92&title=Cheesecake+de+cerezas"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "4FjAgNuauhc",
+                "url": "https://youtu.be/4FjAgNuauhc",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/03/Cheesecake-de-cerezas-300x169.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 169
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 3675,
+            "title": "Mega cookie de chocolate",
+            "description": "¡Increíble pero real! ¡Sorprendé a todos con tu torta de galletita gigante! ¡Es genial y deliciosa!",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/mega-cookie-de-chocolate/",
+              "internal": "cucinaretv://article?id=3675&section=recipe&category=pasteleria&category_title=Pasteler%C3%ADa&category_id=92&title=Mega+cookie+de+chocolate"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "74iHJzdSkfQ",
+                "url": "https://youtu.be/74iHJzdSkfQ",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2017/12/Mega-cookie-de-chocolate-300x161.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 161
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 3675,
+            "title": "Mega cookie de chocolate",
+            "description": "¡Increíble pero real! ¡Sorprendé a todos con tu torta de galletita gigante! ¡Es genial y deliciosa!",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/mega-cookie-de-chocolate/",
+              "internal": "cucinaretv://article?id=3675&section=recipe&category=pasteleria&category_title=Pasteler%C3%ADa&category_id=92&title=Mega+cookie+de+chocolate"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "74iHJzdSkfQ",
+                "url": "https://youtu.be/74iHJzdSkfQ",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2017/12/Mega-cookie-de-chocolate-300x161.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 161
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "dfp",
+          "style": {
+            "type": "plain",
+            "weight": 1
+          },
+          "data": {
+            "id": "0",
+            "name": "/6499/example/banner",
+            "size": {
+              "width": 300,
+              "height": 250
+            }
+          }
+        }
+      ]
+    },
+    {
+      "header": {
+        "title": "CUCINARE TV",
+        "style": {
+          "background": {
+            "color": {
+              "light": "#FFFFFF",
+              "dark": "#FFFFFF"
+            }
+          },
+          "title": {
+            "hidden": false,
+            "color": {
+              "light": "#FF002B",
+              "dark": "#FFFFFF"
+            }
+          },
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          }
+        },
+        "link": {
+          "url": "http://dev.cucinare.tv/receta-categoria/cucinaretv/",
+          "internal": "cucinaretv://recipe?category=cucinaretv&title=Cucinare+TV&id=86"
+        }
+      },
+      "style": {
+        "type": "collection",
+        "background": {
+          "color": {
+            "light": "#FC0F38",
+            "dark": "#FFFFFF"
+          }
+        },
+        "margin": {
+          "rect": {
+            "top": 16,
+            "left": 16,
+            "right": 16,
+            "bottom": 16
+          }
+        },
+        "items": {
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          },
+          "gap": 0
+        }
+      },
+      "items": [
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 1,
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4410,
+            "title": "Cavatelli de ricota con salsa dulce de hongos",
+            "description": "Una pasta diferente con una salsa súper original, nueva receta de Gabo Colacioppo para disfrutar.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/cavatelli-de-ricota-con-salsa-dulce-de-hongos/",
+              "internal": "cucinaretv://article?id=4410&section=recipe&category=cucinaretv&category_title=Cucinare+TV&category_id=86&title=Cavatelli+de+ricota+con+salsa+dulce+de+hongos"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "O6K0Rc3ZzlM",
+                "url": "https://youtu.be/O6K0Rc3ZzlM",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Gabo-Cavatelli-1-300x161.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 161
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4403,
+            "title": "Estofado de salchicha parrillera",
+            "description": "No te pierdas esta receta de Lucas Escobar para darle un toque diferente a un buen estofado.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/estofado-de-salchicha-parrillera/",
+              "internal": "cucinaretv://article?id=4403&section=recipe&category=cucinaretv&category_title=Cucinare+TV&category_id=86&title=Estofado+de+salchicha+parrillera"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "3TIQMTPndeo",
+                "url": "https://youtu.be/3TIQMTPndeo",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Lucas-Escobar-Estofado-salchicha-300x170.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 170
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4401,
+            "title": "Pinchos de carne",
+            "description": "Una nueva propuesta de tapeo y trago de Valentina Salezzi y Matías Merlo. ¡Para disfrutar con amigos!",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/pinchos-de-carne/",
+              "internal": "cucinaretv://article?id=4401&section=recipe&category=cucinaretv&category_title=Cucinare+TV&category_id=86&title=Pinchos+de+carne"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "X5_YuLsi4hg",
+                "url": "https://youtu.be/X5_YuLsi4hg",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Salezzi-Merlo-Pinchos-de-carne-300x170.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 170
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "dfp",
+          "style": {
+            "type": "plain",
+            "weight": 1
+          },
+          "data": {
+            "id": "0",
+            "name": "/6499/example/banner",
+            "size": {
+              "width": 300,
+              "height": 250
+            }
+          }
+        }
+      ]
+    },
+    {
+      "header": {
+        "title": "PESCADOS",
+        "style": {
+          "background": {
+            "color": {
+              "light": "#FFFFFF",
+              "dark": "#FFFFFF"
+            }
+          },
+          "title": {
+            "hidden": false,
+            "color": {
+              "light": "#FF002B",
+              "dark": "#FFFFFF"
+            }
+          },
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          }
+        },
+        "link": {
+          "url": "http://dev.cucinare.tv/receta-categoria/pescados-y-mariscos/",
+          "internal": "cucinaretv://recipe?category=pescados-y-mariscos&title=Pescados+y+mariscos&id=90"
+        }
+      },
+      "style": {
+        "type": "collection",
+        "background": {
+          "color": {
+            "light": "#F6F6F6",
+            "dark": "#FFFFFF"
+          }
+        },
+        "margin": {
+          "rect": {
+            "top": 16,
+            "left": 16,
+            "right": 16,
+            "bottom": 16
+          }
+        },
+        "items": {
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          },
+          "gap": 0
+        }
+      },
+      "items": [
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4283,
+            "title": "Langostinos con vinagreta de mango",
+            "description": "Preparar un plato elegante no es sinónimo de una receta complicada. Si no nos creés, chequeá esta propuesta increíble.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/langostinos-salteados-con-vinagreta-de-mango/",
+              "internal": "cucinaretv://article?id=4283&section=recipe&category=especiales&category_title=Especiales&category_id=126&title=Langostinos+con+vinagreta+de+mango"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "Y9RcBkJZAyw",
+                "url": "https://youtu.be/Y9RcBkJZAyw",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/03/Langostinos-con-vinagreta-de-mango-300x170.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 170
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 1970,
+            "title": "Hamburguesa de salmón rosado",
+            "description": "Un formato clásico, un sándwich distinto y una manera original de disfrutar un pescado riquísimo.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/hamburguesa-de-salmon-rosado/",
+              "internal": "cucinaretv://article?id=1970&section=recipe&category=pescados-y-mariscos&category_title=Pescados+y+mariscos&category_id=90&title=Hamburguesa+de+salm%C3%B3n+rosado"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "zmIRPJ86iDs",
+                "url": "https://youtu.be/zmIRPJ86iDs",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2017/09/cuadrado-salmon-300x297.png",
+                  "size": {
+                    "width": 300,
+                    "height": 297
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "header": {
+        "title": "LO ÚLTIMO",
+        "style": {
+          "background": {
+            "color": {
+              "light": "#FFFFFF",
+              "dark": "#FFFFFF"
+            }
+          },
+          "title": {
+            "hidden": false,
+            "color": {
+              "light": "#000000",
+              "dark": "#FFFFFF"
+            }
+          },
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          }
+        }
+      },
+      "style": {
+        "type": "collection",
+        "margin": {
+          "rect": {
+            "top": 0,
+            "left": 0,
+            "right": 0,
+            "bottom": 0
+          }
+        },
+        "items": {
+          "margin": {
+            "rect": {
+              "top": 0,
+              "left": 0,
+              "right": 0,
+              "bottom": 0
+            }
+          },
+          "gap": 8
+        }
+      },
+      "items": [
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "background": {
+              "color": {
+                "light": "#FFFFFF",
+                "dark": "#FFFFFF"
+              }
+            },
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4413,
+            "title": "Papillote de pejerrey en hojas de plátano",
+            "description": "Animate a un pescado muy rico con esta receta imperdible de Bernarda Iúdica.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/papillote-de-pejerrey-en-hojas-de-platano/",
+              "internal": "cucinaretv://article?id=4413&section=recipe&category=cucinaretv&category_title=Cucinare+TV&category_id=86&title=Papillote+de+pejerrey+en+hojas+de+pl%C3%A1tano"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "yTXDdrnJ0ew",
+                "url": "https://youtu.be/yTXDdrnJ0ew",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Bernarda-Papillote-de-pejerrey-300x170.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 170
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "background": {
+              "color": {
+                "light": "#FFFFFF",
+                "dark": "#FFFFFF"
+              }
+            },
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4410,
+            "title": "Cavatelli de ricota con salsa dulce de hongos",
+            "description": "Una pasta diferente con una salsa súper original, nueva receta de Gabo Colacioppo para disfrutar.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/cavatelli-de-ricota-con-salsa-dulce-de-hongos/",
+              "internal": "cucinaretv://article?id=4410&section=recipe&category=cucinaretv&category_title=Cucinare+TV&category_id=86&title=Cavatelli+de+ricota+con+salsa+dulce+de+hongos"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "O6K0Rc3ZzlM",
+                "url": "https://youtu.be/O6K0Rc3ZzlM",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Gabo-Cavatelli-1-300x161.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 161
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "background": {
+              "color": {
+                "light": "#FFFFFF",
+                "dark": "#FFFFFF"
+              }
+            },
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4399,
+            "title": "Cheesecake de limón sin cocción",
+            "description": "Una práctica receta para preparar una torta sin usar el horno. Riquísima y súper fácil de hacer.",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/cheesecake-de-limon-sin-coccion/",
+              "internal": "cucinaretv://article?id=4399&section=recipe&category=pasteleria&category_title=Pasteler%C3%ADa&category_id=92&title=Cheesecake+de+lim%C3%B3n+sin+cocci%C3%B3n"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "TsmmOqfWkv8",
+                "url": "https://youtu.be/TsmmOqfWkv8",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Cheesecake-sin-cocci%C3%B3n-300x170.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 170
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "background": {
+              "color": {
+                "light": "#FFFFFF",
+                "dark": "#FFFFFF"
+              }
+            },
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4398,
+            "title": "Torta Balcarce",
+            "description": "Un clásico de clásicos de la repostería argentina, ahora lo podés preparar vos mismo en tu casa. ¡Vas a ver lo bien que te va a quedar!",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/torta-balcarce/",
+              "internal": "cucinaretv://article?id=4398&section=recipe&category=pasteleria&category_title=Pasteler%C3%ADa&category_id=92&title=Torta+Balcarce"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "GVRt83pyOgg",
+                "url": "https://youtu.be/GVRt83pyOgg",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Torta-Balcarce-300x169.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 169
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "background": {
+              "color": {
+                "light": "#FFFFFF",
+                "dark": "#FFFFFF"
+              }
+            },
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4397,
+            "title": "Torta conejo",
+            "description": "¡Sorprendé a los amigos de tus hijos con esta súper original torta de cumple! ¡No lo van a poder creer!",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/torta-conejo/",
+              "internal": "cucinaretv://article?id=4397&section=recipe&category=pasteleria&category_title=Pasteler%C3%ADa&category_id=92&title=Torta+conejo"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "-CYulHu5lGY",
+                "url": "https://youtu.be/-CYulHu5lGY",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Torta-conejo-1-300x170.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 170
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "article",
+          "style": {
+            "type": "plain",
+            "weight": 0.5,
+            "background": {
+              "color": {
+                "light": "#FFFFFF",
+                "dark": "#FFFFFF"
+              }
+            },
+            "title": {
+              "hidden": false,
+              "number_of_lines": 3,
+              "color": {
+                "light": "#3A3637",
+                "dark": "#FFFFFF"
+              },
+              "underline": {
+                "color": {
+                  "light": "#96E7F9",
+                  "dark": "#FFFFFF"
+                }
+              }
+            },
+            "description": {
+              "hidden": true
+            }
+          },
+          "data": {
+            "id": 4395,
+            "title": "Calamares rellenos con arroz y verduras",
+            "description": "Si te gusta la cocina española, este plato es uno de los más deliciosos que existen. ¡No dejes de probarlo!",
+            "link": {
+              "url": "http://dev.cucinare.tv/receta/calamares-rellenos-con-arroz-y-verduras/",
+              "internal": "cucinaretv://article?id=4395&section=recipe&category=pescados-y-mariscos&category_title=Pescados+y+mariscos&category_id=90&title=Calamares+rellenos+con+arroz+y+verduras"
+            },
+            "media": {
+              "type": "youtube",
+              "data": {
+                "id": "unFOTXQvQqE",
+                "url": "https://youtu.be/unFOTXQvQqE",
+                "image": {
+                  "url": "https://www.cucinare.tv/wp-content/uploads/2018/04/Calamares-rellenos-300x170.jpg",
+                  "size": {
+                    "width": 300,
+                    "height": 170
+                  }
+                }
+              },
+              "style": {
+                "background": {
+                  "color": {
+                    "light": "#FFFFFF",
+                    "dark": "#FFFFFF"
+                  }
+                },
+                "placeholder": {
+                  "hidden": false
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "dfp",
+          "style": {
+            "type": "plain",
+            "weight": 1
+          },
+          "data": {
+            "id": "0",
+            "name": "/6499/example/banner",
+            "size": {
+              "width": 300,
+              "height": 250
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

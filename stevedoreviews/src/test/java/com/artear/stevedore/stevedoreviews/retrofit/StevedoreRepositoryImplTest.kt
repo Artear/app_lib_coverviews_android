@@ -2,7 +2,7 @@ package com.artear.stevedore.stevedoreviews.retrofit
 
 import androidx.test.core.app.ApplicationProvider
 import com.artear.networking.model.AndroidNetworking
-import com.artear.stevedore.stevedoreviews.TestUtils.Companion.loadJSONFromAsset
+import com.artear.stevedore.stevedoreviews.TestUtils
 import com.artear.stevedore.stevedoreviews.TestUtils.Companion.log
 import com.artear.stevedore.stevedoreviews.repository.contract.api.ApiStevedore
 import com.artear.stevedore.stevedoreviews.repository.contract.domain.StevedoreRepository
@@ -27,11 +27,14 @@ import retrofit2.Response
 import timber.log.Timber
 
 
-
 @RunWith(RobolectricTestRunner::class)
 class StevedoreRepositoryImplTest {
 
-    private lateinit var stevedore: Stevedore
+    companion object {
+        const val folder = "stevedore"
+        const val dynamicEndpoint = "stevedoreUrl"
+    }
+
     private lateinit var androidNetworking: AndroidNetworking
     private lateinit var stevedoreRepository: StevedoreRepository
 
@@ -44,33 +47,45 @@ class StevedoreRepositoryImplTest {
     @Mock
     lateinit var call: Call<Stevedore>
 
-
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
 
         Timber.plant(mock(Timber.Tree::class.java))
 
-        val loader = javaClass.classLoader!!
-        val stevedoreJson = loadJSONFromAsset(loader, "stevedore", "stevedore")!!
-
-        val responseBodyOk = ResponseBody.create(mediaType, stevedoreJson)
-        stevedore = Gson().fromJson(responseBodyOk.string(), Stevedore::class.java)
-
         androidNetworking = spy(AndroidNetworking(ApplicationProvider.getApplicationContext()))
-        stevedoreRepository = StevedoreRepositoryImpl(api, "stevedoreUrl", androidNetworking)
+        stevedoreRepository = StevedoreRepositoryImpl(api, dynamicEndpoint, androidNetworking)
 
-        `when`(api.getStevedore("stevedoreUrl")).thenReturn(call)
+        `when`(api.getStevedore(dynamicEndpoint)).thenReturn(call)
         `when`(call.request()).thenReturn(request)
+    }
+
+    private fun initStevedore(file: String): Stevedore {
+        val loader = javaClass.classLoader!!
+        val stevedore = TestUtils.loadJSONFromAsset(loader, folder, file)!!
+        val responseBodyOk = ResponseBody.create(mediaType, stevedore)
+        return Gson().fromJson(responseBodyOk.string(), Stevedore::class.java)
     }
 
     @Test
     fun recipesResponseOk() {
-        `when`(call.execute()).thenReturn(Response.success(stevedore))
+        val stevedoreOk = initStevedore("stevedore_ok")
+        `when`(call.execute()).thenReturn(Response.success(stevedoreOk))
         `when`(androidNetworking.isNetworkConnected()).thenReturn(true)
         val recipes = stevedoreRepository.stevedore()
         log("The size of recipes is = ${recipes.containers.size}")
         Assert.assertEquals(5, recipes.containers.size)
+    }
+
+    @Test
+    fun recipesResponseOkWithoutOne() {
+        val stevedoreWithoutOne = initStevedore("stevedore_container_style_null")
+        `when`(call.execute()).thenReturn(Response.success(stevedoreWithoutOne))
+        `when`(androidNetworking.isNetworkConnected()).thenReturn(true)
+        val recipes = stevedoreRepository.stevedore()
+        log("The size of recipes is = ${recipes.containers.size}, " +
+                "because a style is null in one container")
+        Assert.assertEquals(4, recipes.containers.size)
     }
 
 
@@ -95,5 +110,6 @@ class StevedoreRepositoryImplTest {
         `when`(androidNetworking.isNetworkConnected()).thenReturn(false)
         stevedoreRepository.stevedore()
     }
+
 
 }
