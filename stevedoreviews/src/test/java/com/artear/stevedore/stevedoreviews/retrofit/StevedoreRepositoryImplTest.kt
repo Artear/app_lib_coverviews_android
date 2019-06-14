@@ -48,6 +48,9 @@ class StevedoreRepositoryImplTest {
     @Mock
     lateinit var call: Call<Stevedore>
 
+    @Mock
+    lateinit var action: Action
+
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
@@ -55,8 +58,9 @@ class StevedoreRepositoryImplTest {
         Timber.plant(mock(Timber.Tree::class.java))
 
         androidNetworking = spy(AndroidNetworking(ApplicationProvider.getApplicationContext()))
-        stevedoreRepository = StevedoreRepositoryImpl(api, androidNetworking)
+        stevedoreRepository = StevedoreRepositoryImpl(action, api, androidNetworking)
 
+        `when`(action.get()).thenReturn(dynamicEndpoint)
         `when`(api.getStevedore(dynamicEndpoint)).thenReturn(call)
         `when`(call.request()).thenReturn(request)
     }
@@ -83,7 +87,7 @@ class StevedoreRepositoryImplTest {
         val stevedoreWithoutOne = initStevedore("stevedore_container_style_null")
         `when`(call.execute()).thenReturn(Response.success(stevedoreWithoutOne))
         `when`(androidNetworking.isNetworkConnected()).thenReturn(true)
-        val recipes = stevedoreRepository.stevedore(Action())
+        val recipes = stevedoreRepository.stevedore()
         log("The size of recipes is = ${recipes.containers.size}, " +
                 "because a style is null in one container")
         Assert.assertEquals(4, recipes.containers.size)
@@ -95,7 +99,7 @@ class StevedoreRepositoryImplTest {
         val responseBodyError = ResponseBody.create(mediaType, "{ \"error\":500, \"message\":\"Error test response\"")
         `when`(call.execute()).thenReturn(Response.error(500, responseBodyError))
         `when`(androidNetworking.isNetworkConnected()).thenReturn(true)
-        stevedoreRepository.stevedore(Action())
+        stevedoreRepository.stevedore()
     }
 
 
@@ -103,13 +107,13 @@ class StevedoreRepositoryImplTest {
     fun recipesResponseOkNullBody() {
         `when`(call.execute()).thenReturn(Response.success(null))
         `when`(androidNetworking.isNetworkConnected()).thenReturn(true)
-        stevedoreRepository.stevedore(Action())
+        stevedoreRepository.stevedore()
     }
 
     @Test(expected = NoInternetConnectionException::class)
     fun noInternetConnection() {
         `when`(androidNetworking.isNetworkConnected()).thenReturn(false)
-        stevedoreRepository.stevedore(Action())
+        stevedoreRepository.stevedore()
     }
 
 

@@ -20,12 +20,14 @@ import com.artear.stevedore.stevedoreitems.repository.model.link.Link
 import com.artear.stevedore.stevedoreviews.GetStevedore
 import com.artear.stevedore.stevedoreviews.presentation.StevedoreRegister
 import com.artear.stevedore.stevedoreviews.presentation.adapter.StevedoreAdapter
+import com.artear.stevedore.stevedoreviews.repository.ApiAction
 import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.impl.domain.StevedoreRepositoryImpl
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreHelper.getDefaultGsonMaker
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreProvider
 import kotlinx.android.synthetic.main.main_activity.*
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 
 class MainActivity : AppCompatActivity() {
@@ -41,7 +43,15 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
 
         val api = getApi()
-        val stevedoreRepository = StevedoreRepositoryImpl(api, androidNetworking)
+        val recipesApi = Retrofit.Builder()
+                .baseUrl(getBaseUrl().toString())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create<RecipesApi>()
+
+        val action = ApiAction(RecipesApiType(recipesApi))
+
+        val stevedoreRepository = StevedoreRepositoryImpl(action, api, androidNetworking)
 
         val onItemClickHandler = object : ArticleOnClickListener {
             override fun onArticleClick(link: Link) {
@@ -61,11 +71,9 @@ class MainActivity : AppCompatActivity() {
 
         val getStevedore = GetStevedore(stevedoreRegister, stevedoreRepository)
 
-        val recipesApi = Retrofit.Builder().build().create<RecipesApi>()
+        val getRecipes = GetRecipes(getStevedore)
 
-        val recipesUseCase = RecipesUseCase(Recipes(recipesApi), RecipesByCategory(recipesApi), getStevedore)
-
-        recipesUseCase.invoke(SimpleReceiver({
+        getRecipes.invoke(SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             (recyclerTest.adapter as StevedoreAdapter).setData(it)
             messageHello.visibility = GONE
@@ -77,13 +85,13 @@ class MainActivity : AppCompatActivity() {
     private fun getBaseUrl(): BaseUrl {
         return BaseUrlBuilder()
                 .addScheme("https")
-                .addHost("cucinare.tv/wp-json/cucinare")
-                .addVersion("v1")
+                .addHost("stg.cucinare.tv/wp-json/cucinare")
+                .addVersion("1.0")
                 .build()
     }
 
     private fun getApi(): StevedoreApi {
-        return ApiStevedoreProvider(getDefaultGsonMaker()).invoke()
+        return ApiStevedoreProvider(getBaseUrl(), getDefaultGsonMaker()).invoke()
 
     }
 

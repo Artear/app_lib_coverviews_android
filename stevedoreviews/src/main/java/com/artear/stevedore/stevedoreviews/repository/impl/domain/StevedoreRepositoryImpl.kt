@@ -21,11 +21,13 @@ import com.artear.stevedore.stevedoreviews.repository.Action
 import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.contract.domain.StevedoreRepository
 
-class StevedoreRepositoryImpl(private val stevedoreApi: StevedoreApi,
+class StevedoreRepositoryImpl(private val action: Action,
+                              private val stevedoreApi: StevedoreApi,
                               private val networking: Networking) : StevedoreRepository {
 
-    override fun stevedore(param: Action?) = executeWith(networking) {
-        stevedoreApi.getStevedore(param.toString())
+    override fun stevedore(param: Any?) = executeWith(networking) {
+        action.param = param
+        stevedoreApi.getStevedore(action.get())
     }
 
 

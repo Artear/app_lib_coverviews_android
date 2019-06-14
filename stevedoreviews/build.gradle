@@ -112,7 +112,6 @@ dependencies {
     implementation lib.androidx.recyclerview
     implementation lib.androidx.constraintLayout
 
-    implementation lib.square.okHttp
 }
 
 dependencyUpdates.resolutionStrategy {

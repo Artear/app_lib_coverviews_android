@@ -1,4 +1,7 @@
 package com.artear.stevedore.stevedoreviews.repository
 
 
-open class Action(val param: Any? = null)
+interface Action {
+    var param: Any?
+    fun get() : String
+}
