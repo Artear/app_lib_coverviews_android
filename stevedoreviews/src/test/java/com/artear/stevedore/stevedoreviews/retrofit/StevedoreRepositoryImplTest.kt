@@ -4,7 +4,8 @@ import androidx.test.core.app.ApplicationProvider
 import com.artear.networking.model.AndroidNetworking
 import com.artear.stevedore.stevedoreviews.TestUtils
 import com.artear.stevedore.stevedoreviews.TestUtils.Companion.log
-import com.artear.stevedore.stevedoreviews.repository.contract.api.ApiStevedore
+import com.artear.stevedore.stevedoreviews.repository.Action
+import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.contract.domain.StevedoreRepository
 import com.artear.stevedore.stevedoreviews.repository.impl.domain.StevedoreRepositoryImpl
 import com.artear.stevedore.stevedoreviews.repository.model.Stevedore
@@ -42,7 +43,7 @@ class StevedoreRepositoryImplTest {
     private val mediaType = MediaType.parse("application/json")
 
     @Mock
-    lateinit var api: ApiStevedore
+    lateinit var api: StevedoreApi
 
     @Mock
     lateinit var call: Call<Stevedore>
@@ -54,7 +55,7 @@ class StevedoreRepositoryImplTest {
         Timber.plant(mock(Timber.Tree::class.java))
 
         androidNetworking = spy(AndroidNetworking(ApplicationProvider.getApplicationContext()))
-        stevedoreRepository = StevedoreRepositoryImpl(api, dynamicEndpoint, androidNetworking)
+        stevedoreRepository = StevedoreRepositoryImpl(api, androidNetworking)
 
         `when`(api.getStevedore(dynamicEndpoint)).thenReturn(call)
         `when`(call.request()).thenReturn(request)
@@ -82,7 +83,7 @@ class StevedoreRepositoryImplTest {
         val stevedoreWithoutOne = initStevedore("stevedore_container_style_null")
         `when`(call.execute()).thenReturn(Response.success(stevedoreWithoutOne))
         `when`(androidNetworking.isNetworkConnected()).thenReturn(true)
-        val recipes = stevedoreRepository.stevedore()
+        val recipes = stevedoreRepository.stevedore(Action())
         log("The size of recipes is = ${recipes.containers.size}, " +
                 "because a style is null in one container")
         Assert.assertEquals(4, recipes.containers.size)
@@ -94,7 +95,7 @@ class StevedoreRepositoryImplTest {
         val responseBodyError = ResponseBody.create(mediaType, "{ \"error\":500, \"message\":\"Error test response\"")
         `when`(call.execute()).thenReturn(Response.error(500, responseBodyError))
         `when`(androidNetworking.isNetworkConnected()).thenReturn(true)
-        stevedoreRepository.stevedore()
+        stevedoreRepository.stevedore(Action())
     }
 
 
@@ -102,13 +103,13 @@ class StevedoreRepositoryImplTest {
     fun recipesResponseOkNullBody() {
         `when`(call.execute()).thenReturn(Response.success(null))
         `when`(androidNetworking.isNetworkConnected()).thenReturn(true)
-        stevedoreRepository.stevedore()
+        stevedoreRepository.stevedore(Action())
     }
 
     @Test(expected = NoInternetConnectionException::class)
     fun noInternetConnection() {
         `when`(androidNetworking.isNetworkConnected()).thenReturn(false)
-        stevedoreRepository.stevedore()
+        stevedoreRepository.stevedore(Action())
     }
 
 

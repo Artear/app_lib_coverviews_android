@@ -14,16 +14,19 @@ import com.artear.stevedore.articleitem.ArticleOnClickListener
 import com.artear.stevedore.articleitem.ArticleShaper
 import com.artear.stevedore.banneritem.DfpItemAdapter
 import com.artear.stevedore.banneritem.DfpShaper
+import com.artear.stevedore.headeritem.presentation.HeaderShaper
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
 import com.artear.stevedore.stevedoreitems.repository.model.link.Link
 import com.artear.stevedore.stevedoreviews.GetStevedore
 import com.artear.stevedore.stevedoreviews.presentation.StevedoreRegister
 import com.artear.stevedore.stevedoreviews.presentation.adapter.StevedoreAdapter
-import com.artear.stevedore.stevedoreviews.repository.contract.api.ApiStevedore
+import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.impl.domain.StevedoreRepositoryImpl
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreHelper.getDefaultGsonMaker
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreProvider
 import kotlinx.android.synthetic.main.main_activity.*
+import retrofit2.Retrofit
+import retrofit2.create
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,11 +40,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
 
-        val urlBase = getBaseUrl()
-        val api = getApi(urlBase)
-        val coverEndpoint = urlBase.toString() + "cover"
-
-        val stevedoreRepository = StevedoreRepositoryImpl(api, coverEndpoint, androidNetworking)
+        val api = getApi()
+        val stevedoreRepository = StevedoreRepositoryImpl(api, androidNetworking)
 
         val onItemClickHandler = object : ArticleOnClickListener {
             override fun onArticleClick(link: Link) {
@@ -54,13 +54,18 @@ class MainActivity : AppCompatActivity() {
         recyclerTest.layoutManager = LinearLayoutManager(this)
 
         val stevedoreRegister = StevedoreRegister.Builder()
+                .addHeader(HeaderShaper())
                 .add(BoxType.ARTICLE, ArticleShaper())
                 .add(BoxType.DFP, DfpShaper())
                 .build()
 
         val getStevedore = GetStevedore(stevedoreRegister, stevedoreRepository)
 
-        getStevedore(SimpleReceiver({
+        val recipesApi = Retrofit.Builder().build().create<RecipesApi>()
+
+        val recipesUseCase = RecipesUseCase(Recipes(recipesApi), RecipesByCategory(recipesApi), getStevedore)
+
+        recipesUseCase.invoke(SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             (recyclerTest.adapter as StevedoreAdapter).setData(it)
             messageHello.visibility = GONE
@@ -77,8 +82,8 @@ class MainActivity : AppCompatActivity() {
                 .build()
     }
 
-    private fun getApi(baseUrl: BaseUrl): ApiStevedore {
-        return ApiStevedoreProvider(baseUrl, getDefaultGsonMaker()).invoke()
+    private fun getApi(): StevedoreApi {
+        return ApiStevedoreProvider(getDefaultGsonMaker()).invoke()
 
     }
 

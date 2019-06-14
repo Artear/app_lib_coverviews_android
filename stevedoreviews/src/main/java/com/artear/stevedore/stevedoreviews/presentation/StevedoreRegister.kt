@@ -35,7 +35,7 @@ class StevedoreRegister private constructor() {
             stevedoreRegister.shaperMap[boxType] = shaper
         }
 
-        fun addHeader(headerShaper: DataShaper<ContainerHeader, ArtearItem>) {
+        fun addHeader(headerShaper: DataShaper<ContainerHeader, ArtearItem>) = apply {
             stevedoreRegister.headerShaper = headerShaper
         }
 

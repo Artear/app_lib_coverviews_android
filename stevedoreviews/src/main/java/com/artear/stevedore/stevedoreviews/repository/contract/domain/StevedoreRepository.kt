@@ -16,11 +16,12 @@
 package com.artear.stevedore.stevedoreviews.repository.contract.domain
 
 
+import com.artear.stevedore.stevedoreviews.repository.Action
 import com.artear.stevedore.stevedoreviews.repository.model.Stevedore
 
 
 interface StevedoreRepository {
 
-    fun stevedore(): Stevedore
+    fun stevedore(param: Action? = null): Stevedore
 
 }
