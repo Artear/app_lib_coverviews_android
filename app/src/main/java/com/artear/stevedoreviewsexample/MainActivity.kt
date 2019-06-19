@@ -14,6 +14,7 @@ import com.artear.stevedore.articleitem.ArticleOnClickListener
 import com.artear.stevedore.articleitem.ArticleShaper
 import com.artear.stevedore.banneritem.DfpItemAdapter
 import com.artear.stevedore.banneritem.DfpShaper
+import com.artear.stevedore.categoryitem.presentation.CategoryAdapter
 import com.artear.stevedore.categoryitem.presentation.CategoryShaper
 import com.artear.stevedore.headeritem.presentation.HeaderShaper
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
@@ -55,12 +56,16 @@ class MainActivity : AppCompatActivity() {
 
         val stevedoreRepository = StevedoreRepositoryImpl(action, api, androidNetworking)
 
-        val onItemClickHandler = object : ArticleOnClickListener {
+        val onArticleItemClickHandler = object : ArticleOnClickListener {
             override fun onArticleClick(link: Link) {
             }
         }
 
-        val adapters = listOf(ArticleItemAdapter(onItemClickHandler), DfpItemAdapter())
+        val adapters = listOf(
+                ArticleItemAdapter(onArticleItemClickHandler),
+                DfpItemAdapter(),
+                CategoryAdapter()
+        )
 
         recyclerTest.adapter = StevedoreAdapter(adapters)
         recyclerTest.layoutManager = LinearLayoutManager(this)
