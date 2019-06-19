@@ -20,16 +20,22 @@ import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
 import com.artear.stevedore.stevedoreviews.presentation.StevedoreDataShaper
 import com.artear.stevedore.stevedoreviews.presentation.StevedoreRegister
 import com.artear.stevedore.stevedoreviews.repository.contract.domain.StevedoreRepository
+import com.artear.tools.exception.checkSize
 
 class GetStevedore(stevedoreRegister: StevedoreRegister,
                    private val stevedoreRepository: StevedoreRepository) :
         UseCase<Any, List<ArtearItem>>() {
 
-    private val shaper = StevedoreDataShaper(stevedoreRegister.shaperMap)
+    private val shaper = StevedoreDataShaper(stevedoreRegister)
 
     public override suspend fun execute(param: Any?): List<ArtearItem> {
         val stevedore = stevedoreRepository.stevedore(param)
-        return shaper.transform(stevedore)
+        val artearItemList = shaper.transform(stevedore)
+        checkSize(artearItemList) {
+            "There are no artear items transformed but the minimum required is one. See " +
+                    "if stevedore register have any key/shaper added."
+        }
+        return artearItemList
     }
 
 }
