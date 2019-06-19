@@ -15,9 +15,10 @@ buildscript {
                         domainVersion        : "0.0.7",
                         networkingVersion    : "0.0.4",
                         stevedoreItemsVersion: "0.2.5",
-                        articleitemVersion   : "0.0.6",
-                        banneritemVersion    : "0.0.7",
-                        headeritemVersion    : "0.0.4",
+                        articleItemVersion   : "0.0.6",
+                        bannerItemVersion    : "0.0.7",
+                        categoryItemVersion  : "0.0.2",
+                        headerItemVersion    : "0.0.4",
                         toolsVersion         : "0.0.19"
                 ],
                 espresso           : [
@@ -65,9 +66,10 @@ buildscript {
                         domain        : "com.artear.domain:domain:${versionLib.artear.domainVersion}",
                         networking    : "com.artear.networking:networking:${versionLib.artear.networkingVersion}",
                         stevedoreItems: "com.artear.stevedore:stevedoreitems:${versionLib.artear.stevedoreItemsVersion}",
-                        articleItem   : "com.artear.stevedore:articleitem:${versionLib.artear.articleitemVersion}",
-                        bannerItem    : "com.artear.stevedore:banneritem:${versionLib.artear.banneritemVersion}",
-                        headerItem    : "com.artear.stevedore:headeritem:${versionLib.artear.headeritemVersion}",
+                        articleItem   : "com.artear.stevedore:articleitem:${versionLib.artear.articleItemVersion}",
+                        categoryItem  : "com.artear.stevedore:categoryitem:${versionLib.artear.categoryItemVersion}",
+                        bannerItem    : "com.artear.stevedore:banneritem:${versionLib.artear.bannerItemVersion}",
+                        headerItem    : "com.artear.stevedore:headeritem:${versionLib.artear.headerItemVersion}",
                         tools         : "com.artear.tools:tools:${versionLib.artear.toolsVersion}"
                 ],
                 espresso    : [

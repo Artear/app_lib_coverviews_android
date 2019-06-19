@@ -106,6 +106,7 @@ dependencies {
     implementation lib.artear.articleItem
     implementation lib.artear.headerItem
     implementation lib.artear.bannerItem
+    implementation lib.artear.categoryItem
 
     //Support
     implementation lib.androidx.appcompat

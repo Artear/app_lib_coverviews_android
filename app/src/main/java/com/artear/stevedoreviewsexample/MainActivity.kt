@@ -14,6 +14,7 @@ import com.artear.stevedore.articleitem.ArticleOnClickListener
 import com.artear.stevedore.articleitem.ArticleShaper
 import com.artear.stevedore.banneritem.DfpItemAdapter
 import com.artear.stevedore.banneritem.DfpShaper
+import com.artear.stevedore.categoryitem.presentation.CategoryShaper
 import com.artear.stevedore.headeritem.presentation.HeaderShaper
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
 import com.artear.stevedore.stevedoreitems.repository.model.link.Link
@@ -29,6 +30,7 @@ import kotlinx.android.synthetic.main.main_activity.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -67,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 .addHeader(HeaderShaper())
                 .add(BoxType.ARTICLE, ArticleShaper())
                 .add(BoxType.DFP, DfpShaper())
+                .add(BoxType.CATEGORY, CategoryShaper())
                 .build()
 
         val getStevedore = GetStevedore(stevedoreRegister, stevedoreRepository)
@@ -79,6 +82,7 @@ class MainActivity : AppCompatActivity() {
             messageHello.visibility = GONE
         }, {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+            Timber.e("Error: %s", it.message)
         }))
     }
 
