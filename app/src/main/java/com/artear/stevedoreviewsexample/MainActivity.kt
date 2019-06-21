@@ -17,6 +17,8 @@ import com.artear.stevedore.banneritem.DfpShaper
 import com.artear.stevedore.categoryitem.presentation.CategoryAdapter
 import com.artear.stevedore.categoryitem.presentation.CategoryShaper
 import com.artear.stevedore.headeritem.presentation.HeaderShaper
+import com.artear.stevedore.mediaitem.presentation.MediaItemAdapter
+import com.artear.stevedore.mediaitem.presentation.MediaItemShaper
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
 import com.artear.stevedore.stevedoreitems.repository.model.link.Link
 import com.artear.stevedore.stevedoreviews.GetStevedore
@@ -52,7 +54,7 @@ class MainActivity : AppCompatActivity() {
                 .build()
                 .create<RecipesApi>()
 
-        val action = ApiAction(RecipesEP(recipesApi))
+        val action = ApiAction(RecipesByCategoryEP(recipesApi))
 
         val stevedoreRepository = StevedoreRepositoryImpl(action, api, androidNetworking)
 
@@ -64,7 +66,8 @@ class MainActivity : AppCompatActivity() {
         val adapters = listOf(
                 ArticleItemAdapter(onArticleItemClickHandler),
                 DfpItemAdapter(),
-                CategoryAdapter()
+                CategoryAdapter(),
+                MediaItemAdapter()
         )
 
         recyclerTest.adapter = StevedoreAdapter(adapters)
@@ -75,13 +78,14 @@ class MainActivity : AppCompatActivity() {
                 .add(BoxType.ARTICLE, ArticleShaper())
                 .add(BoxType.DFP, DfpShaper())
                 .add(BoxType.CATEGORY, CategoryShaper())
+                .add(BoxType.MEDIA, MediaItemShaper())
                 .build()
 
         val getStevedore = GetStevedore(stevedoreRegister, stevedoreRepository)
 
-        val getRecipes = GetRecipes(getStevedore)
+        val getRecipes = GetRecipesByCategory(getStevedore)
 
-        getRecipes.invoke(SimpleReceiver({
+        getRecipes(88, SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             (recyclerTest.adapter as StevedoreAdapter).setData(it)
             messageHello.visibility = GONE

@@ -2,7 +2,7 @@ buildscript {
     ext {
         sdkVersion = 28
         buildToolsVersion = "28.0.3"
-        libraryVersion = "0.0.9"
+        libraryVersion = "0.1.0"
         versionLib = [
                 kotlinVersion      : '1.3.40',
                 android            : [
@@ -19,6 +19,7 @@ buildscript {
                         bannerItemVersion    : "0.0.7",
                         categoryItemVersion  : "0.0.2",
                         headerItemVersion    : "0.0.4",
+                        mediaItemVersion     : "0.0.2",
                         toolsVersion         : "0.0.19"
                 ],
                 espresso           : [
@@ -70,6 +71,7 @@ buildscript {
                         categoryItem  : "com.artear.stevedore:categoryitem:${versionLib.artear.categoryItemVersion}",
                         bannerItem    : "com.artear.stevedore:banneritem:${versionLib.artear.bannerItemVersion}",
                         headerItem    : "com.artear.stevedore:headeritem:${versionLib.artear.headerItemVersion}",
+                        mediaItem     : "com.artear.stevedore:mediaitem:${versionLib.artear.mediaItemVersion}",
                         tools         : "com.artear.tools:tools:${versionLib.artear.toolsVersion}"
                 ],
                 espresso    : [
