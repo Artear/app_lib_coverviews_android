@@ -22,7 +22,7 @@ import com.artear.stevedore.stevedoreitems.repository.model.link.Link
 import com.artear.stevedore.stevedoreviews.GetStevedore
 import com.artear.stevedore.stevedoreviews.presentation.StevedoreRegister
 import com.artear.stevedore.stevedoreviews.presentation.adapter.StevedoreAdapter
-import com.artear.stevedore.stevedoreviews.repository.ApiAction
+import com.artear.stevedore.stevedoreviews.repository.contract.action.ApiAction
 import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.impl.domain.StevedoreRepositoryImpl
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreHelper.getDefaultGsonMaker
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                 .build()
                 .create<RecipesApi>()
 
-        val action = ApiAction(RecipesApiType(recipesApi))
+        val action = ApiAction(RecipesEP(recipesApi))
 
         val stevedoreRepository = StevedoreRepositoryImpl(action, api, androidNetworking)
 

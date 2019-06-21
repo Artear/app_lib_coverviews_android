@@ -17,7 +17,7 @@ package com.artear.stevedore.stevedoreviews.repository.impl.domain
 
 import com.artear.networking.contract.Networking
 import com.artear.networking.model.retrofit.executeWith
-import com.artear.stevedore.stevedoreviews.repository.Action
+import com.artear.stevedore.stevedoreviews.repository.contract.action.Action
 import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.contract.domain.StevedoreRepository
 
@@ -26,8 +26,8 @@ class StevedoreRepositoryImpl(private val action: Action,
                               private val networking: Networking) : StevedoreRepository {
 
     override fun stevedore(param: Any?) = executeWith(networking) {
-        action.param = param
-        stevedoreApi.getStevedore(action.get())
+        val endpoint = action(param)
+        stevedoreApi.getStevedore(endpoint)
     }
 
 

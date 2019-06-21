@@ -22,8 +22,8 @@ import com.artear.stevedore.stevedoreviews.presentation.StevedoreRegister
 import com.artear.stevedore.stevedoreviews.repository.contract.domain.StevedoreRepository
 import com.artear.tools.exception.checkSize
 
-class GetStevedore(stevedoreRegister: StevedoreRegister,
-                   private val stevedoreRepository: StevedoreRepository) :
+open class GetStevedore(stevedoreRegister: StevedoreRegister,
+                        private val stevedoreRepository: StevedoreRepository) :
         UseCase<Any, List<ArtearItem>>() {
 
     private val shaper = StevedoreDataShaper(stevedoreRegister)

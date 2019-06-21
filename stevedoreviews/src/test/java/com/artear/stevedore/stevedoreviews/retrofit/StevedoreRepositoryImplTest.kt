@@ -4,7 +4,7 @@ import androidx.test.core.app.ApplicationProvider
 import com.artear.networking.model.AndroidNetworking
 import com.artear.stevedore.stevedoreviews.TestUtils
 import com.artear.stevedore.stevedoreviews.TestUtils.Companion.log
-import com.artear.stevedore.stevedoreviews.repository.Action
+import com.artear.stevedore.stevedoreviews.repository.contract.action.Action
 import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.contract.domain.StevedoreRepository
 import com.artear.stevedore.stevedoreviews.repository.impl.domain.StevedoreRepositoryImpl
@@ -60,7 +60,7 @@ class StevedoreRepositoryImplTest {
         androidNetworking = spy(AndroidNetworking(ApplicationProvider.getApplicationContext()))
         stevedoreRepository = StevedoreRepositoryImpl(action, api, androidNetworking)
 
-        `when`(action.get()).thenReturn(dynamicEndpoint)
+        `when`(action()).thenReturn(dynamicEndpoint)
         `when`(api.getStevedore(dynamicEndpoint)).thenReturn(call)
         `when`(call.request()).thenReturn(request)
     }
