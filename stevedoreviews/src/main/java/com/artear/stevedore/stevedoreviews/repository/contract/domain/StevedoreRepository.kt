@@ -21,6 +21,6 @@ import com.artear.stevedore.stevedoreviews.repository.model.Stevedore
 
 interface StevedoreRepository {
 
-    fun stevedore(): Stevedore
+    fun stevedore(param: Any? = null): Stevedore
 
 }

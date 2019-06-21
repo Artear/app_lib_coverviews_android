@@ -4,7 +4,8 @@ import androidx.test.core.app.ApplicationProvider
 import com.artear.networking.model.AndroidNetworking
 import com.artear.stevedore.stevedoreviews.TestUtils
 import com.artear.stevedore.stevedoreviews.TestUtils.Companion.log
-import com.artear.stevedore.stevedoreviews.repository.contract.api.ApiStevedore
+import com.artear.stevedore.stevedoreviews.repository.contract.action.Action
+import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.contract.domain.StevedoreRepository
 import com.artear.stevedore.stevedoreviews.repository.impl.domain.StevedoreRepositoryImpl
 import com.artear.stevedore.stevedoreviews.repository.model.Stevedore
@@ -42,10 +43,13 @@ class StevedoreRepositoryImplTest {
     private val mediaType = MediaType.parse("application/json")
 
     @Mock
-    lateinit var api: ApiStevedore
+    lateinit var api: StevedoreApi
 
     @Mock
     lateinit var call: Call<Stevedore>
+
+    @Mock
+    lateinit var action: Action
 
     @Before
     fun setUp() {
@@ -54,8 +58,9 @@ class StevedoreRepositoryImplTest {
         Timber.plant(mock(Timber.Tree::class.java))
 
         androidNetworking = spy(AndroidNetworking(ApplicationProvider.getApplicationContext()))
-        stevedoreRepository = StevedoreRepositoryImpl(api, dynamicEndpoint, androidNetworking)
+        stevedoreRepository = StevedoreRepositoryImpl(action, api, androidNetworking)
 
+        `when`(action()).thenReturn(dynamicEndpoint)
         `when`(api.getStevedore(dynamicEndpoint)).thenReturn(call)
         `when`(call.request()).thenReturn(request)
     }

@@ -14,16 +14,26 @@ import com.artear.stevedore.articleitem.ArticleOnClickListener
 import com.artear.stevedore.articleitem.ArticleShaper
 import com.artear.stevedore.banneritem.DfpItemAdapter
 import com.artear.stevedore.banneritem.DfpShaper
+import com.artear.stevedore.categoryitem.presentation.CategoryAdapter
+import com.artear.stevedore.categoryitem.presentation.CategoryShaper
+import com.artear.stevedore.headeritem.presentation.HeaderShaper
+import com.artear.stevedore.mediaitem.presentation.MediaItemAdapter
+import com.artear.stevedore.mediaitem.presentation.MediaItemShaper
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
 import com.artear.stevedore.stevedoreitems.repository.model.link.Link
 import com.artear.stevedore.stevedoreviews.GetStevedore
 import com.artear.stevedore.stevedoreviews.presentation.StevedoreRegister
 import com.artear.stevedore.stevedoreviews.presentation.adapter.StevedoreAdapter
-import com.artear.stevedore.stevedoreviews.repository.contract.api.ApiStevedore
+import com.artear.stevedore.stevedoreviews.repository.contract.action.ApiAction
+import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.impl.domain.StevedoreRepositoryImpl
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreHelper.getDefaultGsonMaker
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreProvider
 import kotlinx.android.synthetic.main.main_activity.*
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.create
+import timber.log.Timber
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,48 +47,64 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
 
-        val urlBase = getBaseUrl()
-        val api = getApi(urlBase)
-        val coverEndpoint = urlBase.toString() + "cover"
+        val api = getApi()
+        val recipesApi = Retrofit.Builder()
+                .baseUrl(getBaseUrl().toString())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create<RecipesApi>()
 
-        val stevedoreRepository = StevedoreRepositoryImpl(api, coverEndpoint, androidNetworking)
+        val action = ApiAction(RecipesByCategoryEP(recipesApi))
 
-        val onItemClickHandler = object : ArticleOnClickListener {
+        val stevedoreRepository = StevedoreRepositoryImpl(action, api, androidNetworking)
+
+        val onArticleItemClickHandler = object : ArticleOnClickListener {
             override fun onArticleClick(link: Link) {
             }
         }
 
-        val adapters = listOf(ArticleItemAdapter(onItemClickHandler), DfpItemAdapter())
+        val adapters = listOf(
+                ArticleItemAdapter(onArticleItemClickHandler),
+                DfpItemAdapter(),
+                CategoryAdapter(),
+                MediaItemAdapter()
+        )
 
         recyclerTest.adapter = StevedoreAdapter(adapters)
         recyclerTest.layoutManager = LinearLayoutManager(this)
 
         val stevedoreRegister = StevedoreRegister.Builder()
+                .addHeader(HeaderShaper())
                 .add(BoxType.ARTICLE, ArticleShaper())
                 .add(BoxType.DFP, DfpShaper())
+                .add(BoxType.CATEGORY, CategoryShaper())
+                .add(BoxType.MEDIA, MediaItemShaper())
                 .build()
 
         val getStevedore = GetStevedore(stevedoreRegister, stevedoreRepository)
 
-        getStevedore(SimpleReceiver({
+        val getRecipes = GetRecipesByCategory(getStevedore)
+
+        getRecipes(88, SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
             (recyclerTest.adapter as StevedoreAdapter).setData(it)
             messageHello.visibility = GONE
         }, {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
+            Timber.e("Error: %s", it.message)
         }))
     }
 
     private fun getBaseUrl(): BaseUrl {
         return BaseUrlBuilder()
                 .addScheme("https")
-                .addHost("cucinare.tv/wp-json/cucinare")
-                .addVersion("v1")
+                .addHost("stg.cucinare.tv/wp-json/cucinare")
+                .addVersion("1.0")
                 .build()
     }
 
-    private fun getApi(baseUrl: BaseUrl): ApiStevedore {
-        return ApiStevedoreProvider(baseUrl, getDefaultGsonMaker()).invoke()
+    private fun getApi(): StevedoreApi {
+        return ApiStevedoreProvider(getBaseUrl(), getDefaultGsonMaker()).invoke()
 
     }
 
