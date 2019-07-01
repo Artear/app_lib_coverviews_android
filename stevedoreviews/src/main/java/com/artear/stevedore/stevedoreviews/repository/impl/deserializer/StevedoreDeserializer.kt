@@ -16,7 +16,9 @@
 package com.artear.stevedore.stevedoreviews.repository.impl.deserializer
 
 import com.artear.stevedore.stevedoreitems.repository.getModelList
+import com.artear.stevedore.stevedoreitems.repository.getSafeModelObject
 import com.artear.stevedore.stevedoreviews.repository.model.Container
+import com.artear.stevedore.stevedoreviews.repository.model.Paging
 import com.artear.stevedore.stevedoreviews.repository.model.Stevedore
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
@@ -28,12 +30,14 @@ class StevedoreDeserializer : JsonDeserializer<Stevedore> {
 
     companion object {
         const val CONTAINERS = "containers"
+        const val PAGING = "paging"
     }
 
     override fun deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): Stevedore {
         Timber.d("Start Stevedore Deserialize")
         val containers = json.getModelList(CONTAINERS, context, Container::class)
-        return Stevedore(containers)
+        val paging = json.getSafeModelObject(PAGING, context, Paging::class.java)
+        return Stevedore(containers, paging)
     }
 
 }

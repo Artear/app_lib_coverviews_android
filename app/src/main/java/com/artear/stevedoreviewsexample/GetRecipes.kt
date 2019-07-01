@@ -1,15 +1,15 @@
 package com.artear.stevedoreviewsexample
 
-import com.artear.domain.coroutine.UseCase
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
 import com.artear.stevedore.stevedoreviews.GetStevedore
+import com.artear.stevedore.stevedoreviews.PagingUseCase
+import com.artear.stevedore.stevedoreviews.presentation.PageParam
+import com.artear.stevedore.stevedoreviews.repository.model.Paging
 
 
-class GetRecipes(private val getStevedore: GetStevedore) : UseCase<Void, List<ArtearItem>>() {
+class GetRecipes(private val getStevedore: GetStevedore) : PagingUseCase<Void, List<ArtearItem>>() {
 
-    override suspend fun execute(param: Void?): List<ArtearItem> {
-        //opt 1 - action from constructor , action.param = param
-        // opt 2 - two use case for each function. getStevedore config a repository with api custom
+    override suspend fun execute(param: PageParam<Void>?): Pair<List<ArtearItem>, Paging?> {
         return getStevedore.execute(param)
     }
 

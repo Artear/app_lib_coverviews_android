@@ -5,17 +5,20 @@ import retrofit2.Call
 
 
 data class CoverEP(val coverApi: CoverApi) : EndpointProvider {
-    override fun endpoint(param: Any?) = coverApi.getCover().apiUrl()
+    override fun endpoint(param: Any?, queryMap: HashMap<String, String>): String {
+        return coverApi.getCover(queryMap).apiUrl()
+    }
 }
 
 data class RecipesEP(val recipesApi: RecipesApi) : EndpointProvider {
-    override fun endpoint(param: Any?) = recipesApi.getRecipes().apiUrl()
+    override fun endpoint(param: Any?, queryMap: HashMap<String, String>): String {
+        return recipesApi.getRecipes(queryMap).apiUrl()
+    }
 }
 
 data class RecipesByCategoryEP(val recipesApi: RecipesApi) : EndpointProvider {
-    override fun endpoint(param: Any?): String {
-        checkNotNull(param)
-        return recipesApi.getRecipesByCategory(param.toString()).apiUrl()
+    override fun endpoint(param: Any?, queryMap: HashMap<String, String>): String {
+        return recipesApi.getRecipesByCategory(param.toString(), queryMap).apiUrl()
     }
 }
 

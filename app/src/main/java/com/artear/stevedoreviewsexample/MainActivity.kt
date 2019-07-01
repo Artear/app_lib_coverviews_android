@@ -22,6 +22,7 @@ import com.artear.stevedore.mediaitem.presentation.MediaItemShaper
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
 import com.artear.stevedore.stevedoreitems.repository.model.link.Link
 import com.artear.stevedore.stevedoreviews.GetStevedore
+import com.artear.stevedore.stevedoreviews.presentation.PageParam
 import com.artear.stevedore.stevedoreviews.presentation.StevedoreRegister
 import com.artear.stevedore.stevedoreviews.presentation.adapter.StevedoreAdapter
 import com.artear.stevedore.stevedoreviews.repository.contract.action.ApiAction
@@ -85,9 +86,9 @@ class MainActivity : AppCompatActivity() {
 
         val getRecipes = GetRecipesByCategory(getStevedore)
 
-        getRecipes(88, SimpleReceiver({
+        getRecipes(PageParam(88, ""), SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-            (recyclerTest.adapter as StevedoreAdapter).setData(it)
+            (recyclerTest.adapter as StevedoreAdapter).setData(it.first)
             messageHello.visibility = GONE
         }, {
             Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()

@@ -20,4 +20,4 @@ import com.google.gson.annotations.JsonAdapter
 
 
 @JsonAdapter(StevedoreDeserializer::class)
-data class Stevedore(val containers: List<Container>)
+data class Stevedore(val containers: List<Container>, val paging : Paging?)
