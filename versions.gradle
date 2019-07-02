@@ -12,6 +12,7 @@ buildscript {
                         adsVersion: "17.2.1"
                 ],
                 artear             : [
+                        uiViewVersion        : "0.2.2",
                         domainVersion        : "0.0.7",
                         networkingVersion    : "0.0.4",
                         stevedoreItemsVersion: "0.2.5",
@@ -64,6 +65,7 @@ buildscript {
                         ads: "com.google.firebase:firebase-ads:${versionLib.firebase.adsVersion}"
                 ],
                 artear      : [
+                        ui            : "com.artear.ui:view:${versionLib.artear.uiViewVersion}",
                         domain        : "com.artear.domain:domain:${versionLib.artear.domainVersion}",
                         networking    : "com.artear.networking:networking:${versionLib.artear.networkingVersion}",
                         stevedoreItems: "com.artear.stevedore:stevedoreitems:${versionLib.artear.stevedoreItemsVersion}",

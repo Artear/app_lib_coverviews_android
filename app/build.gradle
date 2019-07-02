@@ -62,6 +62,7 @@ dependencies {
     implementation lib.kotlin.standardLib
 
     //Artear
+    implementation lib.artear.ui
     implementation lib.artear.networking
     implementation lib.artear.domain
     implementation lib.artear.stevedoreItems

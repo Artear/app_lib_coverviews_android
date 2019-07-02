@@ -8,7 +8,9 @@ class ApiAction(private val endpointProvider: EndpointProvider) : Action() {
     override fun invoke(param: Any?): String {
         return if (param is PageParam<*>) {
             val queryMap = hashMapOf<String, String>()
-            queryMap["before"] = param.page
+            param.page?.let {
+                queryMap["before"] = it
+            }
             param.size?.let {
                 queryMap["size"] = it.toString()
             }
