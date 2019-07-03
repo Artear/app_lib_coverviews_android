@@ -12,7 +12,7 @@ class ApiAction(private val endpointProvider: EndpointProvider) : Action() {
                 queryMap["before"] = it
             }
             param.size?.let {
-                queryMap["size"] = it.toString()
+                queryMap["count"] = it.toString()
             }
             endpointProvider.endpoint(param.param, queryMap)
         } else {
