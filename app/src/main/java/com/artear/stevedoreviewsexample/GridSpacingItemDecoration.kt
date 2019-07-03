@@ -58,7 +58,7 @@ class GridSpacingItemDecoration : RecyclerView.ItemDecoration() {
 
 
     private fun getItemDecorations(parent: RecyclerView, position: Int): Detail {
-        Log.e("decoration", "position" + position + " found: " + (itemDetailsMap[position] == null))
+        Log.e("decoration", "position" + position + " found: " + (itemDetailsMap[position] != null))
         if (itemDetailsMap[position] == null) {
             itemDetailsMap[position] = setItemDecorations(parent, position)
         }

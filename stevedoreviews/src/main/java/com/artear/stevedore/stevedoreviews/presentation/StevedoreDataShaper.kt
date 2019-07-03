@@ -21,6 +21,7 @@ import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecorati
 import com.artear.stevedore.stevedoreviews.repository.model.Container
 import com.artear.stevedore.stevedoreviews.repository.model.ContainerStyle
 import com.artear.stevedore.stevedoreviews.repository.model.Stevedore
+import kotlin.math.roundToInt
 
 class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
         DataShaper<Stevedore, List<ArtearItem>> {
@@ -42,6 +43,8 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
                 val shaperMap = stevedoreRegister.shaperMap
                 if (shaperMap.containsKey(box.type)) {
                     val artearItem = shaperMap.getValue(box.type).transform(box)
+
+
                     decorateArtearItem(artearItem, container, list)
                 }
             }
@@ -60,19 +63,62 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
     private fun getArtearItemDecoration(containerStyle: ContainerStyle): ArtearItemDecoration {
         val artearItemDecoration = ArtearItemDecoration()
 
-        //TODO: This is where all the magic happens
+        val halfGap = containerStyle.items.gap.roundToInt() / 2
 
+        var marginLeft = 0
+        var marginRight = 0
+        var marginTop = halfGap
+        var marginBottom = halfGap
 
+        //TODO: check backgrounds ascending
         containerStyle.background?.color?.let {
             artearItemDecoration.backgroundColor = it.light
         }
 
 
-        artearItemDecoration.marginBottom = containerStyle.margin.rect.bottom
-        artearItemDecoration.marginLeft = containerStyle.margin.rect.left
-        artearItemDecoration.marginTop = containerStyle.margin.rect.top
-        artearItemDecoration.marginRight = containerStyle.margin.rect.right
+        if (isFullWidth()) {
+            marginLeft = containerStyle.margin.rect.left + containerStyle.items.margin.rect.left
+            marginRight = containerStyle.margin.rect.right + containerStyle.items.margin.rect.right
+        } else {
+            if (isLeftItem()) {
+                marginLeft = containerStyle.margin.rect.left + containerStyle.items.margin.rect.left
+                marginRight = containerStyle.margin.rect.right + (halfGap)
+            } else {
+                marginRight = containerStyle.margin.rect.right + containerStyle.items.margin.rect.right
+                marginLeft = containerStyle.margin.rect.left + (halfGap)
+            }
+        }
 
-        return ArtearItemDecoration()
+        if (isTop()) {
+            marginTop = containerStyle.margin.rect.top + containerStyle.items.margin.rect.top
+        }
+
+        if (isBottom()) {
+            marginBottom = containerStyle.margin.rect.bottom + containerStyle.items.margin.rect.bottom
+        }
+
+        artearItemDecoration.marginBottom = marginBottom
+        artearItemDecoration.marginLeft = marginLeft
+        artearItemDecoration.marginRight = marginRight
+        artearItemDecoration.marginTop = marginTop
+
+
+        return artearItemDecoration
+    }
+
+    private fun isBottom(): Boolean {
+        return true
+    }
+
+    private fun isLeftItem(): Boolean {
+        return true
+    }
+
+    private fun isTop(): Boolean {
+        return true
+    }
+
+    private fun isFullWidth(): Boolean {
+        return false
     }
 }
