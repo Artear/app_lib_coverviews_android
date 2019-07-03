@@ -9,13 +9,15 @@ import com.artear.domain.coroutine.SimpleReceiver
 import com.artear.networking.model.AndroidNetworking
 import com.artear.networking.url.BaseUrl
 import com.artear.networking.url.BaseUrlBuilder
-import com.artear.stevedore.articleitem.ArticleItemAdapter
-import com.artear.stevedore.articleitem.ArticleOnClickListener
-import com.artear.stevedore.articleitem.ArticleShaper
-import com.artear.stevedore.banneritem.DfpItemAdapter
-import com.artear.stevedore.banneritem.DfpShaper
+import com.artear.stevedore.articleitem.presentation.ArticleItemAdapter
+import com.artear.stevedore.articleitem.presentation.ArticleItemShaper
+import com.artear.stevedore.articleitem.presentation.ArticleOnClickListener
+import com.artear.stevedore.banneritem.presentation.DfpItemAdapter
+import com.artear.stevedore.banneritem.presentation.DfpShaper
 import com.artear.stevedore.categoryitem.presentation.CategoryAdapter
+import com.artear.stevedore.categoryitem.presentation.CategoryOnClickListener
 import com.artear.stevedore.categoryitem.presentation.CategoryShaper
+import com.artear.stevedore.headeritem.presentation.HeaderItemAdapter
 import com.artear.stevedore.headeritem.presentation.HeaderShaper
 import com.artear.stevedore.mediaitem.presentation.MediaItemAdapter
 import com.artear.stevedore.mediaitem.presentation.MediaItemShaper
@@ -62,12 +64,18 @@ class MainActivity : AppCompatActivity() {
             override fun onArticleClick(link: Link) {
             }
         }
+        val onCategoryItemClickHandler = object : CategoryOnClickListener {
+            override fun onCategoryClick(link: Link) {
+
+            }
+        }
 
         val adapters = listOf(
                 ArticleItemAdapter(onArticleItemClickHandler),
                 DfpItemAdapter(),
-                CategoryAdapter(),
-                MediaItemAdapter()
+                CategoryAdapter(onCategoryItemClickHandler),
+                MediaItemAdapter(),
+                HeaderItemAdapter()
         )
 
         recyclerTest.adapter = StevedoreAdapter(adapters)
@@ -75,7 +83,7 @@ class MainActivity : AppCompatActivity() {
 
         val stevedoreRegister = StevedoreRegister.Builder()
                 .addHeader(HeaderShaper())
-                .add(BoxType.ARTICLE, ArticleShaper())
+                .add(BoxType.ARTICLE, ArticleItemShaper())
                 .add(BoxType.DFP, DfpShaper())
                 .add(BoxType.CATEGORY, CategoryShaper())
                 .add(BoxType.MEDIA, MediaItemShaper())
@@ -84,6 +92,8 @@ class MainActivity : AppCompatActivity() {
         val getStevedore = GetStevedore(stevedoreRegister, stevedoreRepository)
 
         val getRecipes = GetRecipesByCategory(getStevedore)
+
+        recyclerTest.addItemDecoration(GridSpacingItemDecoration())
 
         getRecipes(88, SimpleReceiver({
             Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()

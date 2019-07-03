@@ -12,16 +12,22 @@ buildscript {
                         adsVersion: "17.2.1"
                 ],
                 artear             : [
-                        domainVersion        : "0.0.7",
+                        toolsVersion         : "0.0.19",
+
                         networkingVersion    : "0.0.4",
-                        stevedoreItemsVersion: "0.2.5",
-                        articleItemVersion   : "0.0.6",
-                        bannerItemVersion    : "0.0.7",
-                        categoryItemVersion  : "0.0.2",
-                        headerItemVersion    : "0.0.4",
-                        mediaItemVersion     : "0.0.2",
-                        toolsVersion         : "0.0.19"
+                        domainVersion        : "0.0.8",
+                        stevedoreItemsVersion: "0.2.9",
+
+
+                        articleItemVersion   : "0.0.8",
+                        bannerItemVersion    : "0.0.8",
+                        categoryItemVersion  : "0.0.4",
+                        headerItemVersion    : "0.0.5",
+                        mediaItemVersion     : "0.0.3"
+
                 ],
+
+
                 espresso           : [
                         coreVersion: "3.2.0"
                 ],

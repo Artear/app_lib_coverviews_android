@@ -17,6 +17,9 @@ package com.artear.stevedore.stevedoreviews.presentation
 
 import com.artear.domain.coroutine.DataShaper
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
+import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecoration
+import com.artear.stevedore.stevedoreviews.repository.model.Container
+import com.artear.stevedore.stevedoreviews.repository.model.ContainerStyle
 import com.artear.stevedore.stevedoreviews.repository.model.Stevedore
 
 class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
@@ -31,9 +34,7 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
             container.header?.let { header ->
                 stevedoreRegister.headerShaper?.let { shaper ->
                     val artearItem = shaper.transform(header)
-                    artearItem?.let {
-                        list.add(it)
-                    }
+                    decorateArtearItem(artearItem, container, list)
                 }
             }
 
@@ -41,13 +42,37 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
                 val shaperMap = stevedoreRegister.shaperMap
                 if (shaperMap.containsKey(box.type)) {
                     val artearItem = shaperMap.getValue(box.type).transform(box)
-                    artearItem?.let {
-                        list.add(it)
-                    }
+                    decorateArtearItem(artearItem, container, list)
                 }
             }
         }
 
         return list
+    }
+
+    private fun decorateArtearItem(artearItem: ArtearItem?, container: Container, list: MutableList<ArtearItem>) {
+        artearItem?.let {
+            artearItem.artearItemDecoration = getArtearItemDecoration(container.style)
+            list.add(it)
+        }
+    }
+
+    private fun getArtearItemDecoration(containerStyle: ContainerStyle): ArtearItemDecoration {
+        val artearItemDecoration = ArtearItemDecoration()
+
+        //TODO: This is where all the magic happens
+
+
+        containerStyle.background?.color?.let {
+            artearItemDecoration.backgroundColor = it.light
+        }
+
+
+        artearItemDecoration.marginBottom = containerStyle.margin.rect.bottom
+        artearItemDecoration.marginLeft = containerStyle.margin.rect.left
+        artearItemDecoration.marginTop = containerStyle.margin.rect.top
+        artearItemDecoration.marginRight = containerStyle.margin.rect.right
+
+        return ArtearItemDecoration()
     }
 }
