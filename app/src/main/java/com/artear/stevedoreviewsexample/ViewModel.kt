@@ -12,10 +12,11 @@ class ViewModel : DynamicViewModel() {
 
     val list by lazy { newListData<ArtearItem>() }
     private val paging by lazy { newData<Paging>() }
+    val refresh by lazy { newData<Boolean>() }
 
     private val receiver = SimpleReceiver(::onSuccess, ::defaultError)
 
-    fun loadByCategory(categoryId: Int, getRecipes: GetRecipesByCategory) {
+    fun loadByCategory(categoryId: Int, getRecipes: GetRecipesByCategory) = requestLoading {
 
         val param = paging.value?.cursors?.before?.let {
             PageParam(categoryId, it)
@@ -24,12 +25,24 @@ class ViewModel : DynamicViewModel() {
         getRecipes(param, receiver)
     }
 
-    fun load(getRecipes : GetRecipes){
-        val param = paging.value?.cursors?.before?.let {
-            PageParam<Void>(page = it)
-        } ?: PageParam()
+    fun loadNext(getRecipes: GetRecipes) {
+        if (state.value != State.Loading) {
+            paging.value?.cursors?.before?.let {
+                requestLoading {
+                    getRecipes(PageParam(page = it, size = 50), receiver)
+                }
+            }
+        }
+    }
 
-        getRecipes(param, receiver)
+    fun load(getRecipes: GetRecipes) {
+        getRecipes.dispose()
+        requestLoading {
+            getRecipes(PageParam(), SimpleReceiver({
+                if (!list.value.isNullOrEmpty()) refresh.value = true
+                onSuccess(it)
+            }, ::defaultError))
+        }
     }
 
     private fun onSuccess(data: Pair<List<ArtearItem>, Paging?>) {

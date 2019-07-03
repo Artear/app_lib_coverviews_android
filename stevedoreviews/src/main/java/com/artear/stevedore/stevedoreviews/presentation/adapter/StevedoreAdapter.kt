@@ -28,10 +28,14 @@ class StevedoreAdapter(adapters: List<ItemAdapter<*>>) : SpanContentAdapter(2) {
         adapters.forEach { itemAdapterManager.addAdapter(it) }
     }
 
-    fun setData(data: List<ArtearItem>) {
-        list.clear()
+    fun addData(data: List<ArtearItem>) {
         list.addAll(data)
         notifyDataSetChanged()
+    }
+
+    override fun clear(){
+        super.clear()
+        list.clear()
     }
 
 }

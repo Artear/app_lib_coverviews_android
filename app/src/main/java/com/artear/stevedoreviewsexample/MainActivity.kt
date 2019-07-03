@@ -20,6 +20,7 @@ import com.artear.stevedore.categoryitem.presentation.CategoryShaper
 import com.artear.stevedore.headeritem.presentation.HeaderShaper
 import com.artear.stevedore.mediaitem.presentation.MediaItemAdapter
 import com.artear.stevedore.mediaitem.presentation.MediaItemShaper
+import com.artear.stevedore.stevedoreitems.presentation.adapter.ContentAdapter
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
 import com.artear.stevedore.stevedoreitems.repository.model.link.Link
@@ -97,11 +98,15 @@ class MainActivity : ArtearActivity() {
 
         val listener = object : EndlessRecyclerViewScrollListener(recyclerTest.layoutManager!!) {
             override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-                viewModel.load(getRecipes)
+                viewModel.loadNext(getRecipes)
             }
         }
 
         recyclerTest.addOnScrollListener(listener)
+
+        swipeRefreshLayout.setOnRefreshListener {
+            viewModel.load(getRecipes)
+        }
 
         viewModel.list.observe(this, Observer {
             onDataChanged(it)
@@ -111,12 +116,17 @@ class MainActivity : ArtearActivity() {
             uiStateViewModel.state.value = it
         })
 
+        viewModel.refresh.observe(this, Observer {
+            listener.resetState()
+            (recyclerTest.adapter as ContentAdapter).clear()
+        })
+
         viewModel.load(getRecipes)
     }
 
     private fun onDataChanged(it: List<ArtearItem>) {
         Toast.makeText(this, "Success", Toast.LENGTH_SHORT).show()
-        (recyclerTest.adapter as StevedoreAdapter).setData(it)
+        (recyclerTest.adapter as StevedoreAdapter).addData(it)
         messageHello.visibility = View.GONE
     }
 
@@ -126,6 +136,7 @@ class MainActivity : ArtearActivity() {
 
     override fun onSuccess() {
         super.onSuccess()
+        swipeRefreshLayout.isRefreshing = false
     }
 
     override fun onError(error: NestError) {

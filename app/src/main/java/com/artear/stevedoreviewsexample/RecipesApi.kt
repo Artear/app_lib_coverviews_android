@@ -8,7 +8,7 @@ import retrofit2.http.QueryMap
 
 interface RecipesApi {
 
-    @GET("recipes")
+    @GET("cucinaretv")
     fun getRecipes(@QueryMap queryParams: Map<String, String>): Call<Stevedore>
 
     @GET("recipes/{category}")
