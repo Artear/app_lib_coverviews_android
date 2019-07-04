@@ -36,6 +36,7 @@ android {
         versionCode vCode
         versionName libraryVersion
         multiDexEnabled true
+        vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {

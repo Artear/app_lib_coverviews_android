@@ -1,5 +1,6 @@
 package com.artear.stevedoreviewsexample
 
+import androidx.lifecycle.MutableLiveData
 import com.artear.domain.coroutine.SimpleReceiver
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
 import com.artear.stevedore.stevedoreviews.presentation.PageParam
@@ -11,10 +12,10 @@ import com.artear.ui.viewmodel.DynamicViewModel
 class ViewModel : DynamicViewModel() {
 
     val list by lazy { newListData<ArtearItem>() }
-    private val paging by lazy { newData<Paging>() }
-    val refresh by lazy { newData<Boolean>() }
+    val refreshed by lazy { newData<Boolean>() }
 
-    private val receiver = SimpleReceiver(::onSuccess, ::defaultError)
+    val pagingState by lazy { newData<State>() }
+    private val paging by lazy { newData<Paging>() }
 
     fun loadByCategory(categoryId: Int, getRecipes: GetRecipesByCategory) = requestLoading {
 
@@ -22,15 +23,19 @@ class ViewModel : DynamicViewModel() {
             PageParam(categoryId, it)
         } ?: PageParam(categoryId)
 
-        getRecipes(param, receiver)
+        getRecipes(param, SimpleReceiver({ onSuccess(it, state) }, ::defaultError))
     }
 
     fun loadNext(getRecipes: GetRecipes) {
-        if (state.value != State.Loading) {
+        if (pagingState.value != State.Loading) {
             paging.value?.cursors?.before?.let {
-                requestLoading {
-                    getRecipes(PageParam(page = it, size = 50), receiver)
-                }
+                pagingState.value = State.Loading
+                val param = PageParam<Void>(page = it, size = 50)
+                getRecipes(param, SimpleReceiver({ result ->
+                    onSuccess(result, pagingState)
+                }, { error ->
+                    pagingState.value = State.Error(error)
+                }))
             }
         }
     }
@@ -39,20 +44,16 @@ class ViewModel : DynamicViewModel() {
         getRecipes.dispose()
         requestLoading {
             getRecipes(PageParam(), SimpleReceiver({
-                if (!list.value.isNullOrEmpty()) refresh.value = true
-                onSuccess(it)
+                if (!list.value.isNullOrEmpty()) refreshed.value = true
+                onSuccess(it, state)
             }, ::defaultError))
         }
     }
 
-    private fun onSuccess(data: Pair<List<ArtearItem>, Paging?>) {
+    private fun onSuccess(data: Pair<List<ArtearItem>, Paging?>, state: MutableLiveData<State>) {
         list.value = data.first
         paging.value = data.second
         state.value = State.Success
     }
 
-    override fun onCleared() {
-        super.onCleared()
-
-    }
 }
