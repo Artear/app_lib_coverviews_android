@@ -4,9 +4,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import timber.log.Timber
 
 
 abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener {
+    private var loggerOn: Boolean = false
     // The minimum amount of items to have below your current scroll position
     // before loading more.
     private var visibleThreshold = 5
@@ -96,15 +98,30 @@ abstract class EndlessRecyclerViewScrollListener : RecyclerView.OnScrollListener
             previousTotalItemCount = totalItemCount
         }
 
+        val message = logScrollMessage(lastVisibleItemPosition, totalItemCount)
         // If it isn’t currently loading, we check to see if we have breached
-        // the visibleThreshold and need to reload more data.
+        // the visibleThreshold and ne ed to reload more data.
         // If we do need to reload some more data, we execute onLoadMore to fetch the data.
         // threshold should reflect how many total columns there are too
         if (!loading && lastVisibleItemPosition + visibleThreshold > totalItemCount) {
+            if (loggerOn) Timber.d("$message Inside! Dispatch onLoadMore")
             currentPage++
             onLoadMore(currentPage, totalItemCount, view)
             loading = true
         }
+    }
+
+    private fun logScrollMessage(lastVisibleItemPosition: Int, totalItemCount: Int): String? {
+        var message: String? = null
+        if (loggerOn) {
+            message = "Scroll - Before onLoadMore - vars = [loading = $loading, " +
+                    "lastVisibleItemPosition = $lastVisibleItemPosition, " +
+                    "visibleThreshold = $visibleThreshold, " +
+                    "sum = ${lastVisibleItemPosition + visibleThreshold}, " +
+                    "totalItemCount = $totalItemCount]"
+            Timber.d(message)
+        }
+        return message
     }
 
     // Call this method whenever performing new searches
