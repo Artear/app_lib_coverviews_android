@@ -3,6 +3,7 @@ package com.artear.stevedoreviewsexample
 import androidx.lifecycle.MutableLiveData
 import com.artear.domain.coroutine.SimpleReceiver
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
+import com.artear.stevedore.stevedoreitems.presentation.model.ArtearSection
 import com.artear.stevedore.stevedoreviews.presentation.PageParam
 import com.artear.stevedore.stevedoreviews.repository.model.Paging
 import com.artear.ui.model.State
@@ -44,14 +45,23 @@ class ViewModel : DynamicViewModel() {
         getRecipes.dispose()
         requestLoading {
             getRecipes(PageParam(), SimpleReceiver({
-                if (!list.value.isNullOrEmpty()) refreshed.value = true
+                if (!list.value.isNullOrEmpty()) {
+                    refreshed.value = true
+                }
                 onSuccess(it, state)
             }, ::defaultError))
         }
     }
 
     private fun onSuccess(data: Pair<List<ArtearItem>, Paging?>, state: MutableLiveData<State>) {
-        list.value = data.first
+
+        val newList = mutableListOf<ArtearItem>().apply { addAll(data.first) }
+
+        data.second?.cursors?.before?.let {
+            newList.add(ArtearItem(LoadingData(), ArtearSection()))
+        }
+
+        list.value = newList
         paging.value = data.second
         state.value = State.Success
     }

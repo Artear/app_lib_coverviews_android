@@ -22,7 +22,6 @@ import com.artear.stevedore.mediaitem.presentation.MediaItemAdapter
 import com.artear.stevedore.mediaitem.presentation.MediaItemShaper
 import com.artear.stevedore.stevedoreitems.presentation.adapter.ContentAdapter
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
-import com.artear.stevedore.stevedoreitems.presentation.model.ArtearSection
 import com.artear.stevedore.stevedoreitems.repository.model.box.BoxType
 import com.artear.stevedore.stevedoreitems.repository.model.link.Link
 import com.artear.stevedore.stevedoreviews.GetStevedore
@@ -37,6 +36,7 @@ import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedore
 import com.artear.tools.error.NestError
 import com.artear.ui.base.ArtearActivity
 import com.artear.ui.model.State
+import com.artear.ui.views.error.ErrorCustomizer
 import kotlinx.android.synthetic.main.main_activity.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -45,6 +45,7 @@ import timber.log.Timber
 
 class MainActivity : ArtearActivity() {
 
+    private lateinit var errorPagingCustomizer: ErrorCustomizer
     private val androidNetworking by lazy { AndroidNetworking(this) }
     private lateinit var viewModel: ViewModel
     private lateinit var getRecipes: GetRecipes
@@ -140,6 +141,10 @@ class MainActivity : ArtearActivity() {
             }
         })
 
+
+        errorPagingCustomizer = ErrorCustomizer()
+
+
         viewModel.load(getRecipes)
     }
 
@@ -159,27 +164,25 @@ class MainActivity : ArtearActivity() {
 
     override fun onError(error: NestError) {
         super.onError(error)
+        swipeRefreshLayout.isRefreshing = false
         Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
         Timber.e("Error: %s", error.message)
     }
 
     private fun onNextLoading() {
-        //TODO //Add or change to loading if exist
-        val contentAdapter = (recyclerTest.adapter as ContentAdapter)
-        val position = contentAdapter.list.indexOfFirst { it.model is LoadingData }
-
-        if (position == -1) {
-            contentAdapter.list.add(ArtearItem(LoadingData(), ArtearSection()))
-            contentAdapter.notifyDataSetChanged()
-        } else {
-            val loadingItemAdapter = contentAdapter.getItemAdapter(position) as LoadingItemAdapter
-            val loadingViewHolder = loadingItemAdapter.viewHolder as LoadingViewHolder
-            loadingViewHolder.setLoading()
+        recyclerTest.post {
+            val contentAdapter = (recyclerTest.adapter as ContentAdapter)
+            val position = contentAdapter.list.indexOfFirst { it.model is LoadingData }
+            if (position != -1) {
+                val loadingItemAdapter = contentAdapter.getItemAdapter(position) as LoadingItemAdapter
+                val loadingViewHolder = loadingItemAdapter.viewHolder as? LoadingViewHolder
+                loadingViewHolder?.setLoading()
+            }
         }
     }
 
     private fun onNextSuccess() {
-        //TODO //Remove from list
+        //Remove from list
         val contentAdapter = (recyclerTest.adapter as ContentAdapter)
         contentAdapter.list.indexOfFirst { it.model is LoadingData }
                 .let { contentAdapter.list.removeAt(it) }
@@ -187,7 +190,9 @@ class MainActivity : ArtearActivity() {
     }
 
     private fun onNextError(error: NestError) {
-        //TODO //setErrorType to object list
+        //setErrorType to object list
+//        swipeRefreshLayout.isRefreshing = false
+
         val contentAdapter = (recyclerTest.adapter as ContentAdapter)
         val position = contentAdapter.list.indexOfFirst { it.model is LoadingData }
         val loadingItemAdapter = contentAdapter.getItemAdapter(position) as LoadingItemAdapter

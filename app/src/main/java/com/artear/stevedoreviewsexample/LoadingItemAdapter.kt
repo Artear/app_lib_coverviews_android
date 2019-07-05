@@ -21,7 +21,8 @@ class LoadingItemAdapter(private val listener: PagingErrorView.OnReloadClickList
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(idLayout ?: R.layout.loading_paging, parent, false)
-        return viewHolder ?: LoadingViewHolder(view, listener)
+        if (viewHolder == null) viewHolder = LoadingViewHolder(view, listener)
+        return viewHolder!!
     }
 
     override fun onBindViewHolderBase(holder: ArtearViewHolder<LoadingData>, model: LoadingData,
