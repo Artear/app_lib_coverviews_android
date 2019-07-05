@@ -15,10 +15,12 @@
  */
 package com.artear.stevedore.stevedoreviews.repository.impl.deserializer.block
 
-import com.artear.stevedore.articleitem.BoxDataArticle
-import com.artear.stevedore.banneritem.BoxDataDfp
+
+import com.artear.stevedore.articleitem.repository.BoxDataArticle
+import com.artear.stevedore.banneritem.repository.BoxDataDfp
 import com.artear.stevedore.categoryitem.repository.BoxDataCategory
 import com.artear.stevedore.mediaitem.repository.BoxDataMedia
+
 import com.artear.stevedore.stevedoreitems.repository.DeserializerUtil.Companion.getDataFromJson
 import com.artear.stevedore.stevedoreitems.repository.DeserializerUtil.Companion.getStyleFromJson
 import com.artear.stevedore.stevedoreitems.repository.DeserializerUtil.Companion.getTypeFromJson

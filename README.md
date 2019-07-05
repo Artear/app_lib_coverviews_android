@@ -3,6 +3,11 @@ Stevedore Views Android Library
 
 Stevedore Library Does Manage Recycler Awesomely
 
+Version
+--------
+
+[![Latest Version](https://api.bintray.com/packages/artearmobile/Android/Stevedore-Views/images/download.svg)](https://bintray.com/artearmobile/Android/Stevedore-Views/_latestVersion)
+
 Download
 --------
 via Maven:
@@ -10,12 +15,12 @@ via Maven:
 <dependency>
   <groupId>com.artear.stevedore</groupId>
   <artifactId>stevedoreviews</artifactId>
-  <version>0.0.9</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-implementation "com.artear.stevedore:stevedoreviews:0.0.9"
+implementation "com.artear.stevedore:stevedoreviews:0.1.0"
 ```
 Stevedore views Lib requires at minimum Java 7 or Android 4.1.
 
