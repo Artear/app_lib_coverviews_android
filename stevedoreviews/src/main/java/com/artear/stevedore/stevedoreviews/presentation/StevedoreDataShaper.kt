@@ -51,8 +51,8 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
 
                         val marginLeft = rectHeader.left + rectContainer.left
                         val marginRight = rectHeader.right + rectContainer.right
-                        val marginTop = rectHeader.left + rectContainer.left
-                        val marginBottom = rectHeader.left + rectContainer.left
+                        val marginTop = rectHeader.top + rectContainer.top
+                        val marginBottom = rectHeader.bottom + rectContainer.bottom
 
                         artearItem.artearItemDecoration = ArtearItemDecoration(
                                 marginTop = marginTop,
