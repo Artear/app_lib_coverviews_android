@@ -38,7 +38,7 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
         val list: MutableList<ArtearItem> = mutableListOf()
 
         input.containers.forEach { container ->
-
+            isTop = true
             halfGap = container.style.items.gap.roundToInt() / 2
 
             container.header?.let { header ->
@@ -118,12 +118,7 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
                     result = true
                 }
             }
-            RIGHT -> {
-                if (index == size - 1) {
-                    result = true
-                }
-            }
-            DOUBLE -> {
+            RIGHT, DOUBLE -> {
                 if (index == size - 1) {
                     result = true
                 }
@@ -140,6 +135,7 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
             }
             else -> if (isRight) {
                 isTop = false
+                isRight = false
                 RIGHT
             } else {
                 isRight = true
