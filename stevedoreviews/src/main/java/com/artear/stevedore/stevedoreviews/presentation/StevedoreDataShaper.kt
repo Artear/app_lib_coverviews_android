@@ -18,10 +18,9 @@ package com.artear.stevedore.stevedoreviews.presentation
 import com.artear.domain.coroutine.DataShaper
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecoration
-import com.artear.stevedore.stevedoreitems.presentation.model.ArtearObject
-import com.artear.stevedore.stevedoreitems.presentation.model.ArtearStyle
 import com.artear.stevedore.stevedoreitems.repository.model.box.Box
 import com.artear.stevedore.stevedoreviews.presentation.GridSpacePositionEnum.*
+import com.artear.stevedore.stevedoreviews.presentation.model.EmptyItem
 import com.artear.stevedore.stevedoreviews.repository.model.Container
 import com.artear.stevedore.stevedoreviews.repository.model.Stevedore
 import kotlin.math.roundToInt
@@ -89,9 +88,9 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
                         )
                         list.add(it)
 
-                        if (isBottom && gridSpacePosition == LEFT) {
+                        if (isBottom && gridSpacePosition == LEFT &&
+                                index == container.items.size - 1) {
                             list.add(createEmptyItem(container))
-
                         }
                     }
                 }
@@ -101,7 +100,7 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
     }
 
     private fun createEmptyItem(container: Container): ArtearItem {
-        return ArtearItem(ArtearObject<ArtearStyle>(), getArtearItemDecoration(
+        return ArtearItem(EmptyItem(), getArtearItemDecoration(
                 container,
                 RIGHT,
                 isTop,
@@ -114,7 +113,7 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
         var result = false
         when (gridSpacePosition) {
             LEFT -> {
-                if (index == size - 2) {
+                if (index >= size - 2) {
                     result = true
                 }
             }
