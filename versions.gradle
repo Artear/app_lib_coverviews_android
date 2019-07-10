@@ -2,7 +2,7 @@ buildscript {
     ext {
         sdkVersion = 28
         buildToolsVersion = "28.0.3"
-        libraryVersion = "0.1.2"
+        libraryVersion = "0.1.3"
         versionLib = [
                 kotlinVersion      : '1.3.41',
                 android            : [
