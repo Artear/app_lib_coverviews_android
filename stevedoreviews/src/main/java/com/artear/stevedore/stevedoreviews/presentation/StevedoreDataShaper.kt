@@ -63,7 +63,6 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
                         container.style.background?.color?.let { color ->
                             artearItem.artearItemDecoration.backgroundColor = color.light
                         }
-
                         list.add(item)
                     }
                 }
@@ -78,6 +77,9 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
 
                     artearItem?.let {
                         val gridSpacePosition = getItemPosition(box)
+                        if (isTop && index > 0 && gridSpacePosition != RIGHT) {
+                            isTop = false
+                        }
                         val isBottom = isBottom(gridSpacePosition, index, container.items.size)
 
                         artearItem.artearItemDecoration = getArtearItemDecoration(
@@ -129,11 +131,9 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
     private fun getItemPosition(box: Box): GridSpacePositionEnum {
         return when {
             box.style.weight == 1f -> {
-                isTop = false
                 DOUBLE
             }
             else -> if (isRight) {
-                isTop = false
                 isRight = false
                 RIGHT
             } else {
