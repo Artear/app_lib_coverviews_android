@@ -50,14 +50,16 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
 
                         val marginLeft = rectHeader.left + rectContainer.left
                         val marginRight = rectHeader.right + rectContainer.right
-                        val marginTop = rectHeader.top + rectContainer.top
-                        val marginBottom = rectHeader.bottom + rectContainer.bottom
+                        val marginTop = rectContainer.top
+                        val paddingTop = rectHeader.top
+                        val paddingBottom = rectHeader.bottom
 
                         artearItem.artearItemDecoration = ArtearItemDecoration(
                                 marginTop = marginTop,
                                 marginLeft = marginLeft,
-                                marginBottom = marginBottom,
-                                marginRight = marginRight
+                                paddingBottom = paddingBottom,
+                                marginRight = marginRight,
+                                paddingTop = paddingTop
                         )
 
                         container.style.background?.color?.let { color ->
@@ -106,7 +108,7 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
                 container,
                 RIGHT,
                 isTop,
-                true
+                false
         ))
     }
 
@@ -150,51 +152,70 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
             isTop: Boolean,
             isBottom: Boolean
     ): ArtearItemDecoration {
-        val artearItemDecoration = ArtearItemDecoration()
-
         val marginLeft: Int
         val marginRight: Int
-        var marginTop = halfGap
-        var marginBottom = halfGap
+        var marginBottom = 0
+        var marginTop = 0
+        var paddingLeft = halfGap
+        var paddingRight = halfGap
+
+        var paddingTop = halfGap
+        var paddingBottom = halfGap
 
         val rectContainer = container.style.margin.rect
         val rectItems = container.style.items.margin.rect
 
-        container.style.background?.color?.let {
-            artearItemDecoration.backgroundColor = it.light
-        }
 
         when (position) {
             LEFT -> {
-                marginLeft = rectContainer.left + rectItems.left
-                marginRight = rectContainer.right + (halfGap)
+                marginLeft = rectContainer.left
+                paddingLeft = rectItems.left
+
+                marginRight = 0
+                paddingRight = halfGap
             }
             RIGHT -> {
-                marginRight = rectContainer.right + rectItems.right
-                marginLeft = rectContainer.left + (halfGap)
+                marginLeft = 0
+                paddingLeft = halfGap
+
+                marginRight = rectContainer.right
+                paddingRight = rectItems.right
             }
             DOUBLE -> {
-                marginLeft = rectContainer.left + rectItems.left
-                marginRight = rectContainer.right + rectItems.right
+                marginLeft = rectContainer.left
+                paddingLeft = rectItems.left
+
+                marginRight = rectContainer.right
+                paddingRight = rectItems.right
             }
         }
 
         if (isTop) {
-            marginTop = rectItems.top
+            paddingTop = rectItems.top
             if (container.header == null) {
-                marginTop += rectContainer.top
+                marginTop = rectContainer.top
             }
         }
 
         if (isBottom) {
-            marginBottom = rectContainer.bottom + rectItems.bottom
+            paddingBottom = rectItems.bottom
+            marginBottom = rectContainer.bottom
         }
 
-        artearItemDecoration.marginBottom = marginBottom
-        artearItemDecoration.marginLeft = marginLeft
-        artearItemDecoration.marginRight = marginRight
-        artearItemDecoration.marginTop = marginTop
 
+        val artearItemDecoration = ArtearItemDecoration(
+                paddingLeft = paddingLeft,
+                paddingTop = paddingTop,
+                paddingRight = paddingRight,
+                paddingBottom = paddingBottom,
+                marginLeft = marginLeft,
+                marginTop = marginTop,
+                marginRight = marginRight,
+                marginBottom = marginBottom
+        )
+        container.style.background?.color?.let {
+            artearItemDecoration.backgroundColor = it.light
+        }
 
         return artearItemDecoration
     }
