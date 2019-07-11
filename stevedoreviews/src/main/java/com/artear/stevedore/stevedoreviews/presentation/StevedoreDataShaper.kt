@@ -100,12 +100,15 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
         return list
     }
 
+    /**
+    Item Creator used when collections have odd double items
+     */
     private fun createEmptyItem(container: Container): ArtearItem {
         return ArtearItem(EmptyItem(), getArtearItemDecoration(
                 container,
                 RIGHT,
-                isTop,
-                false
+                isTop = false,
+                isBottom = true
         ))
     }
 
