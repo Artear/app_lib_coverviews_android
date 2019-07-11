@@ -16,7 +16,7 @@ buildscript {
 
                         networkingVersion    : "0.0.4",
                         domainVersion        : "0.0.8",
-                        stevedoreItemsVersion: "0.2.9",
+                        stevedoreItemsVersion: "0.2.10",
 
 
                         articleItemVersion   : "0.0.9",
