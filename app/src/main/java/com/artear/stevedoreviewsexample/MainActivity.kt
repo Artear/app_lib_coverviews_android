@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.artear.networking.model.AndroidNetworking
 import com.artear.networking.url.BaseUrl
 import com.artear.networking.url.BaseUrlBuilder
-import com.artear.stevedore.articleitem.ArticleItemAdapter
-import com.artear.stevedore.articleitem.ArticleOnClickListener
-import com.artear.stevedore.articleitem.ArticleShaper
-import com.artear.stevedore.banneritem.DfpItemAdapter
-import com.artear.stevedore.banneritem.DfpShaper
+import com.artear.stevedore.articleitem.presentation.ArticleItemAdapter
+import com.artear.stevedore.articleitem.presentation.ArticleItemShaper
+import com.artear.stevedore.articleitem.presentation.ArticleOnClickListener
+import com.artear.stevedore.banneritem.presentation.DfpItemAdapter
+import com.artear.stevedore.banneritem.presentation.DfpShaper
 import com.artear.stevedore.categoryitem.presentation.CategoryAdapter
+import com.artear.stevedore.categoryitem.presentation.CategoryOnClickListener
 import com.artear.stevedore.categoryitem.presentation.CategoryShaper
+import com.artear.stevedore.headeritem.presentation.HeaderItemAdapter
 import com.artear.stevedore.headeritem.presentation.HeaderShaper
 import com.artear.stevedore.mediaitem.presentation.MediaItemAdapter
 import com.artear.stevedore.mediaitem.presentation.MediaItemShaper
@@ -75,6 +77,11 @@ class MainActivity : ArtearActivity() {
             override fun onArticleClick(link: Link) {
             }
         }
+        val onCategoryItemClickHandler = object : CategoryOnClickListener {
+            override fun onCategoryClick(link: Link) {
+
+            }
+        }
 
         val pagingReloadListener = object : PagingErrorView.OnReloadClickListener {
             override fun onReload() {
@@ -85,17 +92,19 @@ class MainActivity : ArtearActivity() {
         val adapters = listOf(
                 ArticleItemAdapter(onArticleItemClickHandler),
                 DfpItemAdapter(),
-                CategoryAdapter(),
+                CategoryAdapter(onCategoryItemClickHandler),
                 MediaItemAdapter(),
+                HeaderItemAdapter(),
                 LoadingItemAdapter(pagingReloadListener)
         )
 
         recyclerTest.adapter = StevedoreAdapter(adapters)
         recyclerTest.layoutManager = LinearLayoutManager(this)
+        recyclerTest.addItemDecoration(GridSpacingItemDecoration())
 
         val stevedoreRegister = StevedoreRegister.Builder()
                 .addHeader(HeaderShaper())
-                .add(BoxType.ARTICLE, ArticleShaper())
+                .add(BoxType.ARTICLE, ArticleItemShaper())
                 .add(BoxType.DFP, DfpShaper())
                 .add(BoxType.CATEGORY, CategoryShaper())
                 .add(BoxType.MEDIA, MediaItemShaper())
