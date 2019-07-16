@@ -1,5 +1,6 @@
 package com.artear.stevedoreviewsexample
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Resources
 import android.graphics.drawable.Drawable
@@ -52,6 +53,7 @@ class PagingErrorView : ConstraintLayout, View.OnClickListener {
         }
     }
 
+    @SuppressLint("ResourceType")
     private fun updateViews(image: ErrorImage, message: ErrorMessage,
                             button: ErrorButton?) {
         errorImage.setImageDrawable(getDrawable(errorImage.context, image.resId))
@@ -59,6 +61,7 @@ class PagingErrorView : ConstraintLayout, View.OnClickListener {
         errorMessage.setTextAppearanceSafe(message.styleId)
         errorActionButton.visibility = if (button != null) View.VISIBLE else View.GONE
         button?.let {
+            //Ensure that colorBackground is a @ColorRes int
             it.colorBackground?.let { color ->
                 errorActionButton.setBackgroundColor(ContextCompat.getColor(context, color))
             }
