@@ -15,12 +15,12 @@ via Maven:
 <dependency>
   <groupId>com.artear.stevedore</groupId>
   <artifactId>stevedoreviews</artifactId>
-  <version>0.1.4</version>
+  <version>0.1.5</version>
 </dependency>
 ```
 or Gradle:
 ```groovy
-implementation "com.artear.stevedore:stevedoreviews:0.1.4"
+implementation "com.artear.stevedore:stevedoreviews:0.1.5"
 ```
 Stevedore views Lib requires at minimum Java 7 or Android 4.1.
 
