@@ -1,4 +1,4 @@
-package com.artear.stevedoreviewsexample
+package com.artear.stevedoreviewsexample.usecase
 
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
 import com.artear.stevedore.stevedoreviews.GetStevedore

@@ -1,4 +1,4 @@
-package com.artear.stevedoreviewsexample
+package com.artear.stevedoreviewsexample.loading
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +7,8 @@ import com.artear.stevedore.stevedoreitems.presentation.contract.ArtearViewHolde
 import com.artear.stevedore.stevedoreitems.presentation.contract.ItemAdapter
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecoration
+import com.artear.stevedoreviewsexample.PagingErrorView
+import com.artear.stevedoreviewsexample.R
 
 class LoadingItemAdapter(private val listener: PagingErrorView.OnReloadClickListener?) :
         ItemAdapter<LoadingData> {

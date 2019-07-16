@@ -35,10 +35,15 @@ import com.artear.stevedore.stevedoreviews.repository.contract.api.StevedoreApi
 import com.artear.stevedore.stevedoreviews.repository.impl.domain.StevedoreRepositoryImpl
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreHelper.getDefaultGsonMaker
 import com.artear.stevedore.stevedoreviews.repository.impl.provider.ApiStevedoreProvider
+import com.artear.stevedoreviewsexample.contract.RecipesApi
+import com.artear.stevedoreviewsexample.contract.impl.RecipesEP
+import com.artear.stevedoreviewsexample.loading.LoadingData
+import com.artear.stevedoreviewsexample.loading.LoadingItemAdapter
+import com.artear.stevedoreviewsexample.loading.LoadingViewHolder
+import com.artear.stevedoreviewsexample.usecase.GetRecipes
 import com.artear.tools.error.NestError
 import com.artear.ui.base.ArtearActivity
 import com.artear.ui.model.State
-import com.artear.ui.views.error.ErrorCustomizer
 import kotlinx.android.synthetic.main.main_activity.*
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -47,9 +52,8 @@ import timber.log.Timber
 
 class MainActivity : ArtearActivity() {
 
-    private lateinit var errorPagingCustomizer: ErrorCustomizer
     private val androidNetworking by lazy { AndroidNetworking(this) }
-    private lateinit var viewModel: ViewModel
+    private lateinit var recipesViewModel: RecipesViewModel
     private lateinit var getRecipes: GetRecipes
 
 
@@ -61,6 +65,30 @@ class MainActivity : ArtearActivity() {
     }
 
     private fun init() {
+
+        initUseCase()
+
+        recipesViewModel = ViewModelProvider.AndroidViewModelFactory
+                .getInstance(application).create(RecipesViewModel::class.java)
+
+        val listener = object : EndlessRecyclerViewScrollListener(recyclerTest.layoutManager!!) {
+            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
+                recipesViewModel.loadNext(getRecipes)
+            }
+        }
+
+        recyclerTest.addOnScrollListener(listener)
+
+        swipeRefreshLayout.setOnRefreshListener {
+            recipesViewModel.load(getRecipes)
+        }
+
+        setViewModelObservers(listener)
+
+        recipesViewModel.load(getRecipes)
+    }
+
+    private fun initUseCase() {
 
         val api = getApi()
         val recipesApi = Retrofit.Builder()
@@ -85,7 +113,7 @@ class MainActivity : ArtearActivity() {
 
         val pagingReloadListener = object : PagingErrorView.OnReloadClickListener {
             override fun onReload() {
-                viewModel.loadNext(getRecipes)
+                recipesViewModel.loadNext(getRecipes)
             }
         }
 
@@ -113,48 +141,29 @@ class MainActivity : ArtearActivity() {
         val getStevedore = GetStevedore(stevedoreRegister, stevedoreRepository)
 
         getRecipes = GetRecipes(getStevedore)
+    }
 
-        viewModel = ViewModelProvider.AndroidViewModelFactory
-                .getInstance(application).create(ViewModel::class.java)
-
-        val listener = object : EndlessRecyclerViewScrollListener(recyclerTest.layoutManager!!) {
-            override fun onLoadMore(page: Int, totalItemsCount: Int, view: RecyclerView) {
-                viewModel.loadNext(getRecipes)
-            }
-        }
-
-        recyclerTest.addOnScrollListener(listener)
-
-        swipeRefreshLayout.setOnRefreshListener {
-            viewModel.load(getRecipes)
-        }
-
-        viewModel.list.observe(this, Observer {
+    private fun setViewModelObservers(listener: EndlessRecyclerViewScrollListener) {
+        recipesViewModel.list.observe(this, Observer {
             onDataChanged(it)
         })
 
-        viewModel.state.observe(this, Observer {
+        recipesViewModel.state.observe(this, Observer {
             uiStateViewModel.state.value = it
         })
 
-        viewModel.refreshed.observe(this, Observer {
+        recipesViewModel.refreshed.observe(this, Observer {
             listener.resetState()
             (recyclerTest.adapter as ContentAdapter).clear()
         })
 
-        viewModel.pagingState.observe(this, Observer {
+        recipesViewModel.pagingState.observe(this, Observer {
             when (it) {
                 is State.Loading -> onNextLoading()
                 is State.Success -> onNextSuccess()
                 is State.Error -> onNextError(it.error)
             }
         })
-
-
-        errorPagingCustomizer = ErrorCustomizer()
-
-
-        viewModel.load(getRecipes)
     }
 
     private fun onDataChanged(it: List<ArtearItem>) {
@@ -200,8 +209,6 @@ class MainActivity : ArtearActivity() {
 
     private fun onNextError(error: NestError) {
         //setErrorType to object list
-//        swipeRefreshLayout.isRefreshing = false
-
         val contentAdapter = (recyclerTest.adapter as ContentAdapter)
         val position = contentAdapter.list.indexOfFirst { it.model is LoadingData }
         val loadingItemAdapter = contentAdapter.getItemAdapter(position) as LoadingItemAdapter

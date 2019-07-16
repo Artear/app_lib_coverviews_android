@@ -1,6 +1,8 @@
-package com.artear.stevedoreviewsexample
+package com.artear.stevedoreviewsexample.contract.impl
 
 import com.artear.stevedore.stevedoreviews.repository.contract.EndpointProvider
+import com.artear.stevedoreviewsexample.contract.CoverApi
+import com.artear.stevedoreviewsexample.contract.RecipesApi
 import retrofit2.Call
 
 

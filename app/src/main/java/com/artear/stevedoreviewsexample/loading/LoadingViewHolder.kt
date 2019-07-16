@@ -1,4 +1,4 @@
-package com.artear.stevedoreviewsexample
+package com.artear.stevedoreviewsexample.loading
 
 import android.view.View
 import android.view.View.GONE
@@ -7,6 +7,8 @@ import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
 import com.artear.stevedore.stevedoreitems.presentation.contract.ArtearViewHolder
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecoration
+import com.artear.stevedoreviewsexample.PagingErrorView
+import com.artear.stevedoreviewsexample.R
 import com.artear.tools.error.NestError
 import com.artear.tools.error.NestErrorType
 import com.artear.ui.model.ErrorButton

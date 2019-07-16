@@ -6,11 +6,14 @@ import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecoration
 import com.artear.stevedore.stevedoreviews.presentation.PageParam
 import com.artear.stevedore.stevedoreviews.repository.model.Paging
+import com.artear.stevedoreviewsexample.loading.LoadingData
+import com.artear.stevedoreviewsexample.usecase.GetRecipes
+import com.artear.stevedoreviewsexample.usecase.GetRecipesByCategory
 import com.artear.ui.model.State
 import com.artear.ui.viewmodel.DynamicViewModel
 
 
-class ViewModel : DynamicViewModel() {
+class RecipesViewModel : DynamicViewModel() {
 
     val list by lazy { newListData<ArtearItem>() }
     val refreshed by lazy { newData<Boolean>() }
