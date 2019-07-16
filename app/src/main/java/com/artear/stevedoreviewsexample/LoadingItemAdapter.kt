@@ -6,10 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.artear.stevedore.stevedoreitems.presentation.contract.ArtearViewHolder
 import com.artear.stevedore.stevedoreitems.presentation.contract.ItemAdapter
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
-import com.artear.stevedore.stevedoreitems.presentation.model.ArtearSection
+import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecoration
 
 class LoadingItemAdapter(private val listener: PagingErrorView.OnReloadClickListener?) :
         ItemAdapter<LoadingData> {
+
 
     var viewHolder: RecyclerView.ViewHolder? = null
     var idLayout: Int? = null
@@ -26,7 +27,7 @@ class LoadingItemAdapter(private val listener: PagingErrorView.OnReloadClickList
     }
 
     override fun onBindViewHolderBase(holder: ArtearViewHolder<LoadingData>, model: LoadingData,
-                                      artearSection: ArtearSection) {
-        holder.bind(model, artearSection)
+                                      artearItemDecoration: ArtearItemDecoration) {
+        holder.bind(model, artearItemDecoration)
     }
 }

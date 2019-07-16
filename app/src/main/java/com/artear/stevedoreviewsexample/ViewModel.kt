@@ -3,7 +3,7 @@ package com.artear.stevedoreviewsexample
 import androidx.lifecycle.MutableLiveData
 import com.artear.domain.coroutine.SimpleReceiver
 import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItem
-import com.artear.stevedore.stevedoreitems.presentation.model.ArtearSection
+import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecoration
 import com.artear.stevedore.stevedoreviews.presentation.PageParam
 import com.artear.stevedore.stevedoreviews.repository.model.Paging
 import com.artear.ui.model.State
@@ -58,7 +58,7 @@ class ViewModel : DynamicViewModel() {
         val newList = mutableListOf<ArtearItem>().apply { addAll(data.first) }
 
         data.second?.cursors?.before?.let {
-            newList.add(ArtearItem(LoadingData(), ArtearSection()))
+            newList.add(ArtearItem(LoadingData(), ArtearItemDecoration()))
         }
 
         list.value = newList

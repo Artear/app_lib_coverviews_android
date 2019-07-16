@@ -6,7 +6,7 @@ import android.view.View.VISIBLE
 import android.widget.ProgressBar
 import androidx.recyclerview.widget.RecyclerView
 import com.artear.stevedore.stevedoreitems.presentation.contract.ArtearViewHolder
-import com.artear.stevedore.stevedoreitems.presentation.model.ArtearSection
+import com.artear.stevedore.stevedoreitems.presentation.model.ArtearItemDecoration
 import com.artear.tools.error.NestError
 import com.artear.tools.error.NestErrorType
 import com.artear.ui.model.ErrorButton
@@ -22,7 +22,7 @@ class LoadingViewHolder(itemView: View,
     private lateinit var progressBar: ProgressBar
     private lateinit var pagingErrorView: PagingErrorView
 
-    override fun bind(model: LoadingData, artearSection: ArtearSection) {
+    override fun bind(model: LoadingData, artearItemDecoration: ArtearItemDecoration) {
         progressBar = itemView.findViewById(R.id.pagingProgressBar)
         pagingErrorView = itemView.findViewById(R.id.pagingErrorView)
         pagingErrorView.setErrorCustomizer(getErrorCustomizer())
