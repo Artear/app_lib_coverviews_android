@@ -36,6 +36,9 @@ class StevedoreDataShaper(private val stevedoreRegister: StevedoreRegister) :
 
         val list: MutableList<ArtearItem> = mutableListOf()
 
+        isRight = false
+        isTop = true
+
         input.containers.forEach { container ->
             isTop = true
             halfGap = container.style.items.gap.roundToInt() / 2
