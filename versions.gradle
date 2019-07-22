@@ -31,6 +31,7 @@ buildscript {
                 junitVersion       : "4.12",
                 mockitoVersion     : "3.0.0",
                 powermockVersion   : "2.0.2",
+                roboelectricVersion: "4.3",
                 square             : [
                         okHttpVersion: "3.14.2",
                 ],
@@ -96,6 +97,9 @@ buildscript {
                         junitRule: "org.powermock:powermock-module-junit4-rule:${versionLib.powermockVersion}",
                         mockito2 : "org.powermock:powermock-api-mockito2:${versionLib.powermockVersion}",
                         easyMock : "org.powermock:powermock-api-easymock:${versionLib.powermockVersion}"
+                ],
+                roboelectric: [
+                        library: "org.robolectric:robolectric:${versionLib.roboelectricVersion}"
                 ],
                 material    : [
                         library: "com.google.android.material:material:${versionLib.materialVersion}"

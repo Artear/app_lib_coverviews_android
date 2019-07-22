@@ -87,6 +87,7 @@ dependencies {
     testImplementation lib.junit.library
     testImplementation lib.androidx.testCore
     testImplementation lib.mockito.library
+    testImplementation lib.roboelectric.library
 
     androidTestImplementation lib.androidx.testCore
     androidTestImplementation lib.androidx.extJunit
