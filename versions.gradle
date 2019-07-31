@@ -2,7 +2,7 @@ buildscript {
     ext {
         sdkVersion = 28
         buildToolsVersion = "28.0.3"
-        libraryVersion = "0.1.6"
+        libraryVersion = "0.1.7"
         versionLib = [
                 kotlinVersion      : '1.3.41',
                 android            : [
@@ -12,16 +12,17 @@ buildscript {
                         adsVersion: "17.2.1"
                 ],
                 artear             : [
-                        uiViewVersion        : "0.2.2",
-                        domainVersion        : "0.0.8",
-                        networkingVersion    : "0.0.4",
-                        stevedoreItemsVersion: "0.2.10",
                         articleItemVersion   : "0.0.9",
                         bannerItemVersion    : "0.0.9",
                         categoryItemVersion  : "0.0.5",
+                        domainVersion        : "0.0.8",
                         headerItemVersion    : "0.0.6",
                         mediaItemVersion     : "0.0.4",
-                        toolsVersion         : "0.0.19"
+                        networkingVersion    : "0.0.4",
+                        rankingItemVersion   : "0.0.1",
+                        stevedoreItemsVersion: "0.2.11",
+                        toolsVersion         : "0.0.19",
+                        uiViewVersion        : "0.2.4",
                 ],
                 espresso           : [
                         coreVersion: "3.2.0"
@@ -36,49 +37,60 @@ buildscript {
                         okHttpVersion: "3.14.2",
                 ],
                 androidx           : [
-                        multidexVersion        : "2.0.1",
                         appCompatVersion       : "1.0.2",
                         constraintLayoutVersion: "1.1.3",
+                        extJunitVersion        : "1.1.1",
+                        multidexVersion        : "2.0.1",
                         recyclerviewVersion    : "1.0.0",
-                        testRunnerVersion      : "1.2.0",
                         testCoreVersion        : "1.2.0",
-                        extJunitVersion        : "1.1.1"
+                        testRunnerVersion      : "1.2.0",
                 ],
                 timberVersion      : "4.7.1",
                 plugin             : [
-                        depCheckerVersion: "0.21.0",
                         bintrayVersion   : "1.8.4",
-                        dokkaVersion     : "0.9.18",
-                        dcendentsVersion : "2.1"
+                        dcendentsVersion : "2.1",
+                        depCheckerVersion: "0.21.0",
+                        dokkaVersion     : "0.9.18"
+
                 ]
         ]
 
         lib = [
-                kotlin      : [
-                        plugin     : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versionLib.kotlinVersion}",
-                        standardLib: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versionLib.kotlinVersion}"
-                ],
                 android     : [
                         toolsBuildGradle: "com.android.tools.build:gradle:${versionLib.android.gradleBuildToolsVersion}"
                 ],
-                firebase    : [
-                        ads: "com.google.firebase:firebase-ads:${versionLib.firebase.adsVersion}"
+                androidx    : [
+
+                        appcompat       : "androidx.appcompat:appcompat:${versionLib.androidx.appCompatVersion}",
+                        constraintLayout: "androidx.constraintlayout:constraintlayout:${versionLib.androidx.constraintLayoutVersion}",
+                        extJunit        : "androidx.test.ext:junit:${versionLib.androidx.extJunitVersion}",
+                        multidex        : "androidx.multidex:multidex:${versionLib.androidx.multidexVersion}",
+                        recyclerview    : "androidx.recyclerview:recyclerview:${versionLib.androidx.recyclerviewVersion}",
+                        testRunner      : "androidx.test:runner:${versionLib.androidx.testRunnerVersion}",
+                        testCore        : "androidx.test:core:${versionLib.androidx.testCoreVersion}",
+
                 ],
+
                 artear      : [
-                        ui            : "com.artear.ui:view:${versionLib.artear.uiViewVersion}",
-                        domain        : "com.artear.domain:domain:${versionLib.artear.domainVersion}",
-                        networking    : "com.artear.networking:networking:${versionLib.artear.networkingVersion}",
-                        stevedoreItems: "com.artear.stevedore:stevedoreitems:${versionLib.artear.stevedoreItemsVersion}",
                         articleItem   : "com.artear.stevedore:articleitem:${versionLib.artear.articleItemVersion}",
-                        categoryItem  : "com.artear.stevedore:categoryitem:${versionLib.artear.categoryItemVersion}",
                         bannerItem    : "com.artear.stevedore:banneritem:${versionLib.artear.bannerItemVersion}",
+                        categoryItem  : "com.artear.stevedore:categoryitem:${versionLib.artear.categoryItemVersion}",
+                        domain        : "com.artear.domain:domain:${versionLib.artear.domainVersion}",
                         headerItem    : "com.artear.stevedore:headeritem:${versionLib.artear.headerItemVersion}",
                         mediaItem     : "com.artear.stevedore:mediaitem:${versionLib.artear.mediaItemVersion}",
-                        tools         : "com.artear.tools:tools:${versionLib.artear.toolsVersion}"
+                        networking    : "com.artear.networking:networking:${versionLib.artear.networkingVersion}",
+                        rankingItem   : "com.artear.stevedore:rankingitem:${versionLib.artear.rankingItemVersion}",
+                        stevedoreItems: "com.artear.stevedore:stevedoreitems:${versionLib.artear.stevedoreItemsVersion}",
+                        tools         : "com.artear.tools:tools:${versionLib.artear.toolsVersion}",
+                        ui            : "com.artear.ui:view:${versionLib.artear.uiViewVersion}"
                 ],
                 espresso    : [
                         core: "androidx.test.espresso:espresso-core:${versionLib.espresso.coreVersion}"
                 ],
+                firebase    : [
+                        ads: "com.google.firebase:firebase-ads:${versionLib.firebase.adsVersion}"
+                ],
+
                 gson        : [
                         library: "com.google.code.gson:gson:${versionLib.gsonVersion}"
                 ],
@@ -88,43 +100,41 @@ buildscript {
                 junit       : [
                         library: "junit:junit:${versionLib.junitVersion}"
                 ],
-                mockito     : [
-                        library: "org.mockito:mockito-core:${versionLib.mockitoVersion}"
-                ],
-                powermock   : [
-                        core     : "org.powermock:powermock-core:${versionLib.powermockVersion}",
-                        junit    : "org.powermock:powermock-module-junit4:${versionLib.powermockVersion}",
-                        junitRule: "org.powermock:powermock-module-junit4-rule:${versionLib.powermockVersion}",
-                        mockito2 : "org.powermock:powermock-api-mockito2:${versionLib.powermockVersion}",
-                        easyMock : "org.powermock:powermock-api-easymock:${versionLib.powermockVersion}"
-                ],
-                roboelectric: [
-                        library: "org.robolectric:robolectric:${versionLib.roboelectricVersion}"
+
+                kotlin      : [
+                        plugin     : "org.jetbrains.kotlin:kotlin-gradle-plugin:${versionLib.kotlinVersion}",
+                        standardLib: "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${versionLib.kotlinVersion}"
                 ],
                 material    : [
                         library: "com.google.android.material:material:${versionLib.materialVersion}"
                 ],
-                square      : [
-                        okHttp             : "com.squareup.okhttp3:okhttp:${versionLib.square.okHttpVersion}",
-                        okHttpMockWebServer: "com.squareup.okhttp3:mockwebserver:${versionLib.square.okHttpVersion}"
-                ],
-                androidx    : [
-                        multidex        : "androidx.multidex:multidex:${versionLib.androidx.multidexVersion}",
-                        appcompat       : "androidx.appcompat:appcompat:${versionLib.androidx.appCompatVersion}",
-                        constraintLayout: "androidx.constraintlayout:constraintlayout:${versionLib.androidx.constraintLayoutVersion}",
-                        recyclerview    : "androidx.recyclerview:recyclerview:${versionLib.androidx.recyclerviewVersion}",
-                        testRunner      : "androidx.test:runner:${versionLib.androidx.testRunnerVersion}",
-                        testCore        : "androidx.test:core:${versionLib.androidx.testCoreVersion}",
-                        extJunit        : "androidx.test.ext:junit:${versionLib.androidx.extJunitVersion}"
-                ],
-                timber      : [
-                        library: "com.jakewharton.timber:timber:${versionLib.timberVersion}"
+
+                mockito     : [
+                        library: "org.mockito:mockito-core:${versionLib.mockitoVersion}"
                 ],
                 plugin      : [
                         bintray       : "com.jfrog.bintray.gradle:gradle-bintray-plugin:${versionLib.plugin.bintrayVersion}",
                         dcendents     : "com.github.dcendents:android-maven-gradle-plugin:${versionLib.plugin.dcendentsVersion}",
                         dokka         : "org.jetbrains.dokka:dokka-android-gradle-plugin:${versionLib.plugin.dokkaVersion}",
                         graphgenerator: "com.vanniktech:gradle-dependency-graph-generator-plugin:0.5.0"
+                ],
+                powermock   : [
+                        core     : "org.powermock:powermock-core:${versionLib.powermockVersion}",
+                        easyMock : "org.powermock:powermock-api-easymock:${versionLib.powermockVersion}",
+                        junit    : "org.powermock:powermock-module-junit4:${versionLib.powermockVersion}",
+                        junitRule: "org.powermock:powermock-module-junit4-rule:${versionLib.powermockVersion}",
+                        mockito2 : "org.powermock:powermock-api-mockito2:${versionLib.powermockVersion}"
+
+                ],
+                roboelectric: [
+                        library: "org.robolectric:robolectric:${versionLib.roboelectricVersion}"
+                ],
+                square      : [
+                        okHttp             : "com.squareup.okhttp3:okhttp:${versionLib.square.okHttpVersion}",
+                        okHttpMockWebServer: "com.squareup.okhttp3:mockwebserver:${versionLib.square.okHttpVersion}"
+                ],
+                timber      : [
+                        library: "com.jakewharton.timber:timber:${versionLib.timberVersion}"
                 ]
         ]
     }

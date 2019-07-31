@@ -20,6 +20,8 @@ import com.artear.stevedore.articleitem.repository.BoxDataArticle
 import com.artear.stevedore.banneritem.repository.BoxDataDfp
 import com.artear.stevedore.categoryitem.repository.BoxDataCategory
 import com.artear.stevedore.mediaitem.repository.BoxDataMedia
+import com.artear.stevedore.rankingitem.repository.BoxDataRanking
+
 
 import com.artear.stevedore.stevedoreitems.repository.DeserializerUtil.Companion.getDataFromJson
 import com.artear.stevedore.stevedoreitems.repository.DeserializerUtil.Companion.getStyleFromJson
@@ -46,6 +48,7 @@ class BlockDeserializer : JsonDeserializer<Box> {
             BoxType.DFP -> getDataFromJson<BoxDataDfp>(context, json)
             BoxType.CATEGORY -> getDataFromJson<BoxDataCategory>(context, json)
             BoxType.MEDIA -> getDataFromJson<BoxDataMedia>(context, json)
+            BoxType.RANKING -> getDataFromJson<BoxDataRanking>(context, json)
             else -> throw IllegalArgumentException("Type $type is not implement yet.")
         }
 

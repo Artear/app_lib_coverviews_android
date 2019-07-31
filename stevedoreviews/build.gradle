@@ -110,7 +110,7 @@ dependencies {
     implementation lib.artear.bannerItem
     implementation lib.artear.categoryItem
     implementation lib.artear.mediaItem
-
+    implementation lib.artear.rankingItem
     //Support
     implementation lib.androidx.appcompat
     implementation lib.androidx.recyclerview
